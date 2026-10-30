@@ -1,0 +1,305 @@
+{
+  "schema_version": "dafr_m2_experiment_manifest_v1",
+  "experiment_id": "dafr_alibaba2018_cpu_v1",
+  "prepared_on": "2026-10-29",
+  "status": "manifest_prepared_pending_prefix_quality_checks_and_configuration_lock",
+  "confirmation_execution_allowed": false,
+  "M3_started": false,
+  "preserved_m1_protocol": {
+    "path": "configs/dafr_protocol_v1.json",
+    "sha256": "3731fd0de89532f7037b69c978e74e03a2584411d35b9d0c143e70fdcfd00458",
+    "modified": false
+  },
+  "source": {
+    "dataset_id": "alibaba_cluster_trace_2018_machine_cpu",
+    "repository": "https://github.com/alibaba/clusterdata",
+    "commit": "3858992ca41bf92082e6d6522ddf0bebd14e838b",
+    "release": "cluster-trace-v2018",
+    "tables_needed": [
+      "machine_meta.csv",
+      "machine_usage.csv"
+    ],
+    "tables_not_needed": [
+      "container_meta.csv",
+      "container_usage.csv",
+      "batch_task.csv",
+      "batch_instance.csv"
+    ],
+    "inventory_path": "reports/dafr/m2_dataset_inventory_v1.json",
+    "evidence_path": "reports/dafr/m2_source_evidence_v1.json",
+    "metadata_sha256_verified": "b5b1b786b22cd413a3674b8f2ebfb2f02fac991c95df537f363ef2797c8f6d55",
+    "usage_sha256_expected": "3e6ee87fd204bb85b9e234c5c75a5096580fdabc8f085b224033080090753a7a",
+    "usage_sha256_verified": null,
+    "raw_redistribution_allowed": false
+  },
+  "field_mapping": {
+    "machine_id": {
+      "zero_based_column": 0,
+      "type": "string"
+    },
+    "elapsed_seconds": {
+      "zero_based_column": 1,
+      "source_field": "time_stamp",
+      "schema_type": "double",
+      "unit": "seconds_from_trace_start"
+    },
+    "value": {
+      "zero_based_column": 2,
+      "source_field": "cpu_util_percent",
+      "schema_type": "bigint",
+      "unit": "percent",
+      "valid_range": [
+        0,
+        100
+      ]
+    },
+    "csv_columns_in_order": [
+      "machine_id",
+      "time_stamp",
+      "cpu_util_percent",
+      "mem_util_percent",
+      "mem_gps",
+      "mkpi",
+      "net_in",
+      "net_out",
+      "disk_io_percent"
+    ]
+  },
+  "selection": {
+    "seed": "DAFR-M2-v1",
+    "algorithm": "SHA256 domain rank + alternating domain-2 pools + SHA256 machine rank + globally distinct initial domain-1 IDs",
+    "domain_key": "failure_domain_2 at time_stamp 0",
+    "domain_order": [
+      "4",
+      "3",
+      "17",
+      "9",
+      "7",
+      "5",
+      "10",
+      "18",
+      "13",
+      "2",
+      "1",
+      "20",
+      "11",
+      "12",
+      "19",
+      "15",
+      "14",
+      "6",
+      "16",
+      "8"
+    ],
+    "domain_rank_input": "DAFR-M2-v1|domain|<exact-domain-string>",
+    "machine_rank_input": "DAFR-M2-v1|machine|<exact-machine-id>",
+    "hash_encoding": "UTF-8; lowercase hex; sort by (digest, exact string)",
+    "development_domain_ranks_zero_based": "even",
+    "confirmation_domain_ranks_zero_based": "odd",
+    "nomination_iteration_order": [
+      "development",
+      "confirmation"
+    ],
+    "nominations_per_role": {
+      "development": {
+        "primary": 3,
+        "reserve": 3
+      },
+      "confirmation": {
+        "primary": 6,
+        "reserve": 3
+      }
+    },
+    "per_domain_nomination_limit": 1,
+    "domain_1_unique_across_all_nominations": true,
+    "machine_id_universe_sha256": "5525ec7bc3664c9d71a2fd9d07eb7ca14745b6b07ece1966e8e4eaba7be7d1b4",
+    "machine_ids_source": "checksum-verified machine_meta.csv",
+    "prefix_QC_limit": "elapsed seconds [0,345600), the first 50% of the fixed eight-day window",
+    "candidate_inventory_path": "reports/dafr/m2_dataset_inventory_v1.json",
+    "development_primary": [
+      "m_505",
+      "m_1426",
+      "m_3028"
+    ],
+    "development_reserve": [
+      "m_3276",
+      "m_1029",
+      "m_2104"
+    ],
+    "confirmation_primary": [
+      "m_295",
+      "m_66",
+      "m_1878",
+      "m_197",
+      "m_3836",
+      "m_1022"
+    ],
+    "confirmation_reserve": [
+      "m_1194",
+      "m_1059",
+      "m_2502"
+    ],
+    "replacement_rule": "Before suffix inspection, failed primary prefix-QC is replaced by the first eligible fixed-order reserve of its own role; no post-lock outcome-based replacement or cross-role reassignment.",
+    "independence_caveat": "Distinct machine and initial failure-domain identifiers reduce overlap; all machines share one production cluster and are not proven statistically independent."
+  },
+  "preprocessing": {
+    "implementation_status": "specified_only_not_implemented",
+    "analysis_window_elapsed_seconds": {
+      "start_inclusive": 0,
+      "end_exclusive": 691200
+    },
+    "time_conversion": {
+      "synthetic_utc_epoch": "2000-01-01T00:00:00+00:00",
+      "formula": "epoch + bin_end_elapsed_seconds",
+      "calendar_time_known": false,
+      "calendar_features_allowed": false
+    },
+    "resampling": {
+      "seconds": 300,
+      "source_window": "[bin_end-300, bin_end)",
+      "statistic": "arithmetic mean of valid unique CPU observations",
+      "label": "right edge; available only when that bin is complete",
+      "max_source_timestamp": "strictly less than emitted bin end",
+      "min_valid_unique_samples_per_bin": 24,
+      "maximum_raw_time_gap_seconds": 30,
+      "bin_edge_max_distance_seconds": 30,
+      "threshold_status": "prespecified planning gates, conditional on confirming nominal 10-second cadence on development-prefix data"
+    },
+    "duplicate_rule": "Remove exact duplicate full rows with counters; conflicting CPU values at the same machine/timestamp invalidate that bin.",
+    "invalid_cpu_rule": "Nonfinite, missing, -1, 101 or other outside-[0,100] CPU readings cannot contribute; count them, do not clip or fill.",
+    "gap_rule": "No interpolation, forward fill, backfill, compressed time or longest-segment selection. Failed bins fail the fixed-window stream.",
+    "sorting": "Per-machine chronological sort before causal replay if raw file order is not chronological; no value-based transformations using future samples.",
+    "constant_or_zero_streams": "Retain if valid; MAPE/MASE require their own validity flags.",
+    "cross_machine_aggregation_allowed": false,
+    "raw_nominal_cadence_to_verify_seconds": 10
+  },
+  "partitions": {
+    "unit": "five_minute_bins",
+    "N_status": "planned_not_observed",
+    "N": 2304,
+    "general_formula": "fit=floor(0.50N); validation=floor(0.20N); warmup=floor(0.10N); evaluation=remainder",
+    "blocks": [
+      {
+        "name": "fit",
+        "start_index_inclusive": 0,
+        "end_index_exclusive": 1152,
+        "count": 1152,
+        "first_bin_end_seconds": 300,
+        "last_bin_end_seconds": 345600
+      },
+      {
+        "name": "validation",
+        "start_index_inclusive": 1152,
+        "end_index_exclusive": 1612,
+        "count": 460,
+        "first_bin_end_seconds": 345900,
+        "last_bin_end_seconds": 483600
+      },
+      {
+        "name": "calibration_warmup",
+        "start_index_inclusive": 1612,
+        "end_index_exclusive": 1842,
+        "count": 230,
+        "first_bin_end_seconds": 483900,
+        "last_bin_end_seconds": 552600
+      },
+      {
+        "name": "final_evaluation",
+        "start_index_inclusive": 1842,
+        "end_index_exclusive": 2304,
+        "count": 462,
+        "first_bin_end_seconds": 552900,
+        "last_bin_end_seconds": 691200
+      }
+    ],
+    "development_use": "Select global settings on development machines only with chronological fit/validation targets.",
+    "confirmation_use": "After global settings freeze, fit experts/scalers on each confirmation machine's allowed first-70% prefix. Do not search/tune hyperparameters on confirmation machines; warm-up supplies only prespecified online state.",
+    "suffix_lock_start_elapsed_seconds": 552900,
+    "model_initial_fit_cutoff_bin_end_seconds": 483600,
+    "planned_h12_warmup_matured_scores": 219,
+    "M1_synthetic_warmup_count_is_not_reused": true
+  },
+  "forecasting": {
+    "cadence_seconds": 300,
+    "horizons": [
+      1,
+      12
+    ],
+    "horizon_minutes": [
+      5,
+      60
+    ],
+    "target": "next/future complete five-minute mean CPU utilization",
+    "event_order": [
+      "reveal_observation",
+      "score_matured_targets",
+      "update_causal_state",
+      "issue_future_forecasts"
+    ],
+    "matured_feedback_only": true,
+    "score_target_based_phase": true,
+    "tail_rule": "retain_unscored",
+    "identical_scored_targets_across_policies": true
+  },
+  "exclusions": {
+    "prelock_prefix_only": [
+      "Missing/ambiguous time-zero machine domain metadata",
+      "Not in checksum-verified metadata universe",
+      "Insufficient fixed-prefix coverage or failed 300-second bins",
+      "Conflicting duplicate CPU readings invalidate required bins",
+      "Invalid schema, negative/nonfinite timestamps or incompatible units",
+      "Known cross-role duplicate physical-machine identity"
+    ],
+    "postlock": "Late quality faults are recorded as failed/incomplete confirmation streams, never replaced using suffix quality or forecasting errors.",
+    "forbidden_selection_criteria": [
+      "Historical NAB final-test error",
+      "Confirmation-period CPU distribution, drift pattern or model error",
+      "Selecting an easier or higher-variance confirmation suffix",
+      "Choosing the longest clean full-series segment"
+    ]
+  },
+  "resource_plan": {
+    "machine_usage_download_bytes": 1774523160,
+    "machine_usage_declared_csv_bytes": 8996532344,
+    "whole_cluster_download_allowed": false,
+    "full_usage_csv_extraction_planned": false,
+    "streaming_strategy": "Verify whole compressed usage archive hash, then stream tar/gzip and filter only nominated machine IDs. Keep confirmation suffix values sealed.",
+    "chunk_rows_upper_bound": 50000,
+    "ingestion_process_RSS_target_bytes": 1073741824,
+    "process_RSS_stop_bytes": 4294967296,
+    "minimum_free_disk_bytes_for_future_ingestion": 4294967296,
+    "worker_count": 1,
+    "network_download_cap_note": "Only metadata and 4096 usage-header bytes read in M2; full 1.65-GiB machine table acquisition is a future explicitly staged step.",
+    "full_usage_acquisition_completed": false
+  },
+  "provenance_required": [
+    "source_release_and_documentation_commit",
+    "compressed_usage_SHA256_match",
+    "schema_and_terms_snapshots_or_hashes",
+    "original_machine_id_and_time_zero_domains",
+    "assignment_seed_rank_and_prefix_QC_log",
+    "raw_and_clean_row_counts_and_duplicate_invalid_gap_counts",
+    "elapsed_time_to_synthetic_UTC_mapping_and_bin_source_bounds",
+    "per_machine_data_SHA256_and_exact_temporal_partitions",
+    "locked_global_configuration_hash_and_lock_date",
+    "confirmation_suffix_access_log_and_run_version",
+    "all_exclusions_failures_and_no_outcome_replacements"
+  ],
+  "gates": {
+    "access_metadata_verified": true,
+    "usage_endpoint_headers_verified": true,
+    "usage_archive_header_verified": true,
+    "study_research_permission_documented": true,
+    "raw_redistribution_permission_verified": false,
+    "empirical_sampling_verified": false,
+    "prefix_quality_verified": false,
+    "selected_series_exported": false,
+    "confirmation_suffix_opened": false,
+    "global_DAFR_settings_locked": false
+  },
+  "notes": [
+    "M1 remains unchanged and is not an external-data ingestion tool.",
+    "Do not start M3 from this planning manifest.",
+    "If eight-day continuity or cadence gates fail, version the data protocol before any confirmation suffix inspection; never silently shrink the chosen window."
+  ]
+}

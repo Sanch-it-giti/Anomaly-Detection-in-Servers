@@ -1,0 +1,1202 @@
+{
+  "schema_version": "dafr_m2b_experiment_manifest_v1",
+  "experiment_id": "dafr_alibaba2018_cpu_m2b_v1",
+  "prepared_on": "2026-10-30",
+  "status": "M2B_completed_no_candidates_qualified_under_frozen_rules",
+  "confirmation_execution_allowed": false,
+  "M3_started": false,
+  "preserved_m1_protocol": {
+    "path": "configs/dafr_protocol_v1.json",
+    "sha256": "3731fd0de89532f7037b69c978e74e03a2584411d35b9d0c143e70fdcfd00458",
+    "modified": false
+  },
+  "source": {
+    "dataset_id": "alibaba_cluster_trace_2018_machine_cpu",
+    "repository": "https://github.com/alibaba/clusterdata",
+    "commit": "3858992ca41bf92082e6d6522ddf0bebd14e838b",
+    "release": "cluster-trace-v2018",
+    "tables_needed": [
+      "machine_meta.csv",
+      "machine_usage.csv"
+    ],
+    "tables_not_needed": [
+      "container_meta.csv",
+      "container_usage.csv",
+      "batch_task.csv",
+      "batch_instance.csv"
+    ],
+    "inventory_path": "reports/dafr/m2_dataset_inventory_v1.json",
+    "evidence_path": "reports/dafr/m2_source_evidence_v1.json",
+    "metadata_sha256_verified": "b5b1b786b22cd413a3674b8f2ebfb2f02fac991c95df537f363ef2797c8f6d55",
+    "usage_sha256_expected": "3e6ee87fd204bb85b9e234c5c75a5096580fdabc8f085b224033080090753a7a",
+    "usage_sha256_verified": "3e6ee87fd204bb85b9e234c5c75a5096580fdabc8f085b224033080090753a7a",
+    "raw_redistribution_allowed": false,
+    "acquisition_evidence": "reports/dafr/m2b_acquisition_evidence_v1.json",
+    "qualification_output_root": "data/processed/dafr/m2b_v1/qualification_20261030_001",
+    "qualification_json_sha256": "be09a95ce026117a2a3de75a63c651498144446d944560baf9bd7a91fd179649",
+    "seal_receipt_json_sha256": "34e4bab5a469b2014f9606697ac4e914df531c194897fc52bb501029280afe2a"
+  },
+  "field_mapping": {
+    "machine_id": {
+      "zero_based_column": 0,
+      "type": "string"
+    },
+    "elapsed_seconds": {
+      "zero_based_column": 1,
+      "source_field": "time_stamp",
+      "schema_type": "double",
+      "unit": "seconds_from_trace_start"
+    },
+    "value": {
+      "zero_based_column": 2,
+      "source_field": "cpu_util_percent",
+      "schema_type": "bigint",
+      "unit": "percent",
+      "valid_range": [
+        0,
+        100
+      ]
+    },
+    "csv_columns_in_order": [
+      "machine_id",
+      "time_stamp",
+      "cpu_util_percent",
+      "mem_util_percent",
+      "mem_gps",
+      "mkpi",
+      "net_in",
+      "net_out",
+      "disk_io_percent"
+    ]
+  },
+  "selection": {
+    "seed": "DAFR-M2-v1",
+    "algorithm": "SHA256 domain rank + alternating domain-2 pools + SHA256 machine rank + globally distinct initial domain-1 IDs",
+    "domain_key": "failure_domain_2 at time_stamp 0",
+    "domain_order": [
+      "4",
+      "3",
+      "17",
+      "9",
+      "7",
+      "5",
+      "10",
+      "18",
+      "13",
+      "2",
+      "1",
+      "20",
+      "11",
+      "12",
+      "19",
+      "15",
+      "14",
+      "6",
+      "16",
+      "8"
+    ],
+    "domain_rank_input": "DAFR-M2-v1|domain|<exact-domain-string>",
+    "machine_rank_input": "DAFR-M2-v1|machine|<exact-machine-id>",
+    "hash_encoding": "UTF-8; lowercase hex; sort by (digest, exact string)",
+    "development_domain_ranks_zero_based": "even",
+    "confirmation_domain_ranks_zero_based": "odd",
+    "nomination_iteration_order": [
+      "development",
+      "confirmation"
+    ],
+    "nominations_per_role": {
+      "development": {
+        "primary": 3,
+        "reserve": 3
+      },
+      "confirmation": {
+        "primary": 6,
+        "reserve": 3
+      }
+    },
+    "per_domain_nomination_limit": 1,
+    "domain_1_unique_across_all_nominations": true,
+    "machine_id_universe_sha256": "5525ec7bc3664c9d71a2fd9d07eb7ca14745b6b07ece1966e8e4eaba7be7d1b4",
+    "machine_ids_source": "checksum-verified machine_meta.csv",
+    "prefix_QC_limit": "elapsed seconds [0,345600), the first 50% of the fixed eight-day window",
+    "candidate_inventory_path": "reports/dafr/m2_dataset_inventory_v1.json",
+    "development_primary": [
+      "m_505",
+      "m_1426",
+      "m_3028"
+    ],
+    "development_reserve": [
+      "m_3276",
+      "m_1029",
+      "m_2104"
+    ],
+    "confirmation_primary": [
+      "m_295",
+      "m_66",
+      "m_1878",
+      "m_197",
+      "m_3836",
+      "m_1022"
+    ],
+    "confirmation_reserve": [
+      "m_1194",
+      "m_1059",
+      "m_2502"
+    ],
+    "replacement_rule": "Before suffix inspection, failed primary prefix-QC is replaced by the first eligible fixed-order reserve of its own role; no post-lock outcome-based replacement or cross-role reassignment.",
+    "independence_caveat": "Distinct machine and initial failure-domain identifiers reduce overlap; all machines share one production cluster and are not proven statistically independent.",
+    "qualified_development_ids": [],
+    "qualified_confirmation_ids": [],
+    "replacements": []
+  },
+  "preprocessing": {
+    "implementation_status": "executed_frozen_rules_no_threshold_relaxation_no_imputation",
+    "analysis_window_elapsed_seconds": {
+      "start_inclusive": 0,
+      "end_exclusive": 691200
+    },
+    "time_conversion": {
+      "synthetic_utc_epoch": "2000-01-01T00:00:00+00:00",
+      "formula": "epoch + bin_end_elapsed_seconds",
+      "calendar_time_known": false,
+      "calendar_features_allowed": false
+    },
+    "resampling": {
+      "seconds": 300,
+      "source_window": "[bin_end-300, bin_end)",
+      "statistic": "arithmetic mean of valid unique CPU observations",
+      "label": "right edge; available only when that bin is complete",
+      "max_source_timestamp": "strictly less than emitted bin end",
+      "min_valid_unique_samples_per_bin": 24,
+      "maximum_raw_time_gap_seconds": 30,
+      "bin_edge_max_distance_seconds": 30,
+      "threshold_status": "prespecified planning gates, conditional on confirming nominal 10-second cadence on development-prefix data"
+    },
+    "duplicate_rule": "Remove exact duplicate full rows with counters; conflicting CPU values at the same machine/timestamp invalidate that bin.",
+    "invalid_cpu_rule": "Nonfinite, missing, -1, 101 or other outside-[0,100] CPU readings cannot contribute; count them, do not clip or fill.",
+    "gap_rule": "No interpolation, forward fill, backfill, compressed time or longest-segment selection. Failed bins fail the fixed-window stream.",
+    "sorting": "Per-machine chronological sort before causal replay if raw file order is not chronological; no value-based transformations using future samples.",
+    "constant_or_zero_streams": "Retain if valid; MAPE/MASE require their own validity flags.",
+    "cross_machine_aggregation_allowed": false,
+    "raw_nominal_cadence_to_verify_seconds": 10
+  },
+  "partitions": {
+    "unit": "five_minute_bins",
+    "N_status": "2304_expected_grid_rows_per_nominee_including_explicit_failed_bins; zero qualified complete series",
+    "N": 2304,
+    "general_formula": "fit=floor(0.50N); validation=floor(0.20N); warmup=floor(0.10N); evaluation=remainder",
+    "blocks": [
+      {
+        "name": "fit",
+        "start_index_inclusive": 0,
+        "end_index_exclusive": 1152,
+        "count": 1152,
+        "first_bin_end_seconds": 300,
+        "last_bin_end_seconds": 345600
+      },
+      {
+        "name": "validation",
+        "start_index_inclusive": 1152,
+        "end_index_exclusive": 1612,
+        "count": 460,
+        "first_bin_end_seconds": 345900,
+        "last_bin_end_seconds": 483600
+      },
+      {
+        "name": "calibration_warmup",
+        "start_index_inclusive": 1612,
+        "end_index_exclusive": 1842,
+        "count": 230,
+        "first_bin_end_seconds": 483900,
+        "last_bin_end_seconds": 552600
+      },
+      {
+        "name": "final_evaluation",
+        "start_index_inclusive": 1842,
+        "end_index_exclusive": 2304,
+        "count": 462,
+        "first_bin_end_seconds": 552900,
+        "last_bin_end_seconds": 691200
+      }
+    ],
+    "development_use": "Select global settings on development machines only with chronological fit/validation targets.",
+    "confirmation_use": "After global settings freeze, fit experts/scalers on each confirmation machine's allowed first-70% prefix. Do not search/tune hyperparameters on confirmation machines; warm-up supplies only prespecified online state.",
+    "suffix_lock_start_elapsed_seconds": 552900,
+    "model_initial_fit_cutoff_bin_end_seconds": 483600,
+    "planned_h12_warmup_matured_scores": 219,
+    "M1_synthetic_warmup_count_is_not_reused": true
+  },
+  "forecasting": {
+    "cadence_seconds": 300,
+    "horizons": [
+      1,
+      12
+    ],
+    "horizon_minutes": [
+      5,
+      60
+    ],
+    "target": "next/future complete five-minute mean CPU utilization",
+    "event_order": [
+      "reveal_observation",
+      "score_matured_targets",
+      "update_causal_state",
+      "issue_future_forecasts"
+    ],
+    "matured_feedback_only": true,
+    "score_target_based_phase": true,
+    "tail_rule": "retain_unscored",
+    "identical_scored_targets_across_policies": true
+  },
+  "exclusions": {
+    "prelock_prefix_only": [
+      "Missing/ambiguous time-zero machine domain metadata",
+      "Not in checksum-verified metadata universe",
+      "Insufficient fixed-prefix coverage or failed 300-second bins",
+      "Conflicting duplicate CPU readings invalidate required bins",
+      "Invalid schema, negative/nonfinite timestamps or incompatible units",
+      "Known cross-role duplicate physical-machine identity"
+    ],
+    "postlock": "Late quality faults are recorded as failed/incomplete confirmation streams, never replaced using suffix quality or forecasting errors.",
+    "forbidden_selection_criteria": [
+      "Historical NAB final-test error",
+      "Confirmation-period CPU distribution, drift pattern or model error",
+      "Selecting an easier or higher-variance confirmation suffix",
+      "Choosing the longest clean full-series segment"
+    ]
+  },
+  "resource_plan": {
+    "machine_usage_download_bytes": 1774523160,
+    "machine_usage_declared_csv_bytes": 8996532344,
+    "whole_cluster_download_allowed": false,
+    "full_usage_csv_extraction_planned": false,
+    "streaming_strategy": "Verify whole compressed usage archive hash, then stream tar/gzip and filter only nominated machine IDs. Keep confirmation suffix values sealed.",
+    "chunk_rows_upper_bound": 50000,
+    "ingestion_process_RSS_target_bytes": 1073741824,
+    "process_RSS_stop_bytes": 4294967296,
+    "minimum_free_disk_bytes_for_future_ingestion": 4294967296,
+    "worker_count": 1,
+    "network_download_cap_note": "Only metadata and 4096 usage-header bytes read in M2; full 1.65-GiB machine table acquisition is a future explicitly staged step.",
+    "full_usage_acquisition_completed": true
+  },
+  "provenance_required": [
+    "source_release_and_documentation_commit",
+    "compressed_usage_SHA256_match",
+    "schema_and_terms_snapshots_or_hashes",
+    "original_machine_id_and_time_zero_domains",
+    "assignment_seed_rank_and_prefix_QC_log",
+    "raw_and_clean_row_counts_and_duplicate_invalid_gap_counts",
+    "elapsed_time_to_synthetic_UTC_mapping_and_bin_source_bounds",
+    "per_machine_data_SHA256_and_exact_temporal_partitions",
+    "locked_global_configuration_hash_and_lock_date",
+    "confirmation_suffix_access_log_and_run_version",
+    "all_exclusions_failures_and_no_outcome_replacements"
+  ],
+  "gates": {
+    "access_metadata_verified": true,
+    "usage_endpoint_headers_verified": true,
+    "usage_archive_header_verified": true,
+    "study_research_permission_documented": true,
+    "raw_redistribution_permission_verified": false,
+    "empirical_sampling_verified": true,
+    "prefix_quality_verified": true,
+    "selected_series_exported": false,
+    "confirmation_suffix_opened": false,
+    "global_DAFR_settings_locked": false,
+    "empirical_sampling_verification_scope": "Nominal ten-second modal interval and ten-second alignment observed in every nominated prefix; not a claim of continuous regular coverage.",
+    "all_nominated_prefixes_passed": false,
+    "candidate_grid_artifacts_exported": true,
+    "confirmation_suffix_mechanically_resampled_and_encrypted": true
+  },
+  "notes": [
+    "M1 remains unchanged and is not an external-data ingestion tool.",
+    "Do not start M3 from this planning manifest.",
+    "If eight-day continuity or cadence gates fail, version the data protocol before any confirmation suffix inspection; never silently shrink the chosen window.",
+    "M2B found all 15 prefix streams fail the frozen complete-grid criteria. No models were trained; no DAF-R hyperparameters were chosen."
+  ],
+  "parent_manifest": "configs/dafr_experiment_manifest_v1.json",
+  "parent_manifest_sha256": "7aecf5e44f68b700a25c1ae9aa7063c60d815b6015b3eb0822372f9733a5028d",
+  "ready_for_M3_development": false,
+  "qualification": {
+    "run_id": "qualification_20261030_001",
+    "criteria_source": "Original M2 manifest unchanged",
+    "prefix_interval_elapsed_seconds": [
+      0,
+      345600
+    ],
+    "required_prefix_bins": 1152,
+    "passed_nominees": 0,
+    "failed_nominees": 15,
+    "selection": {
+      "confirmation": {
+        "replacements": [],
+        "selected_ids": [],
+        "unfilled_primary_slots": [
+          "m_295",
+          "m_66",
+          "m_1878",
+          "m_197",
+          "m_3836",
+          "m_1022"
+        ]
+      },
+      "development": {
+        "replacements": [],
+        "selected_ids": [],
+        "unfilled_primary_slots": [
+          "m_505",
+          "m_1426",
+          "m_3028"
+        ]
+      }
+    },
+    "nominal_cadence_verified_on_all_development_prefixes": true,
+    "nominal_cadence_verified_on_all_nominee_prefixes": true,
+    "original_run_cadence_gate_note": "The raw qualification JSON's development_prefix_nominal_ten_seconds_verified is false because that gate operates on the empty qualified selection, not because the observed nominee modal cadence differs from ten seconds.",
+    "candidates": [
+      {
+        "failure_domain_1": "29",
+        "failure_domain_2": "4",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_505",
+        "machine_rank_sha256": "00055cf28ab66b10754cd835fcd54d0bb681fcac8619131cbdcf476e429a89ab",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "development",
+        "role_order": 1,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 29269,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 206,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 186,
+            "leading_edge_gap": 164,
+            "raw_gap_exceeds_limit": 18,
+            "trailing_edge_gap": 172
+          },
+          "first_elapsed_seconds": "1240",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_505",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 29270,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 29067,
+          "ten_second_interval_fraction": 0.9930985001195805,
+          "unique_timestamps": 29270,
+          "valid_bins": 946
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 29270,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 29270,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 5290,
+          "empty_prefix_bins": 146
+        }
+      },
+      {
+        "failure_domain_1": "249",
+        "failure_domain_2": "17",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_1426",
+        "machine_rank_sha256": "01cea59d278f21fb804f54376e4b33551521611a162e886fa01502bbc54e97d1",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "development",
+        "role_order": 2,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 28576,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 232,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 214,
+            "leading_edge_gap": 191,
+            "raw_gap_exceeds_limit": 21,
+            "trailing_edge_gap": 191
+          },
+          "first_elapsed_seconds": "2260",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_1426",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 28577,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 28373,
+          "ten_second_interval_fraction": 0.9928961366181411,
+          "unique_timestamps": 28577,
+          "valid_bins": 920
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 28577,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 28577,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 5983,
+          "empty_prefix_bins": 168
+        }
+      },
+      {
+        "failure_domain_1": "187",
+        "failure_domain_2": "7",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_3028",
+        "machine_rank_sha256": "0012a02e9b9e6d9ccf86155f8c4b42cf36a5b0680415b8514edda641f1ae97e0",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "development",
+        "role_order": 3,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 28964,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 206,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 195,
+            "leading_edge_gap": 181,
+            "raw_gap_exceeds_limit": 12,
+            "trailing_edge_gap": 178
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 1800,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_3028",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 28965,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 28803,
+          "ten_second_interval_fraction": 0.9944413755006215,
+          "unique_timestamps": 28965,
+          "valid_bins": 946
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 28965,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 28965,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 5595,
+          "empty_prefix_bins": 164
+        }
+      },
+      {
+        "failure_domain_1": "226",
+        "failure_domain_2": "10",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_3276",
+        "machine_rank_sha256": "03c5f5bc8a45c597567fa457d657c8a175ce9c325ca93ff5c32843bea9782cfa",
+        "nomination": "reserve",
+        "prefix_quality_status": "failed",
+        "role": "development",
+        "role_order": 4,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 27942,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 250,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 233,
+            "leading_edge_gap": 207,
+            "raw_gap_exceeds_limit": 24,
+            "trailing_edge_gap": 208
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_3276",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 27943,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 27747,
+          "ten_second_interval_fraction": 0.9930212583208073,
+          "unique_timestamps": 27943,
+          "valid_bins": 902
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 27943,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 27943,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 6617,
+          "empty_prefix_bins": 186
+        }
+      },
+      {
+        "failure_domain_1": "51",
+        "failure_domain_2": "13",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_1029",
+        "machine_rank_sha256": "003211daf4369846a18582cf5ae90c429d585c8fdd994a747697c7283f2fe974",
+        "nomination": "reserve",
+        "prefix_quality_status": "failed",
+        "role": "development",
+        "role_order": 5,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 27220,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 272,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 254,
+            "leading_edge_gap": 239,
+            "raw_gap_exceeds_limit": 6,
+            "trailing_edge_gap": 236
+          },
+          "first_elapsed_seconds": "5350",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_1029",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 27221,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 27007,
+          "ten_second_interval_fraction": 0.9921748714180749,
+          "unique_timestamps": 27221,
+          "valid_bins": 880
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 27221,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 27221,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 7339,
+          "empty_prefix_bins": 206
+        }
+      },
+      {
+        "failure_domain_1": "229",
+        "failure_domain_2": "1",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_2104",
+        "machine_rank_sha256": "00e981769e7fbcf483b99cd685424e889cacf887fb17af85234109203f641318",
+        "nomination": "reserve",
+        "prefix_quality_status": "failed",
+        "role": "development",
+        "role_order": 6,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 27568,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 256,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 244,
+            "leading_edge_gap": 221,
+            "raw_gap_exceeds_limit": 17,
+            "trailing_edge_gap": 225
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 6000,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_2104",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 27569,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 27378,
+          "ten_second_interval_fraction": 0.9931079512478236,
+          "unique_timestamps": 27569,
+          "valid_bins": 896
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 27569,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 27569,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 6991,
+          "empty_prefix_bins": 207
+        }
+      },
+      {
+        "failure_domain_1": "23",
+        "failure_domain_2": "3",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_295",
+        "machine_rank_sha256": "016bbfba0f5abdaca190b095a2c2fbfc90115cee54e32c0d8ccfa98093cf26de",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 1,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 27286,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 261,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 254,
+            "leading_edge_gap": 232,
+            "raw_gap_exceeds_limit": 10,
+            "trailing_edge_gap": 231
+          },
+          "first_elapsed_seconds": "2110",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_295",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 27287,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 27089,
+          "ten_second_interval_fraction": 0.992780180312248,
+          "unique_timestamps": 27287,
+          "valid_bins": 891
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 27287,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 27287,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 7273,
+          "empty_prefix_bins": 212
+        }
+      },
+      {
+        "failure_domain_1": "9",
+        "failure_domain_2": "9",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_66",
+        "machine_rank_sha256": "0168d4f6078659042c3a5e2a746eb36238ffbedfcde36d49143651707accee40",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 2,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 28671,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 226,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 209,
+            "leading_edge_gap": 185,
+            "raw_gap_exceeds_limit": 18,
+            "trailing_edge_gap": 186
+          },
+          "first_elapsed_seconds": "670",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 1,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_66",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 28672,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 28466,
+          "ten_second_interval_fraction": 0.9928499180356458,
+          "unique_timestamps": 28672,
+          "valid_bins": 926
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 28672,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 1,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 28672,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 5888,
+          "empty_prefix_bins": 164
+        }
+      },
+      {
+        "failure_domain_1": "242",
+        "failure_domain_2": "5",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_1878",
+        "machine_rank_sha256": "00bfa03a51deb137738c722fd516b730587ca20d45f17f980b1a967b8345d58e",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 3,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 25106,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 337,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 323,
+            "leading_edge_gap": 306,
+            "raw_gap_exceeds_limit": 13,
+            "trailing_edge_gap": 311
+          },
+          "first_elapsed_seconds": "10790",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_1878",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 25107,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 24930,
+          "ten_second_interval_fraction": 0.9929897235720545,
+          "unique_timestamps": 25107,
+          "valid_bins": 815
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 25107,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 25107,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 9453,
+          "empty_prefix_bins": 288
+        }
+      },
+      {
+        "failure_domain_1": "251",
+        "failure_domain_2": "18",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_197",
+        "machine_rank_sha256": "0081f63e09e13a0a4c6965fea381e0637797d7d686fb474eb1d7f9075c88b02d",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 4,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 28197,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 233,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 226,
+            "leading_edge_gap": 201,
+            "raw_gap_exceeds_limit": 12,
+            "trailing_edge_gap": 205
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 900,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_197",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 28198,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 27984,
+          "ten_second_interval_fraction": 0.9924460048941377,
+          "unique_timestamps": 28198,
+          "valid_bins": 919
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 28198,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 28198,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 6362,
+          "empty_prefix_bins": 180
+        }
+      },
+      {
+        "failure_domain_1": "22",
+        "failure_domain_2": "2",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_3836",
+        "machine_rank_sha256": "02fd369a2ad9322d444945ed7c0ce88ed2013d977da932908bf81e16cec309d0",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 5,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 25172,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 340,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 330,
+            "leading_edge_gap": 302,
+            "raw_gap_exceeds_limit": 13,
+            "trailing_edge_gap": 306
+          },
+          "first_elapsed_seconds": "120",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_3836",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 25173,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 24954,
+          "ten_second_interval_fraction": 0.991339583664389,
+          "unique_timestamps": 25173,
+          "valid_bins": 812
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 25173,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 25173,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 9387,
+          "empty_prefix_bins": 276
+        }
+      },
+      {
+        "failure_domain_1": "20",
+        "failure_domain_2": "20",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_1022",
+        "machine_rank_sha256": "03d8cdd4cb13c798217ac84fc524c59791e0b2695e0d530d888239fbf031bf0b",
+        "nomination": "primary",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 6,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 29035,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 217,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 205,
+            "leading_edge_gap": 178,
+            "raw_gap_exceeds_limit": 15,
+            "trailing_edge_gap": 178
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 600,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_1022",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 29036,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 28824,
+          "ten_second_interval_fraction": 0.9927329085586362,
+          "unique_timestamps": 29036,
+          "valid_bins": 935
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 29036,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 29036,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 5524,
+          "empty_prefix_bins": 149
+        }
+      },
+      {
+        "failure_domain_1": "114",
+        "failure_domain_2": "12",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_1194",
+        "machine_rank_sha256": "00fb8e7d3276c97efbee3e8cd39269e23a0dcad890048eff804f99133dd9e36e",
+        "nomination": "reserve",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 7,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 28298,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 240,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 223,
+            "leading_edge_gap": 201,
+            "raw_gap_exceeds_limit": 17,
+            "trailing_edge_gap": 199
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 600,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_1194",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 28299,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 28091,
+          "ten_second_interval_fraction": 0.9926849954060357,
+          "unique_timestamps": 28299,
+          "valid_bins": 912
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 28299,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 28299,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 6261,
+          "empty_prefix_bins": 173
+        }
+      },
+      {
+        "failure_domain_1": "53",
+        "failure_domain_2": "15",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_1059",
+        "machine_rank_sha256": "00b4e9cf8c1d2970ef161c96e096ab60082a644b92c1f011c2be3f4383405678",
+        "nomination": "reserve",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 8,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 28418,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 237,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 219,
+            "leading_edge_gap": 194,
+            "raw_gap_exceeds_limit": 21,
+            "trailing_edge_gap": 192
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_1059",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 28419,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 28203,
+          "ten_second_interval_fraction": 0.9924343725807587,
+          "unique_timestamps": 28419,
+          "valid_bins": 915
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 28419,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 28419,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 6141,
+          "empty_prefix_bins": 167
+        }
+      },
+      {
+        "failure_domain_1": "79",
+        "failure_domain_2": "6",
+        "forecast_outcomes_inspected": false,
+        "machine_id": "m_2502",
+        "machine_rank_sha256": "007015d175a71330be836e1f4689d716fb0db3f7b62acd9464b68d07d6d52858",
+        "nomination": "reserve",
+        "prefix_quality_status": "failed",
+        "role": "confirmation",
+        "role_order": 9,
+        "prefix_quality": {
+          "conflicting_timestamps": 0,
+          "delta_count": 27031,
+          "exact_duplicate_rows": 0,
+          "expected_bins": 1152,
+          "failed_bins": 280,
+          "failure_reasons": {
+            "insufficient_valid_unique_samples": 261,
+            "leading_edge_gap": 243,
+            "raw_gap_exceeds_limit": 14,
+            "trailing_edge_gap": 242
+          },
+          "first_elapsed_seconds": "0",
+          "first_failed_bin_end_seconds": 300,
+          "invalid_cpu_timestamps": 0,
+          "last_elapsed_seconds": "345590",
+          "machine_id": "m_2502",
+          "modal_interval_seconds": 10,
+          "prefix_elapsed_interval": [
+            0,
+            345600
+          ],
+          "prefix_pass": false,
+          "raw_rows": 27032,
+          "same_value_timestamp_repeats": 0,
+          "ten_second_interval_count": 26829,
+          "ten_second_interval_fraction": 0.9925270985165181,
+          "unique_timestamps": 27032,
+          "valid_bins": 872
+        },
+        "independent_prefix_validation": {
+          "raw_rows": 27032,
+          "off_ten_second_grid": 0,
+          "missing_cpu": 0,
+          "nonfinite_cpu": 0,
+          "out_of_range_cpu": 0,
+          "nonnumeric_cpu": 0,
+          "unique_raw_timestamps": 27032,
+          "expected_raw_timestamps_at_verified_ten_seconds": 34560,
+          "missing_raw_grid_timestamps": 7528,
+          "empty_prefix_bins": 215
+        }
+      }
+    ],
+    "confirmation_suffix_qualification_details": "Encrypted; not inspected or used for candidate selection.",
+    "code_provenance": {
+      "executed_scan_source_sha256": "71f88ad1e8cd9c84ebf82e9b2e981a717f30b19d8ad010cca4fbacbf887cec99",
+      "delivered_source_path": "src/dafr/alibaba_ingestion.py",
+      "delivered_source_sha256": "1a89603ba97cbb14c2dafc1817e8c9bc03f341a81cd59ea848400b53732b5b25",
+      "tests_path": "tests/test_alibaba_ingestion.py",
+      "tests_sha256": "0192a03acec1f797f9a5ed9605d118729dd6f27cbba891afcd9bd6e7f01800a4",
+      "post_scan_hardening": "Added pre-allocation CSV line-length cap and encrypted sealing integration; verified on synthetic fixtures. Recorded scan/runtime belongs to the executed source hash, not a later full re-benchmark."
+    }
+  },
+  "measured_costs": {
+    "download_bytes": 1774523160,
+    "download_seconds": 308.647797,
+    "checksum_in_qualification_seconds": 1.5838678749933024,
+    "source_rows_scanned": 246934820,
+    "nominated_rows_retained": 930988,
+    "scan_seconds": 294.9458379580028,
+    "qualification_seconds_excluding_download_and_checksum": 307.3650399580001,
+    "ingestion_peak_process_RSS_bytes": 118112256,
+    "ingestion_peak_process_RSS_MiB": 112.640625,
+    "sealing_seconds": 12.580093791999388,
+    "qualification_output_storage_bytes": 89376453,
+    "free_disk_after_bytes": 37059485696,
+    "cost_scope": "Peak is the ingestion Python process, not system-wide/page-cache or separate encryption-child aggregate memory."
+  },
+  "confirmation_seal": {
+    "receipt_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/seal_receipt_v1.json",
+    "encrypted_artifacts": 28,
+    "cipher": "AES-256-CBC with PBKDF2-HMAC-SHA256",
+    "verification": "Every artifact recovered to its original SHA-256 using streaming decrypt-to-hash; no CSV decoded or displayed during recovery checking.",
+    "plaintext_intermediates_removed_after_verification": true,
+    "local_key_path": "data/external/alibaba2018/m2b_v1/qualification_20261030_001.vault.key",
+    "key_contents_logged": false,
+    "permission_only_sealing_reliable": false,
+    "human_suffix_values_inspected": false,
+    "forecasting_outcomes_inspected": false,
+    "boundary": "Research holdout guard, not a confidentiality boundary against the project owner; the official compressed source remains available."
+  },
+  "validation": {
+    "existing_tests_passed": 31,
+    "new_ingestion_tests_passed": 22,
+    "total_tests_passed": 53,
+    "preserved_preexisting_files": 50,
+    "preservation_hashes_all_unchanged": true,
+    "independent_prefix_raw_counts_checked": true,
+    "source_checksum_verified": true,
+    "confirmation_execution_allowed": false
+  },
+  "next_required_decision": "A separately versioned data-protocol amendment or alternative source is required before M3. Do not silently relax the coverage/gap rules, impute data, shift the window, or search outside the nominated reserve lists in this run."
+}

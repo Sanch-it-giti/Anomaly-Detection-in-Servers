@@ -1,0 +1,138 @@
+{
+  "schema_version": "dafr_m2_source_evidence_v1",
+  "checked_on": "2026-10-29",
+  "repository_commit": "3858992ca41bf92082e6d6522ddf0bebd14e838b",
+  "scope": "Official documentation, metadata archive and first TAR header only. No CPU CSV rows decoded or inspected.",
+  "documentation": [
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/alibaba/clusterdata/3858992ca41bf92082e6d6522ddf0bebd14e838b/README.md",
+      "bytes": 13728,
+      "sha256": "4a4843de730fc2bfb725fb37c6bbe46257c54087161ea7b9329a2663c97a6a90"
+    },
+    {
+      "path": "cluster-trace-v2018/schema.txt",
+      "url": "https://raw.githubusercontent.com/alibaba/clusterdata/3858992ca41bf92082e6d6522ddf0bebd14e838b/cluster-trace-v2018/schema.txt",
+      "bytes": 8125,
+      "sha256": "731763f9570c555cce6e27bab66fc6cf2aa19ea98ee9607063845bd37bb5af2e"
+    },
+    {
+      "path": "cluster-trace-v2018/trace_2018.md",
+      "url": "https://raw.githubusercontent.com/alibaba/clusterdata/3858992ca41bf92082e6d6522ddf0bebd14e838b/cluster-trace-v2018/trace_2018.md",
+      "bytes": 6527,
+      "sha256": "daea8423c65cd24995500fcb6da103b1d4dec505f7b13ff2f6975caae0ede2fc"
+    },
+    {
+      "path": "cluster-trace-v2018/fetchData.sh",
+      "url": "https://raw.githubusercontent.com/alibaba/clusterdata/3858992ca41bf92082e6d6522ddf0bebd14e838b/cluster-trace-v2018/fetchData.sh",
+      "bytes": 582,
+      "sha256": "99ad99ce1379cc12d5e0842500df2c5e76dd41c03a774b1d54e84361b7212dcf"
+    }
+  ],
+  "access": {
+    "usage_head": {
+      "url": "https://aliopentrace.oss-cn-beijing.aliyuncs.com/v2018Traces/machine_usage.tar.gz",
+      "status": 200,
+      "content_length_bytes": 1774523160,
+      "etag": "1BE889621C3298A883DB11153557831E-170",
+      "last_modified": "Wed, 15 Feb 2023 04:36:42 GMT"
+    },
+    "usage_range": {
+      "requested": "bytes=0-4095",
+      "status": 206,
+      "content_range": "bytes 0-4095/1774523160",
+      "body_bytes_read": 4096,
+      "uncompressed_bytes_decoded": 512,
+      "tar_member": "machine_usage.csv",
+      "tar_member_declared_size_bytes": 8996532344,
+      "whole_archive_sha256_expected": "3e6ee87fd204bb85b9e234c5c75a5096580fdabc8f085b224033080090753a7a",
+      "whole_archive_sha256_verified": false,
+      "note": "Declared TAR member length, not verified by full extraction; only the header was decoded."
+    },
+    "metadata": {
+      "url": "https://aliopentrace.oss-cn-beijing.aliyuncs.com/v2018Traces/machine_meta.tar.gz",
+      "status": 200,
+      "body_bytes_read": 92432,
+      "archive_sha256": "b5b1b786b22cd413a3674b8f2ebfb2f02fac991c95df537f363ef2797c8f6d55",
+      "official_sha256_matches": true,
+      "csv_bytes": 552566,
+      "csv_sha256": "3ccd30a264d32ccc4f2a58dfc23a9055db8992a40dac63d80f49f0a41daaf31d",
+      "metadata_rows": 17592,
+      "unique_ids": 4034,
+      "machine_id_universe_sha256": "5525ec7bc3664c9d71a2fd9d07eb7ca14745b6b07ece1966e8e4eaba7be7d1b4",
+      "machines_with_unambiguous_time_zero_domains": 3887,
+      "ambiguous_time_zero_domains": 0,
+      "missing_time_zero_domains": 147,
+      "domain_1_count_at_zero": 292,
+      "domain_2_count_at_zero": 20
+    },
+    "archive_data_bytes_read_total": 96528,
+    "raw_cpu_rows_inspected": 0,
+    "archives_saved_locally": false,
+    "survey_submitted": false
+  },
+  "terms": {
+    "research_study_permission": "Explicit in official README motivation section.",
+    "standalone_root_license_filenames": [],
+    "github_license_api_status": 404,
+    "spdx_license_verified": null,
+    "raw_data_redistribution_permission": "Not established by the checked sources; do not publish raw data under an assumed open-source license."
+  },
+  "sampling": {
+    "official_schema_unit": "elapsed seconds",
+    "official_schema_time_type": "double",
+    "official_2018_schema_promises_regular_cadence": false,
+    "literature_reported_nominal_seconds": 10,
+    "empirical_usage_cadence_seconds": null,
+    "regularity_per_machine_verified": false,
+    "reference": "https://www.cs.newpaltz.edu/~lik/publications/Feiyu-Zhao-IEEE-TSC-2025"
+  },
+  "preservation_baseline_sha256": {
+    ".gitignore": "3a2c84ab0bfaaa6f36ef260de029f60d19d06bdc9dbc58fe33ce0f521500897a",
+    "README.md": "a06bf7849b677b4398aa6fb897528beb686c79d416556b33606e8fba16af4523",
+    "configs/dafr_protocol_v1.json": "3731fd0de89532f7037b69c978e74e03a2584411d35b9d0c143e70fdcfd00458",
+    "data/processed/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data/processed/arima_212_holdout_forecast.csv": "3cbf0922294bcd0206b1e1ab6d6d22f404c69c3807da8c7f919d7ee0506c669b",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/events.jsonl": "0bbff73462400c687a573757ba1378f9b6236b26930b0d3b6d7a5c5069e0b358",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/forecasts.jsonl": "1289b9fee718c6c100fa204f63bf8263836847461df4e4d9270d0095fd4c8886",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/manifest.json": "fd11b32f560d0a0428682496efb4b67d206c0fc29b384ddd498ebd77239731a0",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/observations.jsonl": "2fdd3f988cd75c80eedf56c70da17720f926f6efa4e9efd2d270e7f903dcc3f0",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/scores.jsonl": "6ec17f6a913e726f5a3d6abf41523d8ce32096d6f466294fa7ccc86ae6055882",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/states.jsonl": "a48f4aece71d7d91f40367f3f60fa2791c8d4554108324b8450c230db29b1f61",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/summary.json": "4d11eaca0d79052363d254ff39859b6245d5c8ad37ea477e9f36f488892f3e32",
+    "data/processed/ec2_cpu_utilization_5f5533_phase2.csv": "f0d180812da8d8a4bc11117f49ee2cb006fb8d38cf7af002101e49281ae0d64b",
+    "data/processed/xgboost_holdout_forecast.csv": "83296f5e23265ff0e3f1bbf8d66cd45ceb3839601b0647b1444943c0f8ce884d",
+    "reports/.DS_Store": "8f4c07af2eefebfbbf7ec8a3ccdb92dedb0cdb98203458a95cfd2cd5e3da824d",
+    "reports/figures/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reports/figures/01_ec2_cpu_5f5533_histogram.png": "318194106480b77c2ebcbc484ce43bd034a72acb81f91c47e1dafe65f8e1b281",
+    "reports/figures/01_ec2_cpu_5f5533_missing_data_summary.png": "ad08d8fa566c5c44f3a2f6b79cefe89a640e8b8a77cdaa4ee6ca1bb17f236db6",
+    "reports/figures/01_ec2_cpu_5f5533_time_series.png": "a610e45d1225cbfee233af7e55476e979c9f8c87fc8ef432f996088b01cb5978",
+    "reports/final_report/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reports/phase2_arima_baseline.md": "17b32356fc45e39a80fcfad68a294b89b61d3d4a0bfd24caf68edd0ccbed641d",
+    "reports/phase2_data_preparation.md": "03a2ca865a8169642723d3b1de52902ac93cfbc308cbd361f133b7821b0edf2c",
+    "reports/phase2_stationarity_diagnostics.md": "5fcdc2181c9f9a8cd505b741bd421d3f9c22e6a1ebccd1241f88e35aef42760e",
+    "reports/phase3_dafr_implementation_roadmap.md": "a597d0c611509678f651440daefca294a09391186e86ac16b014e67ab12b3b13",
+    "reports/phase3_dafr_research_design.md": "9a02a67ba2bd7aa7382e31764a2b2e21e9d8aa080f1254fae319829952707b77",
+    "reports/phase3_model_comparison_protocol.md": "78fc0f14c5a6b817a31de31731cd28c0f736b8aa456acffc2b8b68871a3e9c11",
+    "reports/phase3_xgboost_plan.md": "8c845c8a04a906fada70746997ca0adcecff20a042c838e39fb89da6122f6137",
+    "reports/synopsis/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reports/synopsis/dataset_selection.md": "685c8fd70ff3d1f446194cd457b66b80cd743fee22881e68b013843698fa2bb3",
+    "reports/synopsis/feasibility_analysis.md": "562f63a14dcdff81b89ca7a804586a99fef714b08201ceb7bd2268501bdad689",
+    "reports/synopsis/literature_review.md": "66d774854a7ec099ed1428ff4097ce4638bb8deba93eba5e3b5f0a75a16ccb0f",
+    "reports/synopsis/synopsis_content.md": "7ed6a5be894ea3e72deb17f97d79ff975126e8f32127a356bf119aea3e224615",
+    "requirements.txt": "2c07f3458b16f063d00f67c2fce4d81f638c4c229730d21f6228cd0560dab268",
+    "src/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "src/advanced_preparation.py": "1d47cc77b02e68414c398bca0e0004146e60b5a0b70872b61b7626b0eff7ec3b",
+    "src/classical_models.py": "eb9ac2739f92a3a4c95f42acfbfa6b182d7a7d585cef1902082713a156cda4c9",
+    "src/dafr/contracts.py": "f8a25645ed2a2b7aca68ffe8882887772b51775820d6ea13250105f88012a0e7",
+    "src/dafr/streaming.py": "19189650415e737fb1e03aeb2e8b56d7553dbe7cbf7edadaef721e54c98f7a9d",
+    "src/data_preparation.py": "56dd16a0c938f43a5cd324b94152ea561ad273c4150f4d003c1490cd4fdfb035",
+    "src/run_arima_baseline.py": "c3da7993d759752f5dcc3ec464a58485bf820dd27e8f79f9e7c1881f42eed7c8",
+    "src/run_xgboost_forecast.py": "be44b7fcee8cc91facc23296f20fef32288e05900ecebbf07b23f5b8ec586155",
+    "src/stationarity_diagnostics.py": "6bad47bc74177b4a94be7b2175b77cb09447584508c08bb38641339fd6d33600",
+    "tests/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "tests/test_advanced_preparation.py": "65d295eff5db3618ef4060cefea97d63417521a23e81e26152830c3fe7356e2b",
+    "tests/test_dafr_chronology.py": "bbf1c1d8fed904addddbe447e2e386c575eaddea360f038c813e79807376f6ee",
+    "tests/test_phase2_data_preparation.py": "f3b6e95ade692c93f1b6df4c1b2fb3b84c9da9f4153c39125af941f6fd2e1173"
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "schema_version": "dafr_m2_dataset_inventory_v1",
+  "prepared_on": "2026-10-29",
+  "candidate_source_id": "alibaba_cluster_trace_2018_machine_cpu",
+  "evidence_path": "reports/dafr/m2_source_evidence_v1.json",
+  "alibaba": {
+    "status": "conditionally_feasible_pending_cpu_prefix_quality_checks",
+    "metadata_verified": true,
+    "metadata_machine_ids": 4034,
+    "usage_machine_ids_verified": null,
+    "eligible_machine_count": null,
+    "raw_cpu_values_inspected": false,
+    "confirmation_outcomes_inspected": false,
+    "nominal_coverage_days": 8,
+    "nominal_coverage_status": "source documentation, not a per-machine measurement",
+    "raw_sampling_seconds_reported": 10,
+    "raw_sampling_empirically_verified": false,
+    "output_sampling_seconds": 300,
+    "target_output_observations_per_machine": 2304,
+    "actual_output_observations_per_machine": null,
+    "selection_seed": "DAFR-M2-v1",
+    "nomination_status": "metadata_only_not_final_quality_locked",
+    "candidates": [
+      {
+        "machine_id": "m_505",
+        "role": "development",
+        "nomination": "primary",
+        "role_order": 1,
+        "failure_domain_1": "29",
+        "failure_domain_2": "4",
+        "machine_rank_sha256": "00055cf28ab66b10754cd835fcd54d0bb681fcac8619131cbdcf476e429a89ab",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_1426",
+        "role": "development",
+        "nomination": "primary",
+        "role_order": 2,
+        "failure_domain_1": "249",
+        "failure_domain_2": "17",
+        "machine_rank_sha256": "01cea59d278f21fb804f54376e4b33551521611a162e886fa01502bbc54e97d1",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_3028",
+        "role": "development",
+        "nomination": "primary",
+        "role_order": 3,
+        "failure_domain_1": "187",
+        "failure_domain_2": "7",
+        "machine_rank_sha256": "0012a02e9b9e6d9ccf86155f8c4b42cf36a5b0680415b8514edda641f1ae97e0",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_3276",
+        "role": "development",
+        "nomination": "reserve",
+        "role_order": 4,
+        "failure_domain_1": "226",
+        "failure_domain_2": "10",
+        "machine_rank_sha256": "03c5f5bc8a45c597567fa457d657c8a175ce9c325ca93ff5c32843bea9782cfa",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_1029",
+        "role": "development",
+        "nomination": "reserve",
+        "role_order": 5,
+        "failure_domain_1": "51",
+        "failure_domain_2": "13",
+        "machine_rank_sha256": "003211daf4369846a18582cf5ae90c429d585c8fdd994a747697c7283f2fe974",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_2104",
+        "role": "development",
+        "nomination": "reserve",
+        "role_order": 6,
+        "failure_domain_1": "229",
+        "failure_domain_2": "1",
+        "machine_rank_sha256": "00e981769e7fbcf483b99cd685424e889cacf887fb17af85234109203f641318",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_295",
+        "role": "confirmation",
+        "nomination": "primary",
+        "role_order": 1,
+        "failure_domain_1": "23",
+        "failure_domain_2": "3",
+        "machine_rank_sha256": "016bbfba0f5abdaca190b095a2c2fbfc90115cee54e32c0d8ccfa98093cf26de",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_66",
+        "role": "confirmation",
+        "nomination": "primary",
+        "role_order": 2,
+        "failure_domain_1": "9",
+        "failure_domain_2": "9",
+        "machine_rank_sha256": "0168d4f6078659042c3a5e2a746eb36238ffbedfcde36d49143651707accee40",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_1878",
+        "role": "confirmation",
+        "nomination": "primary",
+        "role_order": 3,
+        "failure_domain_1": "242",
+        "failure_domain_2": "5",
+        "machine_rank_sha256": "00bfa03a51deb137738c722fd516b730587ca20d45f17f980b1a967b8345d58e",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_197",
+        "role": "confirmation",
+        "nomination": "primary",
+        "role_order": 4,
+        "failure_domain_1": "251",
+        "failure_domain_2": "18",
+        "machine_rank_sha256": "0081f63e09e13a0a4c6965fea381e0637797d7d686fb474eb1d7f9075c88b02d",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_3836",
+        "role": "confirmation",
+        "nomination": "primary",
+        "role_order": 5,
+        "failure_domain_1": "22",
+        "failure_domain_2": "2",
+        "machine_rank_sha256": "02fd369a2ad9322d444945ed7c0ce88ed2013d977da932908bf81e16cec309d0",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_1022",
+        "role": "confirmation",
+        "nomination": "primary",
+        "role_order": 6,
+        "failure_domain_1": "20",
+        "failure_domain_2": "20",
+        "machine_rank_sha256": "03d8cdd4cb13c798217ac84fc524c59791e0b2695e0d530d888239fbf031bf0b",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_1194",
+        "role": "confirmation",
+        "nomination": "reserve",
+        "role_order": 7,
+        "failure_domain_1": "114",
+        "failure_domain_2": "12",
+        "machine_rank_sha256": "00fb8e7d3276c97efbee3e8cd39269e23a0dcad890048eff804f99133dd9e36e",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_1059",
+        "role": "confirmation",
+        "nomination": "reserve",
+        "role_order": 8,
+        "failure_domain_1": "53",
+        "failure_domain_2": "15",
+        "machine_rank_sha256": "00b4e9cf8c1d2970ef161c96e096ab60082a644b92c1f011c2be3f4383405678",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      },
+      {
+        "machine_id": "m_2502",
+        "role": "confirmation",
+        "nomination": "reserve",
+        "role_order": 9,
+        "failure_domain_1": "79",
+        "failure_domain_2": "6",
+        "machine_rank_sha256": "007015d175a71330be836e1f4689d716fb0db3f7b62acd9464b68d07d6d52858",
+        "prefix_quality_status": "not_checked",
+        "forecast_outcomes_inspected": false
+      }
+    ]
+  },
+  "exploratory_only_nab": {
+    "source": "https://github.com/numenta/NAB",
+    "reason": "All ten CPU series were screened using whole-series Phase 1 statistics. The selected series also has inspected historical test results.",
+    "eligible_for_confirmation": false,
+    "eligible_for_dafr_hyperparameter_selection_from_historical_test": false,
+    "series": [
+      {
+        "file": "ec2_cpu_utilization_24ae8d.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "ec2_cpu_utilization_53ea38.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "ec2_cpu_utilization_5f5533.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": true
+      },
+      {
+        "file": "ec2_cpu_utilization_77c1ca.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "ec2_cpu_utilization_825cc2.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "ec2_cpu_utilization_ac20cd.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "ec2_cpu_utilization_c6585a.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "ec2_cpu_utilization_fe7f93.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "rds_cpu_utilization_cc0c53.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      },
+      {
+        "file": "rds_cpu_utilization_e47b3b.csv",
+        "classification": "exploratory",
+        "observations_previously_verified": 4032,
+        "model_results_previously_inspected": false
+      }
+    ]
+  },
+  "synthetic_m1": {
+    "classification": "engineering_fixture_only",
+    "research_replication_unit": false
+  }
+}

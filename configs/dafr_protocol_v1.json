@@ -1,0 +1,18 @@
+{
+  "protocol_version": "v1",
+  "milestone": "M1",
+  "cadence_seconds": 300,
+  "horizons": [1, 12],
+  "history_limit": 24,
+  "error_history_limit": 288,
+  "warmup_observations": 12,
+  "lags": [1],
+  "invalid_observation_policy": "reject_stream",
+  "unavailable_expert_policy": "persistence_fallback",
+  "tail_policy": "retain_unscored",
+  "selection_policy": "fixed_expert_m1",
+  "detector": "disabled_m1",
+  "calibration": "disabled_m1",
+  "research_partition_fractions": [0.5, 0.2, 0.1, 0.2],
+  "partition_note": "Fractions are reserved for future independent-series experiments. M1 synthetic runs use only warmup_observations; no fitting or development selection occurs."
+}
