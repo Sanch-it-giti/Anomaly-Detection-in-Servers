@@ -1,0 +1,44 @@
+{
+  "status": "F1_COMPLETE_STOP_FOR_VISUAL_REVIEW",
+  "local_url": "http://127.0.0.1:5173/",
+  "pages": 4,
+  "typescript": "passed",
+  "lint": "passed",
+  "production_build": "passed",
+  "adapter_tests_passed": 8,
+  "approved_sources_available": 34,
+  "approved_sources_total": 34,
+  "public_asset_http_hash_checks_passed": 34,
+  "outside_frontend_http_status": 403,
+  "protected_research_hashes_verified": 998,
+  "review_zip_checksums_unchanged": true,
+  "npm_audit_known_vulnerabilities": 0,
+  "browser_viewports": [
+    [
+      1440,
+      1000
+    ],
+    [
+      900,
+      1000
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "browser_console_errors_observed": 0,
+  "screenshots": 10,
+  "new_alibaba_observations_accessed": false,
+  "model_training_or_forecast_execution": false,
+  "research_settings_modified": false,
+  "confirmation_execution_allowed": false,
+  "runtime_backend_or_experiment_api": false,
+  "existing_project_files_modified": false,
+  "only_new_frontend_files_created": true,
+  "further_refinement_pending_user_visual_review": true,
+  "known_nonblocking_build_notices": [
+    "large chunk warning",
+    "Lucide use client directives"
+  ]
+}

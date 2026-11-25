@@ -1,0 +1,69 @@
+{
+  "new_figures_created": false,
+  "figures": [
+    {
+      "path": "reports/dafr/m3b2_v1/m3b2-development-20261030-001/matched_mae_h1.png",
+      "sha256": "1606074bb0b7782a6f00d6db8ae8b2a5821c56742f112d2c4c7ab9ef6beae778",
+      "width": 1600,
+      "height": 720,
+      "visual_layout_review_in_m8a": false,
+      "scope": "inspected development/retrospective evidence"
+    },
+    {
+      "path": "reports/dafr/m3b2_v1/m3b2-development-20261030-001/matched_mae_h12.png",
+      "sha256": "3eaef09bfe78c907dfcea70a73a56438d91c5cf7c816c875ed33ade83efce546",
+      "width": 1600,
+      "height": 720,
+      "visual_layout_review_in_m8a": false,
+      "scope": "inspected development/retrospective evidence"
+    },
+    {
+      "path": "reports/dafr/m4a_v1/m4a-development-20261031-001/matched_macro_mae.png",
+      "sha256": "2542f0ce48944d17a3fee77a3e9f3fc83bf7e403f8853b1d4e3542050677563f",
+      "width": 1600,
+      "height": 720,
+      "visual_layout_review_in_m8a": false,
+      "scope": "inspected development/retrospective evidence"
+    },
+    {
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/complete_policy_matched.png",
+      "sha256": "6af12a191bc3080d3be8c53d007425c423e00c7d9bca86b8f56d85fe6a533fb1",
+      "width": 1650,
+      "height": 1050,
+      "visual_layout_review_in_m8a": false,
+      "scope": "inspected development/retrospective evidence"
+    },
+    {
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/expert_matched.png",
+      "sha256": "36c938751551318cfc87d889fe1080668c7e43fe258be25d7c45a3a8427b71bc",
+      "width": 1650,
+      "height": 1050,
+      "visual_layout_review_in_m8a": false,
+      "scope": "inspected development/retrospective evidence"
+    },
+    {
+      "path": "reports/figures/01_ec2_cpu_5f5533_histogram.png",
+      "sha256": "318194106480b77c2ebcbc484ce43bd034a72acb81f91c47e1dafe65f8e1b281",
+      "width": 1200,
+      "height": 750,
+      "visual_layout_review_in_m8a": false,
+      "scope": "NAB EDA"
+    },
+    {
+      "path": "reports/figures/01_ec2_cpu_5f5533_missing_data_summary.png",
+      "sha256": "ad08d8fa566c5c44f3a2f6b79cefe89a640e8b8a77cdaa4ee6ca1bb17f236db6",
+      "width": 900,
+      "height": 600,
+      "visual_layout_review_in_m8a": false,
+      "scope": "NAB EDA"
+    },
+    {
+      "path": "reports/figures/01_ec2_cpu_5f5533_time_series.png",
+      "sha256": "a610e45d1225cbfee233af7e55476e979c9f8c87fc8ef432f996088b01cb5978",
+      "width": 2100,
+      "height": 750,
+      "visual_layout_review_in_m8a": false,
+      "scope": "NAB EDA"
+    }
+  ]
+}

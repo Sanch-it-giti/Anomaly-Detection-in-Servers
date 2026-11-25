@@ -1,0 +1,35 @@
+{
+  "schema_version": "dafr_m7a_synthetic_v1",
+  "scope": "SYNTHETIC_DETERMINISTIC_ONLY",
+  "nominal_percent": [
+    90,
+    95
+  ],
+  "minimum_support": 100,
+  "capacity": 288,
+  "recency_grid_ticks": 288,
+  "quantile": "ceil((n+1)*nominal_percent/100)-th order statistic; exact integer arithmetic",
+  "calibration_key": "complete_policy_version_horizon_era",
+  "fallback": "own complete policy errors include its own actual fallback; no borrowing from persistence or another policy",
+  "clipping": "none_raw_center_preserved",
+  "insufficient_support": "bounds unavailable; preserve issued center",
+  "telemetry_reset": "fourth missing tick, once per long gap; clear active support; old-era outcomes audited only",
+  "confirmation_execution_allowed": false,
+  "real_data_execution_allowed": false,
+  "refitting_allowed": false,
+  "reliability_selection_response_allowed": false,
+  "detector_response_allowed": false,
+  "max_grid_ticks": 2304,
+  "maximum_process_rss_bytes": 4294967296,
+  "frozen_sha256": {
+    "reports/phase3_dafr_research_design.md": "9a02a67ba2bd7aa7382e31764a2b2e21e9d8aa080f1254fae319829952707b77",
+    "reports/dafr/m7_reliability_interval_readiness_plan_v1.md": "4d8cc72607b2559dbec4237c23df1ef93a3b9540ecd4ab2a61916d5d15bd8c9c",
+    "configs/dafr_engineering_pilot_v2.json": "2a806b36226f523240e18c6c2d1edaf1d3b13c8dc116b936da3377609373815e",
+    "configs/dafr_m5a_synthetic_v1.json": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+    "configs/dafr_m6a_synthetic_v1.json": "543d1d11c18d806a320d1718a7594ab0878d278963e12774e59c0c96416006c0",
+    "src/dafr/selector_streaming_v1.py": "9d238c158b070d9bab700fa725922aeda7aab55b65ba04c367e163aa5da98737",
+    "src/dafr/selector_v1.py": "4dfbe985b98003fe7993523377be972903348869cce1d7514baebc1e707e023d",
+    "src/dafr/drift_v1.py": "112150be46c487b31b24d663032b0032a21b94162531f8a434782770e157d953",
+    "src/dafr/drift_streaming_v1.py": "4123dfee472204a81f3124f228f47347f8faaa26fef49fb0ec2e37d72abfacd9"
+  }
+}

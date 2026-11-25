@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "tests_passed": 147,
+  "includes_existing_tests": 130,
+  "new_backend_tests": 17,
+  "checked_at": "2026-10-30T17:27:55.900030+00:00",
+  "source_sha256": {
+    "src/dafr/real_adapters_v1.py": "b3708304370085e22d1f42361e8165dbf0435c48f94a1c848beab92868f152ee",
+    "src/dafr/real_streaming_v1.py": "681e7c9bc6eeb0a779f20afef29982e06ca79686055f6474b94292daab602810",
+    "src/dafr/run_m3b2_v1.py": "6415a9e32bd6191c69726bf6eeeac801c57905a5a606aee30172ee2ff9ef3642",
+    "tests/test_dafr_real_backends_v1.py": "49cc6f916af715a74248d43f055400035eb368bc97c8ccc52c6fd30cbe136a17",
+    "configs/dafr_m3b2_execution_v1.json": "78878a2fabf94e4e28498991e177454418ceb4a5092b7b64d90b8cd9b34fd5fc"
+  }
+}

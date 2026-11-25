@@ -1,0 +1,49 @@
+{
+  "schema_version": "dafr_m3b2_execution_v1",
+  "milestone": "M3B-2",
+  "scope": "SELECTED_DEVELOPMENT_PREFIX_INNER_PILOT_ONLY",
+  "training_authorized": true,
+  "m3_training_allowed": true,
+  "confirmation_execution_allowed": false,
+  "fit": [
+    0,
+    864
+  ],
+  "validation": [
+    864,
+    1152
+  ],
+  "horizons": [
+    1,
+    12
+  ],
+  "allowed_machine_ids": [
+    "m_505",
+    "m_1426",
+    "m_3028"
+  ],
+  "source_files": {
+    "m_505": {
+      "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_505.csv",
+      "sha256": "f322fef767e9449ddbf104b77fafda6bde379bea09c3e2eb5fb95a78739f4dde"
+    },
+    "m_1426": {
+      "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1426.csv",
+      "sha256": "ad599b2f8eb485fae1cceb1609bb86379506048413b4b785820169fc13a7ef12"
+    },
+    "m_3028": {
+      "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3028.csv",
+      "sha256": "08e18e5a3247e7baf95f1b109c0be25dd6bd1aba81ef94bf0fc2be16f66b97ab"
+    }
+  },
+  "plan_path": "configs/dafr_m3b_development_manifest_v1.json",
+  "plan_sha256": "8cdf9b8d74806a00dab0c2faf1923ad32436433581325f138051b781a005d2c0",
+  "maximum_process_rss_bytes": 4294967296,
+  "numeric_threads": 1,
+  "backend_test_receipt_required": true,
+  "confirmation_or_suffix_access_allowed": false,
+  "output_namespace": "m3b2_development_v1",
+  "historical_locks_edited": false,
+  "no_refitting_during_replay": true
+}
+

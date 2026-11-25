@@ -1,0 +1,947 @@
+{
+  "schema_version": "dafr_missing_data_protocol_v2_draft",
+  "protocol_id": "dafr_missing_data_v2_draft_20261030",
+  "status": "DRAFT_NOT_APPROVED_NOT_EXECUTABLE",
+  "created_on": "2026-10-30",
+  "milestone": "M2C_feasibility_and_design_only",
+  "confirmation_execution_allowed": false,
+  "m3_training_allowed": false,
+  "missing_data_engine_implemented": false,
+  "original_m2b_qualification_changed": false,
+  "approved_qualified_machine_ids": [],
+  "recommendation": "B_gap_aware_genuine_history_with_explicit_fallback",
+  "approval_required_before_implementation": true,
+  "source_documents": [
+    "reports/phase3_dafr_research_design.md",
+    "reports/phase3_dafr_implementation_roadmap.md",
+    "configs/dafr_experiment_manifest_v1.json",
+    "configs/dafr_experiment_manifest_m2b_v1.json",
+    "reports/dafr/m2b_qualification_report_v1.md",
+    "reports/dafr/m2b_prefix_validation_v1.json",
+    "src/dafr/alibaba_ingestion.py"
+  ],
+  "allowed_analysis": {
+    "newly_read_observations": "Only six development nominees' first-half five_minute_prefix CSVs",
+    "confirmation_information": "Existing published M2B prefix-quality aggregates only; no new confirmation observations",
+    "elapsed_raw_seconds_half_open": [
+      0,
+      345600
+    ],
+    "forbidden": [
+      "development suffix values or quality analysis",
+      "confirmation suffix decryption, values, quality summaries or forecasting outcomes",
+      "training or forecast generation",
+      "historical artifact mutation"
+    ],
+    "cpu_value_analysis": "Finite/range/status validation only; no new CPU distribution or outcome analysis"
+  },
+  "source_provenance": {
+    "official_repository": "https://github.com/alibaba/clusterdata",
+    "pinned_repository_commit": "3858992ca41bf92082e6d6522ddf0bebd14e838b",
+    "archive_sha256": "3e6ee87fd204bb85b9e234c5c75a5096580fdabc8f085b224033080090753a7a",
+    "archive_reopened_in_m2c": false,
+    "cpu_field": "cpu_util_percent",
+    "cpu_units": "percent_0_to_100",
+    "timestamp_field": "time_stamp",
+    "timestamp_units": "elapsed_seconds_not_calendar_epoch",
+    "redistribution_permission_assumed": false
+  },
+  "timeline": {
+    "cadence_seconds": 300,
+    "horizons_ticks": [
+      1,
+      12
+    ],
+    "horizons_seconds": [
+      300,
+      3600
+    ],
+    "total_grid_positions": 2304,
+    "prefix_grid_positions": 1152,
+    "raw_window_half_open_seconds": [
+      0,
+      691200
+    ],
+    "prefix_raw_window_half_open_seconds": [
+      0,
+      345600
+    ],
+    "bin_membership": "[b-300,b)",
+    "bin_label": "right_edge_b",
+    "synthetic_reference": "2000-01-01T00:00:00+00:00",
+    "preserve_missing_grid_positions": true,
+    "compress_gaps": false,
+    "partitions_zero_based_half_open": {
+      "fit": [
+        0,
+        1152
+      ],
+      "validation": [
+        1152,
+        1612
+      ],
+      "calibration_warmup": [
+        1612,
+        1842
+      ],
+      "final_evaluation": [
+        1842,
+        2304
+      ]
+    },
+    "replay_arrival_assumption": "Genuine bin available at its right edge; zero additional delay; original source has no delivery-latency logs",
+    "quality_failed_bin_finalized_missing_at_right_edge": true,
+    "late_data_policy": "Unsupported in initial replay; requires a separate approved version; never backdate state updates"
+  },
+  "original_bin_quality_unchanged": {
+    "observed_definition": "Original M2B quality_status valid and finite exported value in [0,100]",
+    "min_valid_unique_raw_samples": 24,
+    "maximum_internal_raw_gap_seconds": 30,
+    "maximum_leading_or_trailing_edge_gap_seconds": 30,
+    "reject_conflicting_duplicate_cpu": true,
+    "failed_partial_bin_is_missing": true,
+    "no_recovery_of_rejected_raw_means": true,
+    "exact_duplicate_handling": "Preserve original M2B deduplication semantics"
+  },
+  "strategies": {
+    "A": {
+      "name": "strict_complete_alternative_dataset",
+      "existing_alibaba_v1_eligible_count": 0,
+      "alternative_source_verified_or_acquired": false
+    },
+    "B": {
+      "name": "gap_aware_genuine_history",
+      "learned_history_grid_slots": 24,
+      "required_genuine_slots": 24,
+      "origin_gate": "i>=23 and all observed[i-23:i+1]",
+      "impute_inputs": false
+    },
+    "C": {
+      "name": "bounded_causal_input_carry_ablation",
+      "default": false,
+      "max_carry_age_ticks": 3,
+      "history_grid_slots": 24,
+      "min_genuine_slots": 18,
+      "origin_gate": "All 24 input slots causally defined, with at least 18 genuinely observed; no leading backfill",
+      "fill_rule": "Carry last genuine value for the first three subsequent ticks regardless of eventual gap duration; leave older inputs undefined",
+      "explicit_indicators": [
+        "genuine_observation_mask",
+        "elapsed_age_since_last_genuine",
+        "input_imputed_flag"
+      ],
+      "fill_targets": false,
+      "imputed_values_update_detectors_or_calibrators": false,
+      "arima_measurement_updates": "Skip originally missing slots even when ML receives carried inputs",
+      "feature_parity_decision": "Unresolved; prespecify exogenous ARIMAX equivalent or disclose architecture/information difference"
+    }
+  },
+  "fallback": {
+    "baseline": "last_genuine_value_persistence",
+    "max_age_ticks": 3,
+    "age_measured_on_original_grid": true,
+    "too_stale_or_no_genuine_history": "explicit_abstention_no_prediction",
+    "learned_failure": "common_fallback_with_failure_reason_not_posthoc_row_deletion"
+  },
+  "draft_prefix_eligibility": {
+    "status": "NEW_DESIGN_THRESHOLDS_NOT_ORIGINAL_M2_RULES_OR_APPROVED_QUALIFICATION",
+    "evidence_for_choices": "Development-prefix availability only; no forecasting outcomes",
+    "min_genuine_bins": 500,
+    "min_genuine_coverage": 0.75,
+    "min_genuine_bins_from_coverage_at_N1152": 864,
+    "min_longest_genuine_run_bins": 48,
+    "min_B_eligible_origins_fraction_all_grid_ticks": 0.4,
+    "min_potential_genuine_target_pairs_each_horizon": 400,
+    "require_original_schema_timestamp_duplicate_cpu_and_bin_checks": true,
+    "target_mask_used_for_issuance": false,
+    "no_favorable_subwindow_selection": true,
+    "auto_promotion_or_role_changes": false,
+    "target_development_primary_count": 3,
+    "target_confirmation_count_at_least": 6,
+    "insufficient_qualified_machines": "Stop expansion; independently nominate more data or alternative source under a new frozen plan; do not lower gates to force admission"
+  },
+  "nominations_preserved": {
+    "development_primary": [
+      "m_505",
+      "m_1426",
+      "m_3028"
+    ],
+    "development_reserve": [
+      "m_3276",
+      "m_1029",
+      "m_2104"
+    ],
+    "confirmation_primary": [
+      "m_295",
+      "m_66",
+      "m_1878",
+      "m_197",
+      "m_3836",
+      "m_1022"
+    ],
+    "confirmation_reserve": [
+      "m_1194",
+      "m_1059",
+      "m_2502"
+    ],
+    "reserve_selection": "Only eligible same-role reserves in original order; none promoted in M2C"
+  },
+  "event_order": [
+    "Advance one grid tick and reveal genuine bin or explicit missing event; append grid history",
+    "Resolve immutable forecasts with exact target equal to current bin; score only genuine target, else linked target_unavailable event",
+    "Update only matured genuine-target losses/coverage/calibration and genuine CPU detector input; update data-quality age and expire stale support",
+    "Apply past-only eligibility/selection/fallback; issue immutable predictions for t+300 and t+3600 before revealing any later observation"
+  ],
+  "scoring": {
+    "exact_timestamp_and_horizon_alignment": true,
+    "imputed_ground_truth_allowed": false,
+    "score_missing_target": false,
+    "shift_missing_target_to_next_observed": false,
+    "missing_target_residual": null,
+    "missing_target_interval_hit_or_miss": null,
+    "beyond_prefix_target": "pending_not_a_failure",
+    "error_availability": "Only after genuine exact target arrival",
+    "immutable_issue_and_linked_score_events": true
+  },
+  "future_model_constraints": {
+    "parameters_fixed_during_primary_evaluation": true,
+    "arima": "One fixed-parameter causal state transition per grid tick; skip missing measurement updates; no future smoother",
+    "xgboost_lstm": "Shared causal windows and genuine labels only; reject training targets beyond fit cutoff",
+    "scaling": "Fit on genuine permitted fit observations only; freeze per model version",
+    "no_model_training_in_m2c": true
+  },
+  "draft_state_rules": {
+    "separate_missingness_alerts_from_workload_drift": true,
+    "carried_values_are_not_detector_observations": true,
+    "absent_feedback_is_not_zero_loss": true,
+    "long_gap_definition": "More than 3 consecutive missing ticks",
+    "telemetry_era_transition": "Once on fourth missing tick of a gap; do not repeat reset on later ticks of same gap",
+    "recovery": "New era remains active through recovery; learned issuance still requires its own history gate",
+    "gap_reset_shared_across_all_ablations": true,
+    "reset_active_states": [
+      "selection loss support",
+      "detector support",
+      "policy and shadow calibration and coverage support"
+    ],
+    "retain_old_records_for_audit": true,
+    "pre_era_issued_forecasts": "Score in overall evaluation if exact target genuine, but do not seed current era active loss/calibration support",
+    "cold_selection": "Development-selected expert if gate allows; otherwise fallback",
+    "statistical_drift_alarms_when_cold": "suspended_until_future_frozen_minimum_genuine_support",
+    "dwell_and_cooldown_clock": "elapsed_grid_ticks",
+    "detector_support_clock": "genuine_updates",
+    "exact_selector_detector_support_thresholds": "NOT_FINALIZED"
+  },
+  "draft_calibration": {
+    "nominal_coverage": [
+      0.9,
+      0.95
+    ],
+    "min_genuine_matured_out_of_sample_scores": 100,
+    "max_scores": 288,
+    "additional_max_age_grid_ticks": 288,
+    "recency_definition": "At issue index i, retain target indices j with i-287<=j<=i, subject to current telemetry era and valid issuance provenance",
+    "support_is_per_policy_and_horizon": true,
+    "actual_issued_center_residuals_only": true,
+    "finite_sample_rank": "ceil((n+1)*(1-alpha)); no interpolated quantile",
+    "insufficient_support_or_rank": "interval_unavailable_null_bounds",
+    "telemetry_reset_and_age_limits_are_new_draft_amendments": true,
+    "coverage_guarantee_claimed": false,
+    "actual_warmup_support_verified": false
+  },
+  "feasibility_method": {
+    "observation_mask": "status==valid; verify failed value empty, valid value finite [0,100], labels 300..345600 at 300-second cadence",
+    "runs": "Maximal equal-mask runs including boundary runs; no gap compression",
+    "gap_p95": "nearest rank ceil(0.95*run_count)",
+    "B_origin_gate": "24 consecutive genuine grid slots ending at origin",
+    "C_mask_only_analysis": "Last-genuine age<=3 yields input availability; require 24 defined slots with >=18 genuine",
+    "potential_target_pair": "Past-only eligible origin i and exact genuine target i+h within permitted prefix",
+    "last_288_pair_count": "Potential target indices 864..1151 only; not actual calibration support",
+    "counts_are_forecasts_or_out_of_sample_results": false,
+    "machine_data_values_imputed": false
+  },
+  "development_prefix_evidence": {
+    "m_505": {
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_505.csv",
+      "source_sha256": "f322fef767e9449ddbf104b77fafda6bde379bea09c3e2eb5fb95a78739f4dde",
+      "expected_bins": 1152,
+      "observed_bins": 946,
+      "unobserved_bins": 206,
+      "observed_coverage": 0.8211805555555556,
+      "missing_run_count": 38,
+      "longest_missing_run_bins": 68,
+      "median_missing_run_bins": 2,
+      "p95_missing_run_bins_nearest_rank": 27,
+      "missing_run_length_histogram": {
+        "1": 18,
+        "2-3": 12,
+        "4-12": 4,
+        "13-36": 3,
+        "37+": 1
+      },
+      "longest_observed_run_bins": 224,
+      "observed_runs_count": 38,
+      "observed_runs_ge24": 7,
+      "leading_missing_bins": 5,
+      "trailing_missing_bins": 0,
+      "carry3_input_only_filled_slots": 67,
+      "still_undefined_slots_after_carry3": 139,
+      "options": {
+        "B_contiguous_24": {
+          "origin_eligible_count": 543,
+          "fresh_origins": 543,
+          "stale_origins": 0,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 543,
+              "genuine_target_pairs": 536,
+              "missing_target_pairs": 7,
+              "beyond_prefix_targets": 0,
+              "potential_matured_pairs_last_288_ticks": 207,
+              "hundredth_potential_pair_target_bin_index": 584
+            },
+            "12": {
+              "within_prefix_origins": 543,
+              "genuine_target_pairs": 529,
+              "missing_target_pairs": 14,
+              "beyond_prefix_targets": 0,
+              "potential_matured_pairs_last_288_ticks": 215,
+              "hundredth_potential_pair_target_bin_index": 600
+            }
+          }
+        },
+        "C_carry3_window24_observed18": {
+          "origin_eligible_count": 832,
+          "fresh_origins": 798,
+          "stale_origins": 34,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 831,
+              "genuine_target_pairs": 791,
+              "missing_target_pairs": 40,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 283,
+              "hundredth_potential_pair_target_bin_index": 319
+            },
+            "12": {
+              "within_prefix_origins": 820,
+              "genuine_target_pairs": 745,
+              "missing_target_pairs": 75,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 283,
+              "hundredth_potential_pair_target_bin_index": 352
+            }
+          }
+        }
+      },
+      "original_role": "development",
+      "nomination": "primary",
+      "draft_numeric_screens_met": true,
+      "approved_v2_eligible": false
+    },
+    "m_1426": {
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1426.csv",
+      "source_sha256": "ad599b2f8eb485fae1cceb1609bb86379506048413b4b785820169fc13a7ef12",
+      "expected_bins": 1152,
+      "observed_bins": 920,
+      "unobserved_bins": 232,
+      "observed_coverage": 0.7986111111111112,
+      "missing_run_count": 37,
+      "longest_missing_run_bins": 74,
+      "median_missing_run_bins": 2,
+      "p95_missing_run_bins_nearest_rank": 19,
+      "missing_run_length_histogram": {
+        "1": 13,
+        "2-3": 11,
+        "4-12": 9,
+        "13-36": 3,
+        "37+": 1
+      },
+      "longest_observed_run_bins": 192,
+      "observed_runs_count": 37,
+      "observed_runs_ge24": 6,
+      "leading_missing_bins": 8,
+      "trailing_missing_bins": 0,
+      "carry3_input_only_filled_slots": 73,
+      "still_undefined_slots_after_carry3": 159,
+      "options": {
+        "B_contiguous_24": {
+          "origin_eligible_count": 546,
+          "fresh_origins": 546,
+          "stale_origins": 0,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 545,
+              "genuine_target_pairs": 540,
+              "missing_target_pairs": 5,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 237,
+              "hundredth_potential_pair_target_bin_index": 635
+            },
+            "12": {
+              "within_prefix_origins": 534,
+              "genuine_target_pairs": 520,
+              "missing_target_pairs": 14,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 236,
+              "hundredth_potential_pair_target_bin_index": 654
+            }
+          }
+        },
+        "C_carry3_window24_observed18": {
+          "origin_eligible_count": 763,
+          "fresh_origins": 731,
+          "stale_origins": 32,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 762,
+              "genuine_target_pairs": 726,
+              "missing_target_pairs": 36,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 285,
+              "hundredth_potential_pair_target_bin_index": 338
+            },
+            "12": {
+              "within_prefix_origins": 751,
+              "genuine_target_pairs": 692,
+              "missing_target_pairs": 59,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 285,
+              "hundredth_potential_pair_target_bin_index": 364
+            }
+          }
+        }
+      },
+      "original_role": "development",
+      "nomination": "primary",
+      "draft_numeric_screens_met": true,
+      "approved_v2_eligible": false
+    },
+    "m_3028": {
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3028.csv",
+      "source_sha256": "08e18e5a3247e7baf95f1b109c0be25dd6bd1aba81ef94bf0fc2be16f66b97ab",
+      "expected_bins": 1152,
+      "observed_bins": 946,
+      "unobserved_bins": 206,
+      "observed_coverage": 0.8211805555555556,
+      "missing_run_count": 32,
+      "longest_missing_run_bins": 67,
+      "median_missing_run_bins": 1,
+      "p95_missing_run_bins_nearest_rank": 28,
+      "missing_run_length_histogram": {
+        "1": 18,
+        "2-3": 4,
+        "4-12": 5,
+        "13-36": 4,
+        "37+": 1
+      },
+      "longest_observed_run_bins": 382,
+      "observed_runs_count": 33,
+      "observed_runs_ge24": 11,
+      "leading_missing_bins": 0,
+      "trailing_missing_bins": 0,
+      "carry3_input_only_filled_slots": 56,
+      "still_undefined_slots_after_carry3": 150,
+      "options": {
+        "B_contiguous_24": {
+          "origin_eligible_count": 509,
+          "fresh_origins": 509,
+          "stale_origins": 0,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 508,
+              "genuine_target_pairs": 498,
+              "missing_target_pairs": 10,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 255,
+              "hundredth_potential_pair_target_bin_index": 682
+            },
+            "12": {
+              "within_prefix_origins": 497,
+              "genuine_target_pairs": 477,
+              "missing_target_pairs": 20,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 254,
+              "hundredth_potential_pair_target_bin_index": 702
+            }
+          }
+        },
+        "C_carry3_window24_observed18": {
+          "origin_eligible_count": 791,
+          "fresh_origins": 761,
+          "stale_origins": 30,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 790,
+              "genuine_target_pairs": 755,
+              "missing_target_pairs": 35,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 286,
+              "hundredth_potential_pair_target_bin_index": 276
+            },
+            "12": {
+              "within_prefix_origins": 779,
+              "genuine_target_pairs": 705,
+              "missing_target_pairs": 74,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 286,
+              "hundredth_potential_pair_target_bin_index": 380
+            }
+          }
+        }
+      },
+      "original_role": "development",
+      "nomination": "primary",
+      "draft_numeric_screens_met": true,
+      "approved_v2_eligible": false
+    },
+    "m_3276": {
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3276.csv",
+      "source_sha256": "e8c6e918ee2f3571716154c26a38bb02276b02ae1eea2fe3704e8d0079a0ddc9",
+      "expected_bins": 1152,
+      "observed_bins": 902,
+      "unobserved_bins": 250,
+      "observed_coverage": 0.7829861111111112,
+      "missing_run_count": 37,
+      "longest_missing_run_bins": 64,
+      "median_missing_run_bins": 2,
+      "p95_missing_run_bins_nearest_rank": 34,
+      "missing_run_length_histogram": {
+        "1": 18,
+        "2-3": 7,
+        "4-12": 6,
+        "13-36": 5,
+        "37+": 1
+      },
+      "longest_observed_run_bins": 305,
+      "observed_runs_count": 37,
+      "observed_runs_ge24": 5,
+      "leading_missing_bins": 2,
+      "trailing_missing_bins": 0,
+      "carry3_input_only_filled_slots": 68,
+      "still_undefined_slots_after_carry3": 182,
+      "options": {
+        "B_contiguous_24": {
+          "origin_eligible_count": 507,
+          "fresh_origins": 507,
+          "stale_origins": 0,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 506,
+              "genuine_target_pairs": 502,
+              "missing_target_pairs": 4,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 229,
+              "hundredth_potential_pair_target_bin_index": 659
+            },
+            "12": {
+              "within_prefix_origins": 495,
+              "genuine_target_pairs": 490,
+              "missing_target_pairs": 5,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 228,
+              "hundredth_potential_pair_target_bin_index": 669
+            }
+          }
+        },
+        "C_carry3_window24_observed18": {
+          "origin_eligible_count": 721,
+          "fresh_origins": 696,
+          "stale_origins": 25,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 720,
+              "genuine_target_pairs": 692,
+              "missing_target_pairs": 28,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 285,
+              "hundredth_potential_pair_target_bin_index": 335
+            },
+            "12": {
+              "within_prefix_origins": 709,
+              "genuine_target_pairs": 668,
+              "missing_target_pairs": 41,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 285,
+              "hundredth_potential_pair_target_bin_index": 578
+            }
+          }
+        }
+      },
+      "original_role": "development",
+      "nomination": "reserve",
+      "draft_numeric_screens_met": true,
+      "approved_v2_eligible": false
+    },
+    "m_1029": {
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1029.csv",
+      "source_sha256": "8038d790a7956096b934052b7df0788121ebe1e7dca62549eaea95ef7a29b6c6",
+      "expected_bins": 1152,
+      "observed_bins": 880,
+      "unobserved_bins": 272,
+      "observed_coverage": 0.7638888888888888,
+      "missing_run_count": 39,
+      "longest_missing_run_bins": 75,
+      "median_missing_run_bins": 3,
+      "p95_missing_run_bins_nearest_rank": 18,
+      "missing_run_length_histogram": {
+        "1": 12,
+        "2-3": 8,
+        "4-12": 14,
+        "13-36": 4,
+        "37+": 1
+      },
+      "longest_observed_run_bins": 454,
+      "observed_runs_count": 39,
+      "observed_runs_ge24": 4,
+      "leading_missing_bins": 18,
+      "trailing_missing_bins": 0,
+      "carry3_input_only_filled_slots": 84,
+      "still_undefined_slots_after_carry3": 188,
+      "options": {
+        "B_contiguous_24": {
+          "origin_eligible_count": 547,
+          "fresh_origins": 547,
+          "stale_origins": 0,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 546,
+              "genuine_target_pairs": 543,
+              "missing_target_pairs": 3,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 229,
+              "hundredth_potential_pair_target_bin_index": 649
+            },
+            "12": {
+              "within_prefix_origins": 535,
+              "genuine_target_pairs": 525,
+              "missing_target_pairs": 10,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 228,
+              "hundredth_potential_pair_target_bin_index": 666
+            }
+          }
+        },
+        "C_carry3_window24_observed18": {
+          "origin_eligible_count": 674,
+          "fresh_origins": 654,
+          "stale_origins": 20,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 673,
+              "genuine_target_pairs": 650,
+              "missing_target_pairs": 23,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 285,
+              "hundredth_potential_pair_target_bin_index": 598
+            },
+            "12": {
+              "within_prefix_origins": 662,
+              "genuine_target_pairs": 628,
+              "missing_target_pairs": 34,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 285,
+              "hundredth_potential_pair_target_bin_index": 620
+            }
+          }
+        }
+      },
+      "original_role": "development",
+      "nomination": "reserve",
+      "draft_numeric_screens_met": true,
+      "approved_v2_eligible": false
+    },
+    "m_2104": {
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_2104.csv",
+      "source_sha256": "9a3239ad62dea4904c687d18f40502c81e483b1e812dd4e7e3b89dc22211ac10",
+      "expected_bins": 1152,
+      "observed_bins": 896,
+      "unobserved_bins": 256,
+      "observed_coverage": 0.7777777777777778,
+      "missing_run_count": 33,
+      "longest_missing_run_bins": 67,
+      "median_missing_run_bins": 1,
+      "p95_missing_run_bins_nearest_rank": 49,
+      "missing_run_length_histogram": {
+        "1": 19,
+        "2-3": 4,
+        "4-12": 4,
+        "13-36": 4,
+        "37+": 2
+      },
+      "longest_observed_run_bins": 275,
+      "observed_runs_count": 34,
+      "observed_runs_ge24": 6,
+      "leading_missing_bins": 0,
+      "trailing_missing_bins": 0,
+      "carry3_input_only_filled_slots": 59,
+      "still_undefined_slots_after_carry3": 197,
+      "options": {
+        "B_contiguous_24": {
+          "origin_eligible_count": 566,
+          "fresh_origins": 566,
+          "stale_origins": 0,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 565,
+              "genuine_target_pairs": 560,
+              "missing_target_pairs": 5,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 263,
+              "hundredth_potential_pair_target_bin_index": 591
+            },
+            "12": {
+              "within_prefix_origins": 554,
+              "genuine_target_pairs": 543,
+              "missing_target_pairs": 11,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 263,
+              "hundredth_potential_pair_target_bin_index": 609
+            }
+          }
+        },
+        "C_carry3_window24_observed18": {
+          "origin_eligible_count": 740,
+          "fresh_origins": 713,
+          "stale_origins": 27,
+          "horizons": {
+            "1": {
+              "within_prefix_origins": 739,
+              "genuine_target_pairs": 708,
+              "missing_target_pairs": 31,
+              "beyond_prefix_targets": 1,
+              "potential_matured_pairs_last_288_ticks": 287,
+              "hundredth_potential_pair_target_bin_index": 445
+            },
+            "12": {
+              "within_prefix_origins": 728,
+              "genuine_target_pairs": 678,
+              "missing_target_pairs": 50,
+              "beyond_prefix_targets": 12,
+              "potential_matured_pairs_last_288_ticks": 287,
+              "hundredth_potential_pair_target_bin_index": 467
+            }
+          }
+        }
+      },
+      "original_role": "development",
+      "nomination": "reserve",
+      "draft_numeric_screens_met": true,
+      "approved_v2_eligible": false
+    }
+  },
+  "confirmation_existing_prefix_metadata": [
+    {
+      "machine_id": "m_295",
+      "role": "confirmation",
+      "observed_bins": 891,
+      "unobserved_bins": 261,
+      "observed_coverage": 0.7734375,
+      "nomination": "primary",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": true,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_66",
+      "role": "confirmation",
+      "observed_bins": 926,
+      "unobserved_bins": 226,
+      "observed_coverage": 0.8038194444444444,
+      "nomination": "primary",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": true,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_1878",
+      "role": "confirmation",
+      "observed_bins": 815,
+      "unobserved_bins": 337,
+      "observed_coverage": 0.7074652777777778,
+      "nomination": "primary",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": false,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_197",
+      "role": "confirmation",
+      "observed_bins": 919,
+      "unobserved_bins": 233,
+      "observed_coverage": 0.7977430555555556,
+      "nomination": "primary",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": true,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_3836",
+      "role": "confirmation",
+      "observed_bins": 812,
+      "unobserved_bins": 340,
+      "observed_coverage": 0.7048611111111112,
+      "nomination": "primary",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": false,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_1022",
+      "role": "confirmation",
+      "observed_bins": 935,
+      "unobserved_bins": 217,
+      "observed_coverage": 0.8116319444444444,
+      "nomination": "primary",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": true,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_1194",
+      "role": "confirmation",
+      "observed_bins": 912,
+      "unobserved_bins": 240,
+      "observed_coverage": 0.7916666666666666,
+      "nomination": "reserve",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": true,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_1059",
+      "role": "confirmation",
+      "observed_bins": 915,
+      "unobserved_bins": 237,
+      "observed_coverage": 0.7942708333333334,
+      "nomination": "reserve",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": true,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    },
+    {
+      "machine_id": "m_2502",
+      "role": "confirmation",
+      "observed_bins": 872,
+      "unobserved_bins": 280,
+      "observed_coverage": 0.7569444444444444,
+      "nomination": "reserve",
+      "evidence_source": "Existing M2B prefix metadata only",
+      "passes_draft_aggregate_coverage_gate": true,
+      "gap_run_and_origin_pair_checks": "not_assessed_in_m2c",
+      "approved_v2_eligible": false
+    }
+  ],
+  "required_reporting": [
+    "all-grid genuine/missing/eligible-origin counts",
+    "point issuance/fallback/abstention/failure rates",
+    "exact genuine target scores, missing targets and boundary pending counts",
+    "per-horizon MAE/RMSE and valid-denominator MAPE",
+    "matched-origin comparisons plus separate availability denominators",
+    "interval availability, conditional coverage and width including unavailable count",
+    "gap/recovery strata defined causally",
+    "reset/alarms/switches per elapsed and genuine clocks",
+    "per-era score support",
+    "latency and memory"
+  ],
+  "approval_blockers": [
+    "Freeze option and eligibility thresholds in a new approved manifest",
+    "Authorize and complete value-blind confirmation-prefix structural checks; no suffix opening",
+    "Freeze gap reset, calibration age/support and selector/detector cold-state thresholds",
+    "Freeze model information/windows, training-example rules and C feature parity if used",
+    "Freeze reporting masks, future run namespace and no-overwrite policy",
+    "Test missing-event stub simulator before connecting learned models",
+    "Keep confirmation execution disabled until data qualification and all experimental settings are frozen and execution is explicitly authorized"
+  ],
+  "future_artifact_namespace": "data/processed/dafr/missing_data_v2/<unique_run_id>/ with exclusive creation; never overwrite v1 or existing runs",
+  "next_step": "Approval and a separately versioned stub/persistence missing-event simulator with chronology tests; no M3 in this milestone",
+  "verification": {
+    "status": "PASSED_EXISTING_TESTS_INDEPENDENT_PREFIX_RECOUNT_AND_HASH_CHECKS",
+    "protected_file_count": 66,
+    "existing_test_command": ".venv/bin/python -m unittest discover -s tests -v",
+    "existing_tests_passed": 53,
+    "existing_tests_failed": 0,
+    "unittest_elapsed_seconds": 1.011,
+    "protected_hashes_matching": 66,
+    "development_input_hashes_matching": 6,
+    "independent_mask_and_gate_recount_passed": true,
+    "no_new_engine_or_model_test_claimed": true,
+    "ciphertext_payload_rehashed_or_decrypted": false,
+    "sealed_artifact_integrity_scope": "Original seal receipt hash preserved; no new ciphertext content audit"
+  },
+  "protected_artifact_sha256_before_m2c": {
+    ".gitignore": "0926a40cbbca68ac0e918b9378c2329c98e18800837012bdb31df78d1f3ed737",
+    "README.md": "a06bf7849b677b4398aa6fb897528beb686c79d416556b33606e8fba16af4523",
+    "app/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "configs/dafr_experiment_manifest_m2b_v1.json": "6bf5429b6ea2c1d63780ab287dc502e47bf48b0a52c840491c243d11eee69ad9",
+    "configs/dafr_experiment_manifest_v1.json": "7aecf5e44f68b700a25c1ae9aa7063c60d815b6015b3eb0822372f9733a5028d",
+    "configs/dafr_protocol_v1.json": "3731fd0de89532f7037b69c978e74e03a2584411d35b9d0c143e70fdcfd00458",
+    "data/external/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data/processed/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data/raw/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "notebooks/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "notebooks/01_phase1_eda.ipynb": "57c38bafa66f66bf2f0a3fd93d25bfcf7ecc2ddd70f86741c4e071ca95adb198",
+    "presentations/final_presentation/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "presentations/phase1_synopsis/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "presentations/phase1_synopsis/server_resource_utilization_forecasting_phase1_synopsis.pptx": "9b4ee7150775f563b1aae53a98af80f0a56199f2c425b080e302b8f325a417f2",
+    "presentations/phase1_synopsis/server_resource_utilization_forecasting_phase1_synopsis_preview.pdf": "7ce7a80b527f527d0aab46aed4fe4a0083e6c1f0bc5de2de1be987519f440230",
+    "reports/dafr/m2_alibaba2018_candidate_evaluation.md": "b9c9c8006a22e7804ada0f58e03b458d9e96db8bbf6c0be2b74f05e101079596",
+    "reports/dafr/m2_dataset_inventory_v1.json": "0eeb7e057fb13749f80f93f3de04cd84c3d0043b9e8f9ce2e5512e415dbf4fdf",
+    "reports/dafr/m2_source_evidence_v1.json": "083774f62e4aa7be7e97b64c485813e32722ee6f74badc4ab0d98cc05d32c2b9",
+    "reports/dafr/m2b_acquisition_evidence_v1.json": "cf915921d332964b5cb42bb19af80366e5a2cec34a54f454a5b644b4cc08b067",
+    "reports/dafr/m2b_prefix_validation_v1.json": "2d478ac9b66e9ec9d362876fdba20295347dc345df825d6130149cee92c7992d",
+    "reports/dafr/m2b_qualification_report_v1.md": "90a4655961f2446d9258f676ebe0dec94d621adda1c93d4f776cf5d6de5ed8cd",
+    "reports/figures/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reports/figures/01_ec2_cpu_5f5533_histogram.png": "318194106480b77c2ebcbc484ce43bd034a72acb81f91c47e1dafe65f8e1b281",
+    "reports/figures/01_ec2_cpu_5f5533_missing_data_summary.png": "ad08d8fa566c5c44f3a2f6b79cefe89a640e8b8a77cdaa4ee6ca1bb17f236db6",
+    "reports/figures/01_ec2_cpu_5f5533_time_series.png": "a610e45d1225cbfee233af7e55476e979c9f8c87fc8ef432f996088b01cb5978",
+    "reports/final_report/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reports/phase2_arima_baseline.md": "17b32356fc45e39a80fcfad68a294b89b61d3d4a0bfd24caf68edd0ccbed641d",
+    "reports/phase2_data_preparation.md": "03a2ca865a8169642723d3b1de52902ac93cfbc308cbd361f133b7821b0edf2c",
+    "reports/phase2_stationarity_diagnostics.md": "5fcdc2181c9f9a8cd505b741bd421d3f9c22e6a1ebccd1241f88e35aef42760e",
+    "reports/phase3_dafr_implementation_roadmap.md": "a597d0c611509678f651440daefca294a09391186e86ac16b014e67ab12b3b13",
+    "reports/phase3_dafr_research_design.md": "9a02a67ba2bd7aa7382e31764a2b2e21e9d8aa080f1254fae319829952707b77",
+    "reports/phase3_model_comparison_protocol.md": "78fc0f14c5a6b817a31de31731cd28c0f736b8aa456acffc2b8b68871a3e9c11",
+    "reports/phase3_xgboost_plan.md": "8c845c8a04a906fada70746997ca0adcecff20a042c838e39fb89da6122f6137",
+    "reports/synopsis/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reports/synopsis/dataset_selection.md": "685c8fd70ff3d1f446194cd457b66b80cd743fee22881e68b013843698fa2bb3",
+    "reports/synopsis/feasibility_analysis.md": "562f63a14dcdff81b89ca7a804586a99fef714b08201ceb7bd2268501bdad689",
+    "reports/synopsis/literature_review.md": "66d774854a7ec099ed1428ff4097ce4638bb8deba93eba5e3b5f0a75a16ccb0f",
+    "reports/synopsis/synopsis_content.md": "7ed6a5be894ea3e72deb17f97d79ff975126e8f32127a356bf119aea3e224615",
+    "requirements.txt": "2c07f3458b16f063d00f67c2fce4d81f638c4c229730d21f6228cd0560dab268",
+    "src/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "src/advanced_preparation.py": "1d47cc77b02e68414c398bca0e0004146e60b5a0b70872b61b7626b0eff7ec3b",
+    "src/classical_models.py": "eb9ac2739f92a3a4c95f42acfbfa6b182d7a7d585cef1902082713a156cda4c9",
+    "src/dafr/alibaba_ingestion.py": "1a89603ba97cbb14c2dafc1817e8c9bc03f341a81cd59ea848400b53732b5b25",
+    "src/dafr/contracts.py": "f8a25645ed2a2b7aca68ffe8882887772b51775820d6ea13250105f88012a0e7",
+    "src/dafr/streaming.py": "19189650415e737fb1e03aeb2e8b56d7553dbe7cbf7edadaef721e54c98f7a9d",
+    "src/data_preparation.py": "56dd16a0c938f43a5cd324b94152ea561ad273c4150f4d003c1490cd4fdfb035",
+    "src/run_arima_baseline.py": "c3da7993d759752f5dcc3ec464a58485bf820dd27e8f79f9e7c1881f42eed7c8",
+    "src/run_xgboost_forecast.py": "be44b7fcee8cc91facc23296f20fef32288e05900ecebbf07b23f5b8ec586155",
+    "src/stationarity_diagnostics.py": "6bad47bc74177b4a94be7b2175b77cb09447584508c08bb38641339fd6d33600",
+    "tests/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "tests/test_advanced_preparation.py": "65d295eff5db3618ef4060cefea97d63417521a23e81e26152830c3fe7356e2b",
+    "tests/test_alibaba_ingestion.py": "0192a03acec1f797f9a5ed9605d118729dd6f27cbba891afcd9bd6e7f01800a4",
+    "tests/test_dafr_chronology.py": "bbf1c1d8fed904addddbe447e2e386c575eaddea360f038c813e79807376f6ee",
+    "tests/test_phase2_data_preparation.py": "f3b6e95ade692c93f1b6df4c1b2fb3b84c9da9f4153c39125af941f6fd2e1173",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/summary.json": "4d11eaca0d79052363d254ff39859b6245d5c8ad37ea477e9f36f488892f3e32",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/forecasts.jsonl": "1289b9fee718c6c100fa204f63bf8263836847461df4e4d9270d0095fd4c8886",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/observations.jsonl": "2fdd3f988cd75c80eedf56c70da17720f926f6efa4e9efd2d270e7f903dcc3f0",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/scores.jsonl": "6ec17f6a913e726f5a3d6abf41523d8ce32096d6f466294fa7ccc86ae6055882",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/events.jsonl": "0bbff73462400c687a573757ba1378f9b6236b26930b0d3b6d7a5c5069e0b358",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/states.jsonl": "a48f4aece71d7d91f40367f3f60fa2791c8d4554108324b8450c230db29b1f61",
+    "data/processed/dafr/v1/m1-synthetic-20261029-001/manifest.json": "fd11b32f560d0a0428682496efb4b67d206c0fc29b384ddd498ebd77239731a0",
+    "data/processed/arima_212_holdout_forecast.csv": "3cbf0922294bcd0206b1e1ab6d6d22f404c69c3807da8c7f919d7ee0506c669b",
+    "data/processed/xgboost_holdout_forecast.csv": "83296f5e23265ff0e3f1bbf8d66cd45ceb3839601b0647b1444943c0f8ce884d",
+    "data/processed/ec2_cpu_utilization_5f5533_phase2.csv": "f0d180812da8d8a4bc11117f49ee2cb006fb8d38cf7af002101e49281ae0d64b",
+    "data/processed/dafr/m2b_v1/qualification_20261030_001/qualification.json": "be09a95ce026117a2a3de75a63c651498144446d944560baf9bd7a91fd179649",
+    "data/processed/dafr/m2b_v1/qualification_20261030_001/seal_receipt_v1.json": "34e4bab5a469b2014f9606697ac4e914df531c194897fc52bb501029280afe2a"
+  }
+}
+

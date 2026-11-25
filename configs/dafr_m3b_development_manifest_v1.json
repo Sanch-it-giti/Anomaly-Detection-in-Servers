@@ -1,0 +1,776 @@
+{
+  "schema_version": "dafr_m3b_development_manifest_v1",
+  "milestone": "M3B-1",
+  "date": "2026-10-30",
+  "status": "DEVELOPMENT_DATA_QUALIFIED_TRAINING_PLAN_ONLY",
+  "confirmation_execution_allowed": false,
+  "m3_training_allowed": false,
+  "training_performed": false,
+  "execution_authorization": "No training authorized; M3B-2 requires a separately approved development-only execution configuration",
+  "qualification_scope": "Only the six original development nominees' first 1,152 five-minute prefix rows",
+  "qualifier": "src/dafr/development_qualification_v1.py",
+  "qualified_development_machine_ids": [
+    "m_505",
+    "m_1426",
+    "m_3028"
+  ],
+  "selected_primary_ids": [
+    "m_505",
+    "m_1426",
+    "m_3028"
+  ],
+  "eligible_reserve_ids_in_original_order": [
+    "m_3276",
+    "m_1029",
+    "m_2104"
+  ],
+  "reserves_promoted": [],
+  "machine_roles_changed": false,
+  "original_m2b_outcome": "All 15 failed strict completeness; zero v1-qualified machines, unchanged",
+  "v2_qualification_meaning": "Development-only admission under frozen development-informed engineering screens; not confirmation qualification, independent-series evidence or a guarantee of model adequacy",
+  "prefix_screens": {
+    "expected_rows": 1152,
+    "min_genuine_bins": 500,
+    "min_observed_coverage": 0.75,
+    "min_longest_genuine_run_bins": 48,
+    "min_learned_origin_fraction": 0.4,
+    "min_genuine_target_pairs_each_horizon": 400,
+    "horizons": [
+      1,
+      12
+    ],
+    "per_bin_quality": "Unchanged M2B status and source hashes; no partial failed bins recovered",
+    "thresholds_validated_optimal": false
+  },
+  "source_scope": {
+    "authorized_directory": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix",
+    "suffixes_read": false,
+    "confirmation_observations_read": false,
+    "raw_archive_reopened": false,
+    "allowed_files": [
+      "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_505.csv",
+      "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1426.csv",
+      "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3028.csv",
+      "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3276.csv",
+      "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1029.csv",
+      "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_2104.csv"
+    ]
+  },
+  "timeline": {
+    "cadence_seconds": 300,
+    "horizons": [
+      1,
+      12
+    ],
+    "preserve_missing_grid_rows": true,
+    "synthetic_epoch": "2000-01-01T00:00:00+00:00",
+    "original_research_blocks_zero_based_half_open": {
+      "fit": [
+        0,
+        1152
+      ],
+      "validation": [
+        1152,
+        1612
+      ],
+      "calibration_warmup": [
+        1612,
+        1842
+      ],
+      "final_evaluation": [
+        1842,
+        2304
+      ]
+    },
+    "original_research_blocks_changed": false,
+    "inner_pilot_split": {
+      "name": "prefix_inner_75_25_v1",
+      "fit": [
+        0,
+        864
+      ],
+      "development_validation": [
+        864,
+        1152
+      ],
+      "fit_cutoff_bin_end_seconds": 259200,
+      "first_validation_observation_bin_end_seconds": 259500,
+      "first_issuance_origin_index": 864,
+      "first_h1_validation_target_index": 865,
+      "first_h12_validation_target_index": 876,
+      "source_of_split": "New prespecified nested engineering fold inside original fit block; no later research block opened",
+      "later_original_validation_counts": "Not inspected or claimed"
+    }
+  },
+  "example_definition": {
+    "input_window_grid_positions": 24,
+    "input_observations": "All positions [i-23,i] genuine",
+    "target": "Genuine observation at exact index i+h",
+    "fit_targets": "0<=i+h<864",
+    "validation_targets": "864<=i+h<1152, with i>=864 after candidate fitting completed",
+    "no_future_transformations": true,
+    "no_imputed_targets": true,
+    "validation_bootstrap": "Preload last 23 fit grid slots into context only; ARIMA filtering already ends at index 863; first new state update at 864",
+    "first_1_or_12_validation_targets_not_scored": "Issuance starts at 864; do not backdate h=12 forecasts using post-origin training data",
+    "validation_counts": "Potential exact-target pairs, assuming available numerical models; not realized forecasts or errors",
+    "disjoint_count": "Greedy nonoverlapping [origin-23,i+h] spans; not an effective or independent sample size"
+  },
+  "arima": {
+    "candidate_orders": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "trend_for_d0": "c",
+    "trend_for_d1": "n",
+    "estimator": "statsmodels SARIMAX with seasonal_order=(0,0,0,0)",
+    "simple_differencing": false,
+    "enforce_stationarity": true,
+    "enforce_invertibility": true,
+    "initialization": "approximate_diffuse",
+    "approximate_diffuse_variance": 1000000,
+    "common_loglikelihood_burn_grid_positions": 24,
+    "training_rows": 864,
+    "missing_measurements": "NaN on original grid; no measurement update",
+    "fit_optimizer": "lbfgs",
+    "maxiter": 200,
+    "automatic_optimizer_retries": false,
+    "reject_conditions": [
+      "not converged",
+      "ConvergenceWarning",
+      "nonfinite params/llf/AIC",
+      "nonpositive sigma2",
+      "nonempty AR/MA roots not finite or not outside 1+1e-6"
+    ],
+    "selection_uses_aic": false,
+    "selection": "Common chronological development validation; likelihood diagnostics have identical grid, missing mask, burn and initialization",
+    "fixed_parameters_during_replay": true,
+    "state_update": "One fixed-parameter filtering extension per tick, including missing NaN; no future smoothing or duplicate assimilation",
+    "constructor_settings_checked_without_fitting": true
+  },
+  "xgboost": {
+    "feature_origin_offsets": [
+      0,
+      1,
+      2,
+      5,
+      11,
+      23
+    ],
+    "lag_aliases_for_h1_only": [
+      1,
+      2,
+      3,
+      6,
+      12,
+      24
+    ],
+    "h12_recommendation": "direct_separate_horizon_regressor",
+    "h1": "direct_one_step_regressor",
+    "candidate_configurations": [
+      {
+        "max_depth": 2,
+        "n_estimators": 100,
+        "learning_rate": 0.05
+      },
+      {
+        "max_depth": 2,
+        "n_estimators": 200,
+        "learning_rate": 0.05
+      },
+      {
+        "max_depth": 3,
+        "n_estimators": 100,
+        "learning_rate": 0.05
+      }
+    ],
+    "fixed_settings": {
+      "objective": "reg:squarederror",
+      "subsample": 1,
+      "colsample_bytree": 1,
+      "min_child_weight": 1,
+      "reg_lambda": 1,
+      "reg_alpha": 0,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "random_state": 42
+    },
+    "scaler": "identity_no_fitted_transform",
+    "early_stopping": false,
+    "validation_refit": false,
+    "recursive_h12": "Optional later single-factor ablation using only own predictions between origin/target, never intervening actuals"
+  },
+  "selection": {
+    "candidate_budget_per_family": 3,
+    "candidate_fit_count_per_primary": {
+      "arima": 3,
+      "xgboost_direct": 6
+    },
+    "total_initial_candidate_fits_for_3_primaries": 27,
+    "unequal_compute_disclosed": "ARIMA fits serve both horizons; XGBoost requires two heads per configuration. Three policy candidates each, not equal CPU or fit counts.",
+    "fit_each_machine_separately": true,
+    "pool_raw_machine_samples": false,
+    "primary_objective": "Macro-average genuine common-gate h=1 validation MAE across selected primaries",
+    "tie_break": "MAE within 1e-9 -> h=1 macro RMSE -> listed candidate order",
+    "secondary_horizon_12": "Report, do not use to posthoc choose a different winner",
+    "failed_fit": "Exclude from global promotion if any primary fit invalid; retain failure and complete-policy fallback results",
+    "forecast_failure": "Log all cases and persistence fallback/abstention; never delete failed predictions from complete-policy denominator",
+    "after_validation_selection_cutoff_index": 1151,
+    "no_winner_backdated_into_validation": true,
+    "saved_candidate_ledgers": "Prespecified candidates fit only [0,864) before replay; select after all validation targets mature, retain original issued predictions",
+    "prior_nab_outcomes_used": false
+  },
+  "lstm": {
+    "initial_m3b2_training_recommended": false,
+    "reason": "223–329 highly overlapping training sequences per primary/horizon and unverified TensorFlow runtime; weak basis for meaningful neural comparison",
+    "feasibility": "Tensor-size feasibility likely; statistical/model-backend feasibility unestablished",
+    "optional_future_architecture": {
+      "input_shape": [
+        24,
+        1
+      ],
+      "units": 8,
+      "dense_outputs": 1,
+      "parameters_per_horizon": 329,
+      "batch_size": 32,
+      "max_epochs": 20,
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "loss": "mse",
+      "shuffle": false,
+      "stateful": false,
+      "dropout": 0,
+      "recurrent_dropout": 0
+    },
+    "optional_horizons": "Separate direct h=1 and h=12 models using the same training origins as XGBoost",
+    "optional_scaler": "Min/max from genuine inner-fit CPU only; fixed; no clipping; constant fit range makes model unavailable",
+    "optional_seeds": [
+      42,
+      43,
+      44
+    ],
+    "outer_validation_early_stopping": false,
+    "epoch_policy": "20 fixed epochs prescribed before outer replay; nested fit-only early stopping would require a new documented fold and counts",
+    "tensorflow_installation_authorized": false
+  },
+  "reporting": {
+    "metrics": [
+      "MAE",
+      "RMSE",
+      "optional valid-denominator MAPE"
+    ],
+    "units": "CPU percentage points",
+    "separate_horizons": true,
+    "common_gate_counts": "ARIMA/XGBoost/LSTM common potential target sets per horizon",
+    "baseline": "Persistence with age <=3 and exact genuine target scoring; no imputation",
+    "denominators": [
+      "all validation origins",
+      "learned-eligible origins",
+      "expert/fallback/abstained counts",
+      "genuine scored pairs",
+      "missing targets",
+      "boundary pending",
+      "numeric failures"
+    ],
+    "distinction": "Report matched-gate expert comparisons and whole-policy fallback availability; do not compare mismatched denominators as accuracy gains",
+    "final_test_claims": false
+  },
+  "artifact_design": {
+    "namespace": "models/dafr/m3b2_development_v1/<unique_run_id>/<machine>/<expert>/<horizon_or_shared>/",
+    "no_overwrite": true,
+    "hash_algorithm": "SHA-256",
+    "required_fields": [
+      "source prefix hash",
+      "mask hash",
+      "ordered origin/target index hashes",
+      "fit/validation bounds",
+      "largest training target timestamp",
+      "scaler fit source/bounds/hash",
+      "candidate config and artifact hashes",
+      "seed and dependency versions",
+      "model/feature/scaler version IDs",
+      "training cutoff",
+      "hyperparameter selection cutoff",
+      "event-time replay availability assumption",
+      "wall-clock build start/end and runtime",
+      "filter-state cutoff/checkpoint hash",
+      "warnings/convergence/roots",
+      "runtime failures"
+    ],
+    "replay_clock": "Synthetic source event time; record wall-clock build time separately. Candidates prebuilt offline before replay, not a claim of zero-latency online fitting.",
+    "future_selected_model": "Selection known only after index 1151; no retrospective winner-issued forecasts within the same validation ledger"
+  },
+  "machine_evidence": {
+    "m_505": {
+      "expected_prefix_bins": 1152,
+      "genuine_bins": 946,
+      "missing_bins": 206,
+      "observed_coverage": 0.8211805555555556,
+      "longest_genuine_run": 224,
+      "longest_missing_run": 68,
+      "learned_eligible_origins": 543,
+      "learned_origin_fraction": 0.4713541666666667,
+      "full_prefix_genuine_pairs": {
+        "1": 536,
+        "12": 529
+      },
+      "all_v2_screens_pass": true,
+      "screen_results": {
+        "genuine_bins": true,
+        "coverage": true,
+        "longest_genuine_run": true,
+        "eligible_origin_fraction": true,
+        "h1_pairs": true,
+        "h12_pairs": true
+      },
+      "fit_grid_positions": 864,
+      "fit_genuine_observations": 663,
+      "arima_common_burn_grid_positions": 24,
+      "arima_effective_genuine_likelihood_updates": 646,
+      "validation_grid_positions": 288,
+      "validation_genuine_observations": 283,
+      "mask_sha256": "fec7acfc36bff3294d91e753bc574df078018f94693c257a1217b39317ed1937",
+      "per_horizon": {
+        "1": {
+          "xgboost_direct_training_examples": 329,
+          "lstm_direct_training_sequences": 329,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 329,
+          "arima_xgboost_lstm_common_validation_pairs": 206,
+          "validation_learned_eligible_origins_including_tail": 209,
+          "validation_learned_missing_targets": 3,
+          "validation_learned_boundary_pending": 0,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 282,
+          "persistence_validation_missing_targets": 5,
+          "persistence_validation_boundary_pending": 1,
+          "disjoint_training_input_to_target_spans": 15,
+          "disjoint_validation_input_to_target_spans": 9,
+          "training_origin_index_sha256": "1cedac0d0f43d0f8bd34de4022d80ac6bfd3b20a6af4d1a79382aa47dab54e52",
+          "validation_origin_index_sha256": "de28554994a2378e0a93acbfcc0b3d7cb7c1cae711ddac2e0f1b7d35c55cc296"
+        },
+        "12": {
+          "xgboost_direct_training_examples": 314,
+          "lstm_direct_training_sequences": 314,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 314,
+          "arima_xgboost_lstm_common_validation_pairs": 204,
+          "validation_learned_eligible_origins_including_tail": 209,
+          "validation_learned_missing_targets": 5,
+          "validation_learned_boundary_pending": 0,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 271,
+          "persistence_validation_missing_targets": 5,
+          "persistence_validation_boundary_pending": 12,
+          "disjoint_training_input_to_target_spans": 11,
+          "disjoint_validation_input_to_target_spans": 7,
+          "training_origin_index_sha256": "c89cab4716ceab12e77725286bf7428270ae2fe9bab8d96371b9baa7d8c6d8bb",
+          "validation_origin_index_sha256": "4cd49f49810c7bbfc688c1cd085052ae4623c5e609ce75c5a7f7aca085150b2c"
+        }
+      },
+      "machine_id": "m_505",
+      "role": "development",
+      "nomination": "primary",
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_505.csv",
+      "source_sha256": "f322fef767e9449ddbf104b77fafda6bde379bea09c3e2eb5fb95a78739f4dde"
+    },
+    "m_1426": {
+      "expected_prefix_bins": 1152,
+      "genuine_bins": 920,
+      "missing_bins": 232,
+      "observed_coverage": 0.7986111111111112,
+      "longest_genuine_run": 192,
+      "longest_missing_run": 74,
+      "learned_eligible_origins": 546,
+      "learned_origin_fraction": 0.4739583333333333,
+      "full_prefix_genuine_pairs": {
+        "1": 540,
+        "12": 520
+      },
+      "all_v2_screens_pass": true,
+      "screen_results": {
+        "genuine_bins": true,
+        "coverage": true,
+        "longest_genuine_run": true,
+        "eligible_origin_fraction": true,
+        "h1_pairs": true,
+        "h12_pairs": true
+      },
+      "fit_grid_positions": 864,
+      "fit_genuine_observations": 635,
+      "arima_common_burn_grid_positions": 24,
+      "arima_effective_genuine_likelihood_updates": 626,
+      "validation_grid_positions": 288,
+      "validation_genuine_observations": 285,
+      "mask_sha256": "9d998d34d44c32ac6186af15f822260f6017b1bab18d8fbbd072d78e83425455",
+      "per_horizon": {
+        "1": {
+          "xgboost_direct_training_examples": 303,
+          "lstm_direct_training_sequences": 303,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 303,
+          "arima_xgboost_lstm_common_validation_pairs": 236,
+          "validation_learned_eligible_origins_including_tail": 239,
+          "validation_learned_missing_targets": 2,
+          "validation_learned_boundary_pending": 1,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 284,
+          "persistence_validation_missing_targets": 3,
+          "persistence_validation_boundary_pending": 1,
+          "disjoint_training_input_to_target_spans": 14,
+          "disjoint_validation_input_to_target_spans": 11,
+          "training_origin_index_sha256": "ca1c0caabf46be26ad6ba286a6074cd78f1293b64a5dc46470929491517ebeeb",
+          "validation_origin_index_sha256": "a4cdbe4857e3a859926d0752c34f033fcb0232d56c90ad88714dfe0f23e9dd54"
+        },
+        "12": {
+          "xgboost_direct_training_examples": 284,
+          "lstm_direct_training_sequences": 284,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 284,
+          "arima_xgboost_lstm_common_validation_pairs": 224,
+          "validation_learned_eligible_origins_including_tail": 239,
+          "validation_learned_missing_targets": 3,
+          "validation_learned_boundary_pending": 12,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 273,
+          "persistence_validation_missing_targets": 3,
+          "persistence_validation_boundary_pending": 12,
+          "disjoint_training_input_to_target_spans": 10,
+          "disjoint_validation_input_to_target_spans": 8,
+          "training_origin_index_sha256": "54054d91ee8ad2573e5df95212a63578ee521126cca5eeacf3fd8187119cef7a",
+          "validation_origin_index_sha256": "d2c05fb8d58ae71df3a7ea6b4d2230b559558415b358490463ade07f1325a670"
+        }
+      },
+      "machine_id": "m_1426",
+      "role": "development",
+      "nomination": "primary",
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1426.csv",
+      "source_sha256": "ad599b2f8eb485fae1cceb1609bb86379506048413b4b785820169fc13a7ef12"
+    },
+    "m_3028": {
+      "expected_prefix_bins": 1152,
+      "genuine_bins": 946,
+      "missing_bins": 206,
+      "observed_coverage": 0.8211805555555556,
+      "longest_genuine_run": 382,
+      "longest_missing_run": 67,
+      "learned_eligible_origins": 509,
+      "learned_origin_fraction": 0.4418402777777778,
+      "full_prefix_genuine_pairs": {
+        "1": 498,
+        "12": 477
+      },
+      "all_v2_screens_pass": true,
+      "screen_results": {
+        "genuine_bins": true,
+        "coverage": true,
+        "longest_genuine_run": true,
+        "eligible_origin_fraction": true,
+        "h1_pairs": true,
+        "h12_pairs": true
+      },
+      "fit_grid_positions": 864,
+      "fit_genuine_observations": 660,
+      "arima_common_burn_grid_positions": 24,
+      "arima_effective_genuine_likelihood_updates": 645,
+      "validation_grid_positions": 288,
+      "validation_genuine_observations": 286,
+      "mask_sha256": "bdbf1ce385db17bc8526d3ca6951b6a6576f7ca9fb2111aa7fbf7e7def4aa5b6",
+      "per_horizon": {
+        "1": {
+          "xgboost_direct_training_examples": 243,
+          "lstm_direct_training_sequences": 243,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 243,
+          "arima_xgboost_lstm_common_validation_pairs": 254,
+          "validation_learned_eligible_origins_including_tail": 256,
+          "validation_learned_missing_targets": 1,
+          "validation_learned_boundary_pending": 1,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 285,
+          "persistence_validation_missing_targets": 2,
+          "persistence_validation_boundary_pending": 1,
+          "disjoint_training_input_to_target_spans": 16,
+          "disjoint_validation_input_to_target_spans": 11,
+          "training_origin_index_sha256": "88bb9e30d7db46ac32a98965281a6122900d2ab3ca4b0f3f66c9a0582bf1838c",
+          "validation_origin_index_sha256": "98b16490874ae3eb127b0b9ee9cd530ab3760fac0b3d220ec64e49ed835b8d96"
+        },
+        "12": {
+          "xgboost_direct_training_examples": 223,
+          "lstm_direct_training_sequences": 223,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 223,
+          "arima_xgboost_lstm_common_validation_pairs": 242,
+          "validation_learned_eligible_origins_including_tail": 256,
+          "validation_learned_missing_targets": 2,
+          "validation_learned_boundary_pending": 12,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 274,
+          "persistence_validation_missing_targets": 2,
+          "persistence_validation_boundary_pending": 12,
+          "disjoint_training_input_to_target_spans": 12,
+          "disjoint_validation_input_to_target_spans": 8,
+          "training_origin_index_sha256": "05cb959e28dc71d81583676e04b7df5aa2656caa2ffd67127243fb8805a8a309",
+          "validation_origin_index_sha256": "e1fa48a11780158c7ea5d579f38518fe8637dd7240007b7e56f2bcadb57100e8"
+        }
+      },
+      "machine_id": "m_3028",
+      "role": "development",
+      "nomination": "primary",
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3028.csv",
+      "source_sha256": "08e18e5a3247e7baf95f1b109c0be25dd6bd1aba81ef94bf0fc2be16f66b97ab"
+    },
+    "m_3276": {
+      "expected_prefix_bins": 1152,
+      "genuine_bins": 902,
+      "missing_bins": 250,
+      "observed_coverage": 0.7829861111111112,
+      "longest_genuine_run": 305,
+      "longest_missing_run": 64,
+      "learned_eligible_origins": 507,
+      "learned_origin_fraction": 0.4401041666666667,
+      "full_prefix_genuine_pairs": {
+        "1": 502,
+        "12": 490
+      },
+      "all_v2_screens_pass": true,
+      "screen_results": {
+        "genuine_bins": true,
+        "coverage": true,
+        "longest_genuine_run": true,
+        "eligible_origin_fraction": true,
+        "h1_pairs": true,
+        "h12_pairs": true
+      },
+      "fit_grid_positions": 864,
+      "fit_genuine_observations": 617,
+      "arima_common_burn_grid_positions": 24,
+      "arima_effective_genuine_likelihood_updates": 603,
+      "validation_grid_positions": 288,
+      "validation_genuine_observations": 285,
+      "mask_sha256": "05a7691534126663f2af54f65d7e558f99d02dee3dbb5b646ddc030109225108",
+      "per_horizon": {
+        "1": {
+          "xgboost_direct_training_examples": 273,
+          "lstm_direct_training_sequences": 273,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 273,
+          "arima_xgboost_lstm_common_validation_pairs": 228,
+          "validation_learned_eligible_origins_including_tail": 231,
+          "validation_learned_missing_targets": 2,
+          "validation_learned_boundary_pending": 1,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 284,
+          "persistence_validation_missing_targets": 3,
+          "persistence_validation_boundary_pending": 1,
+          "disjoint_training_input_to_target_spans": 12,
+          "disjoint_validation_input_to_target_spans": 11,
+          "training_origin_index_sha256": "5f58f82cfdbaad709d6555dbb32804d7ff3e56f0ccc4ebbd2c6fb116c23aaa68",
+          "validation_origin_index_sha256": "6e124576fb620c68afb9c73adadc106c05fb075124afa4c1d8130ab7603496c0"
+        },
+        "12": {
+          "xgboost_direct_training_examples": 262,
+          "lstm_direct_training_sequences": 262,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 262,
+          "arima_xgboost_lstm_common_validation_pairs": 216,
+          "validation_learned_eligible_origins_including_tail": 231,
+          "validation_learned_missing_targets": 3,
+          "validation_learned_boundary_pending": 12,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 273,
+          "persistence_validation_missing_targets": 3,
+          "persistence_validation_boundary_pending": 12,
+          "disjoint_training_input_to_target_spans": 9,
+          "disjoint_validation_input_to_target_spans": 7,
+          "training_origin_index_sha256": "815f811a5b556fefeae4293ec6b2cc0a4bc6fe2b78fc06bbaee8cd9041348d95",
+          "validation_origin_index_sha256": "79c5abbb7c70a3f18f6baffd34f9d022a31b79cfa12d0a553752596f5c47bcf7"
+        }
+      },
+      "machine_id": "m_3276",
+      "role": "development",
+      "nomination": "reserve",
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3276.csv",
+      "source_sha256": "e8c6e918ee2f3571716154c26a38bb02276b02ae1eea2fe3704e8d0079a0ddc9"
+    },
+    "m_1029": {
+      "expected_prefix_bins": 1152,
+      "genuine_bins": 880,
+      "missing_bins": 272,
+      "observed_coverage": 0.7638888888888888,
+      "longest_genuine_run": 454,
+      "longest_missing_run": 75,
+      "learned_eligible_origins": 547,
+      "learned_origin_fraction": 0.4748263888888889,
+      "full_prefix_genuine_pairs": {
+        "1": 543,
+        "12": 525
+      },
+      "all_v2_screens_pass": true,
+      "screen_results": {
+        "genuine_bins": true,
+        "coverage": true,
+        "longest_genuine_run": true,
+        "eligible_origin_fraction": true,
+        "h1_pairs": true,
+        "h12_pairs": true
+      },
+      "fit_grid_positions": 864,
+      "fit_genuine_observations": 595,
+      "arima_common_burn_grid_positions": 24,
+      "arima_effective_genuine_likelihood_updates": 589,
+      "validation_grid_positions": 288,
+      "validation_genuine_observations": 285,
+      "mask_sha256": "5e148bb50f8f991f37a07318ceb3a4fa6dc7b6b521d86e1fa216cdd44e76f0f9",
+      "per_horizon": {
+        "1": {
+          "xgboost_direct_training_examples": 314,
+          "lstm_direct_training_sequences": 314,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 314,
+          "arima_xgboost_lstm_common_validation_pairs": 228,
+          "validation_learned_eligible_origins_including_tail": 231,
+          "validation_learned_missing_targets": 2,
+          "validation_learned_boundary_pending": 1,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 284,
+          "persistence_validation_missing_targets": 3,
+          "persistence_validation_boundary_pending": 1,
+          "disjoint_training_input_to_target_spans": 14,
+          "disjoint_validation_input_to_target_spans": 10,
+          "training_origin_index_sha256": "8fb1ebb989bf3652c171a1dd7eef93a8cf2cb85037425c378d00cdf2465e17c0",
+          "validation_origin_index_sha256": "c68a8602981b477d0c47b9c61bd5235d557f959ab8a670972e2d0e2bc44ef967"
+        },
+        "12": {
+          "xgboost_direct_training_examples": 297,
+          "lstm_direct_training_sequences": 297,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 297,
+          "arima_xgboost_lstm_common_validation_pairs": 216,
+          "validation_learned_eligible_origins_including_tail": 231,
+          "validation_learned_missing_targets": 3,
+          "validation_learned_boundary_pending": 12,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 273,
+          "persistence_validation_missing_targets": 3,
+          "persistence_validation_boundary_pending": 12,
+          "disjoint_training_input_to_target_spans": 10,
+          "disjoint_validation_input_to_target_spans": 7,
+          "training_origin_index_sha256": "b6c354705e789db5d495fb2dff11b7bfd4d8694d15319c32ad1c4a8446fc236c",
+          "validation_origin_index_sha256": "e9a39227c0674c3a42e0e7b03433e858849ffce503047e49d8a262b94e7f94de"
+        }
+      },
+      "machine_id": "m_1029",
+      "role": "development",
+      "nomination": "reserve",
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1029.csv",
+      "source_sha256": "8038d790a7956096b934052b7df0788121ebe1e7dca62549eaea95ef7a29b6c6"
+    },
+    "m_2104": {
+      "expected_prefix_bins": 1152,
+      "genuine_bins": 896,
+      "missing_bins": 256,
+      "observed_coverage": 0.7777777777777778,
+      "longest_genuine_run": 275,
+      "longest_missing_run": 67,
+      "learned_eligible_origins": 566,
+      "learned_origin_fraction": 0.4913194444444444,
+      "full_prefix_genuine_pairs": {
+        "1": 560,
+        "12": 543
+      },
+      "all_v2_screens_pass": true,
+      "screen_results": {
+        "genuine_bins": true,
+        "coverage": true,
+        "longest_genuine_run": true,
+        "eligible_origin_fraction": true,
+        "h1_pairs": true,
+        "h12_pairs": true
+      },
+      "fit_grid_positions": 864,
+      "fit_genuine_observations": 609,
+      "arima_common_burn_grid_positions": 24,
+      "arima_effective_genuine_likelihood_updates": 587,
+      "validation_grid_positions": 288,
+      "validation_genuine_observations": 287,
+      "mask_sha256": "1fb6c140b626f75f6214535e3628b12ce1c9a57d53cbda582350d220c692914c",
+      "per_horizon": {
+        "1": {
+          "xgboost_direct_training_examples": 297,
+          "lstm_direct_training_sequences": 297,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 297,
+          "arima_xgboost_lstm_common_validation_pairs": 262,
+          "validation_learned_eligible_origins_including_tail": 264,
+          "validation_learned_missing_targets": 1,
+          "validation_learned_boundary_pending": 1,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 286,
+          "persistence_validation_missing_targets": 1,
+          "persistence_validation_boundary_pending": 1,
+          "disjoint_training_input_to_target_spans": 14,
+          "disjoint_validation_input_to_target_spans": 12,
+          "training_origin_index_sha256": "8a47f52237ea62cc44a1e18db00a944a7dccea9eeeffe47767b15023714c2f0e",
+          "validation_origin_index_sha256": "52aadea48b77ba30690ab09f4b6163af0dd10bed8983f77990b8ffae742703c6"
+        },
+        "12": {
+          "xgboost_direct_training_examples": 280,
+          "lstm_direct_training_sequences": 280,
+          "arima_training_supervised_examples": null,
+          "arima_training_pair_diagnostic_not_likelihood_count": 280,
+          "arima_xgboost_lstm_common_validation_pairs": 251,
+          "validation_learned_eligible_origins_including_tail": 264,
+          "validation_learned_missing_targets": 1,
+          "validation_learned_boundary_pending": 12,
+          "persistence_validation_issued_including_tail": 288,
+          "persistence_validation_genuine_pairs": 275,
+          "persistence_validation_missing_targets": 1,
+          "persistence_validation_boundary_pending": 12,
+          "disjoint_training_input_to_target_spans": 10,
+          "disjoint_validation_input_to_target_spans": 8,
+          "training_origin_index_sha256": "a32e6f4852245ce54ecc3614ae097e802e874f1ba0b343fbed18bf248314cfff",
+          "validation_origin_index_sha256": "fbadd8d1b20b090d18cb3a1b4927f83e7294991157d3149e5a953b4656da5a1c"
+        }
+      },
+      "machine_id": "m_2104",
+      "role": "development",
+      "nomination": "reserve",
+      "source_relative_path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_2104.csv",
+      "source_sha256": "9a3239ad62dea4904c687d18f40502c81e483b1e812dd4e7e3b89dc22211ac10"
+    }
+  },
+  "resource_measurement_qualification_only": {
+    "elapsed_seconds": 0.06548058299995319,
+    "peak_process_rss_bytes": 18579456,
+    "qualifier_sha256": "3eef215c09a66f44d9bcd35d97a0f0a3696bdbf9dc0b8241430e65ff38b7ef48",
+    "scope": "Final read-only prefix qualification/counting source; excludes backend constructor checks and any model fitting"
+  },
+  "verification": {
+    "status": "PASSED_FULL_TESTS_AND_INDEPENDENT_COUNTS",
+    "existing_tests_passed": 114,
+    "new_planning_tests_passed": 16,
+    "total_tests_passed": 130,
+    "failures_or_errors": 0,
+    "full_suite_elapsed_seconds": 7.217,
+    "historical_hashes_verified": 95,
+    "input_prefix_hashes_verified": 6,
+    "unfitted_arima_constructor_checked": true,
+    "optimization_or_model_training_performed": false,
+    "confirmation_suffixes_opened": false
+  },
+  "preservation_inventory": "reports/dafr/m3b1_preservation_v1.json"
+}
+

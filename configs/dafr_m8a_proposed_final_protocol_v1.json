@@ -1,0 +1,322 @@
+{
+  "schema_version": "dafr_m8a_proposed_final_protocol_v1",
+  "status": "FROZEN_REVIEW_PROPOSAL_NOT_EXECUTABLE_NOT_APPROVED_FOR_DATA_ACCESS",
+  "scope": "DOCUMENTATION_READINESS_ONLY",
+  "confirmation_execution_allowed": false,
+  "new_observation_access_allowed": false,
+  "qualification_access_allowed": false,
+  "training_allowed": false,
+  "refitting_allowed": false,
+  "final_evaluation_allowed": false,
+  "m8b_execution_allowed": false,
+  "source_settings_sha256": {
+    "configs/dafr_engineering_pilot_v2.json": "2a806b36226f523240e18c6c2d1edaf1d3b13c8dc116b936da3377609373815e",
+    "configs/dafr_m3b_development_manifest_v1.json": "8cdf9b8d74806a00dab0c2faf1923ad32436433581325f138051b781a005d2c0",
+    "configs/dafr_m3b2_execution_v1.json": "78878a2fabf94e4e28498991e177454418ceb4a5092b7b64d90b8cd9b34fd5fc",
+    "configs/dafr_m4a_execution_v1.json": "1ba67220009a2990dd96902e7c783546b947f84e2d6a0030cfe18e96fb97e73f",
+    "configs/dafr_missing_data_protocol_v2_draft.json": "7ce16c28bbb99d24b0138defb70915c8574cbba0ec144d03d58ad33bdc4f1998",
+    "configs/dafr_experiment_manifest_m2b_v1.json": "6bf5429b6ea2c1d63780ab287dc502e47bf48b0a52c840491c243d11eee69ad9",
+    "configs/dafr_m5a_synthetic_v1.json": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+    "configs/dafr_m6a_synthetic_v1.json": "543d1d11c18d806a320d1718a7594ab0878d278963e12774e59c0c96416006c0",
+    "configs/dafr_m7a_synthetic_v1.json": "5c67a1d60b321c502ea762aaa7f04d4c9b33ec68159a3ee5108cc88a6fbfdc73",
+    "configs/dafr_m7b_synthetic_backend_v1.json": "d112c531072c3f408e0c0f808a4c95ee481310841967b26b383229bee30242ce"
+  },
+  "cadence_seconds": 300,
+  "horizons": [
+    1,
+    12
+  ],
+  "primary_horizon": 1,
+  "nominal_percent": [
+    90,
+    95
+  ],
+  "quality_screens": {
+    "prefix_grid_bins": 1152,
+    "min_genuine_bins": 500,
+    "min_observed_coverage": 0.75,
+    "min_longest_genuine_run_bins": 48,
+    "history_gate": 24,
+    "min_learned_origin_fraction": 0.4,
+    "min_genuine_exact_target_pairs_each_horizon": 400,
+    "per_bin_samples_min": 24,
+    "max_raw_internal_leading_trailing_gap_seconds": 30
+  },
+  "machine_roles": {
+    "development_primary": [
+      "m_505",
+      "m_1426",
+      "m_3028"
+    ],
+    "development_reserve": [
+      "m_3276",
+      "m_1029",
+      "m_2104"
+    ],
+    "confirmation_primary": [
+      "m_295",
+      "m_66",
+      "m_1878",
+      "m_197",
+      "m_3836",
+      "m_1022"
+    ],
+    "confirmation_reserve": [
+      "m_1194",
+      "m_1059",
+      "m_2502"
+    ],
+    "reserve_selection": "Only eligible same-role reserves in original order; none promoted in M2C"
+  },
+  "qualified_confirmation_machine_ids": [],
+  "minimum_confirmation_machines": 6,
+  "blocks_zero_based_half_open": {
+    "original_fit": [
+      0,
+      1152
+    ],
+    "completed_parameter_fit": [
+      0,
+      864
+    ],
+    "completed_inner_selection_validation": [
+      864,
+      1152
+    ],
+    "inspected_forward_development": [
+      1152,
+      1612
+    ],
+    "restricted_calibration_warmup": [
+      1612,
+      1842
+    ],
+    "restricted_final": [
+      1842,
+      2304
+    ]
+  },
+  "model_selection": {
+    "global_settings_selection_data": "development primaries only, inner validation[864,1152)",
+    "selection_cutoff_index": 1151,
+    "confirmation_hyperparameter_selection_allowed": false,
+    "arima_order": [
+      1,
+      1,
+      1
+    ],
+    "arima_specification": {
+      "candidate_orders": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "trend_for_d0": "c",
+      "trend_for_d1": "n",
+      "estimator": "statsmodels SARIMAX with seasonal_order=(0,0,0,0)",
+      "simple_differencing": false,
+      "enforce_stationarity": true,
+      "enforce_invertibility": true,
+      "initialization": "approximate_diffuse",
+      "approximate_diffuse_variance": 1000000,
+      "common_loglikelihood_burn_grid_positions": 24,
+      "training_rows": 864,
+      "missing_measurements": "NaN on original grid; no measurement update",
+      "fit_optimizer": "lbfgs",
+      "maxiter": 200,
+      "automatic_optimizer_retries": false,
+      "reject_conditions": [
+        "not converged",
+        "ConvergenceWarning",
+        "nonfinite params/llf/AIC",
+        "nonpositive sigma2",
+        "nonempty AR/MA roots not finite or not outside 1+1e-6"
+      ],
+      "selection_uses_aic": false,
+      "selection": "Common chronological development validation; likelihood diagnostics have identical grid, missing mask, burn and initialization",
+      "fixed_parameters_during_replay": true,
+      "state_update": "One fixed-parameter filtering extension per tick, including missing NaN; no future smoothing or duplicate assimilation",
+      "constructor_settings_checked_without_fitting": true
+    },
+    "xgboost_selected_candidate": {
+      "max_depth": 2,
+      "n_estimators": 100,
+      "learning_rate": 0.05
+    },
+    "xgboost_fixed_settings": {
+      "objective": "reg:squarederror",
+      "subsample": 1,
+      "colsample_bytree": 1,
+      "min_child_weight": 1,
+      "reg_lambda": 1,
+      "reg_alpha": 0,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "random_state": 42
+    },
+    "xgboost_origin_offsets": [
+      0,
+      1,
+      2,
+      5,
+      11,
+      23
+    ],
+    "h12": "direct separate regressor",
+    "scaler": "identity"
+  },
+  "proposed_confirmation_parameter_fit": {
+    "preferred_review_candidate": [
+      0,
+      864
+    ],
+    "reason": "match the actual completed development fitting design; global model settings already selected at development index1151",
+    "requires_explicit_adoption_and_separate_training_authorization": true,
+    "original_generic_design_difference": "original generic design proposed combined fit+development refit before warm-up; no such refit occurred; do not silently adopt it or relabel existing models",
+    "approved_confirmation_training_boundary": null
+  },
+  "reconstruction": {
+    "start_after_parameter_fit_index": 864,
+    "through_index": 1611,
+    "no_predictions_or_errors_imported": true,
+    "no_duplicate_fit_assimilation": true,
+    "preserve_grid_missingness_and_parameter_state": true,
+    "boundary_quality_era_and_streak_must_be_provenance_checked": true
+  },
+  "warmup": {
+    "origins": [
+      1612,
+      1842
+    ],
+    "initial_selector": "ARIMA; empty matched losses",
+    "initial_detector": "empty current-era error normalization/support",
+    "initial_calibration": "empty own-policy buffers; no retrospective errors imported",
+    "start_model_history": "causally reconstructed through1611",
+    "zero_extra_delivery_delay": true,
+    "no_global_tuning": true,
+    "insufficient_support": "retain point; null interval; report availability"
+  },
+  "final": {
+    "origins": [
+      1842,
+      2304
+    ],
+    "score_only_origin_and_target_inside_final": true,
+    "h1_last_scoreable_origin": 2302,
+    "h12_last_scoreable_origin": 2291,
+    "out_of_block_issued_targets": "pending, never read for scoring",
+    "carry_warmup_state_and_pending": true,
+    "mature_warmup_forecasts_for_causal_state_but_exclude_from_final_origin_metrics": true
+  },
+  "policies": [
+    {
+      "id": "persistence",
+      "complete_policy_fallback": false,
+      "own_interval_buffers": true,
+      "drift_monitoring": "observer only; fixed persistence reference; no response"
+    },
+    {
+      "id": "fixed_arima_complete",
+      "complete_policy_fallback": true,
+      "own_interval_buffers": true,
+      "drift_monitoring": "observer only; fixed persistence reference; no response"
+    },
+    {
+      "id": "fixed_xgboost_complete",
+      "complete_policy_fallback": true,
+      "own_interval_buffers": true,
+      "drift_monitoring": "observer only; fixed persistence reference; no response"
+    },
+    {
+      "id": "adaptive_complete",
+      "complete_policy_fallback": true,
+      "own_interval_buffers": true,
+      "drift_monitoring": "observer only; fixed persistence reference; no response"
+    }
+  ],
+  "auxiliary_shadows": [
+    "shadow_arima",
+    "shadow_xgboost"
+  ],
+  "new_fixed_complete_policy_real_data_contract_required": true,
+  "selector": {
+    "experts": [
+      "arima",
+      "xgboost"
+    ],
+    "default_expert": "arima",
+    "horizons": [
+      1,
+      12
+    ],
+    "max_matched_scores": 288,
+    "min_matched_scores": 100,
+    "recency_grid_ticks": 288,
+    "absolute_improvement_margin": 0.1,
+    "relative_improvement_margin": 0.05,
+    "minimum_dwell_grid_ticks": 24,
+    "tie_tolerance": 1e-12
+  },
+  "missingness": {
+    "cadence_seconds": 300,
+    "genuine_history_gate": 24,
+    "persistence_max_age_ticks": 3,
+    "era_reset_missing_tick": 4,
+    "imputation_enabled": false,
+    "old_era_scores_seed_active_support": false
+  },
+  "drift": {
+    "channel": "one_sided_persistence_absolute_error",
+    "reference_expert": "persistence",
+    "reference_version": "rule_v2",
+    "detector": {
+      "normalization_samples": 32,
+      "minimum_recent_errors": 64,
+      "recency_grid_ticks": 288,
+      "scale_floor_cpu_points": 0.1,
+      "mad_multiplier": 1.4826,
+      "normalized_clip": 4.0,
+      "delta": 0.05,
+      "warning_threshold": 4.0,
+      "alarm_threshold": 8.0,
+      "cooldown_grid_ticks": 24
+    },
+    "response": "none"
+  },
+  "intervals": {
+    "nominal_percent": [
+      90,
+      95
+    ],
+    "minimum_support": 100,
+    "capacity": 288,
+    "recency_grid_ticks": 288,
+    "quantile": "ceil((n+1)*nominal_percent/100)-th order statistic; exact integer arithmetic",
+    "calibration_key": "complete_policy_version_horizon_era",
+    "fallback": "own complete policy errors include its own actual fallback; no borrowing from persistence or another policy",
+    "clipping": "none_raw_center_preserved",
+    "insufficient_support": "bounds unavailable; preserve issued center",
+    "telemetry_reset": "fourth missing tick, once per long gap; clear active support; old-era outcomes audited only"
+  },
+  "denominators": [
+    "own policy genuine targets and availability",
+    "expert-matched common origin/horizon/target/context mask",
+    "complete-policy matched genuine available point mask",
+    "common genuine available interval mask per nominal level"
+  ],
+  "macro": "equal-machine arithmetic mean of per-machine metrics, including mean of per-machine RMSE; if a planned machine metric is undefined primary macro is incomplete/null, report valid/planned counts and any explicitly secondary available-machine summary",
+  "inference": "descriptive; no independent significance/generalization claim; no unprespecified bootstrap after final inspection",
+  "go_no_go": "NO_GO until qualification, real-data typed integration, training-boundary adoption, explicit fit authorization if needed, model registry, protocol acceptance and distinct protected-access execution approval are complete"
+}

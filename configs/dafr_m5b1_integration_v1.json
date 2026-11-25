@@ -1,0 +1,64 @@
+{
+  "schema_version": "dafr_m5b1_integration_v1",
+  "scope": "SYNTHETIC_REAL_BACKEND_FIXTURES_ONLY",
+  "synthetic_backend_execution_allowed": true,
+  "synthetic_fixture_build_allowed": true,
+  "real_data_execution_allowed": false,
+  "alibaba_training_allowed": false,
+  "confirmation_execution_allowed": false,
+  "m5b2_execution_allowed": false,
+  "drift_detection_allowed": false,
+  "prediction_intervals_allowed": false,
+  "selector": {
+    "experts": [
+      "arima",
+      "xgboost"
+    ],
+    "default_expert": "arima",
+    "horizons": [
+      1,
+      12
+    ],
+    "max_matched_scores": 288,
+    "min_matched_scores": 100,
+    "recency_grid_ticks": 288,
+    "absolute_improvement_margin": 0.1,
+    "relative_improvement_margin": 0.05,
+    "minimum_dwell_grid_ticks": 24,
+    "tie_tolerance": 1e-12
+  },
+  "m5a_config_sha256": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+  "missingness": {
+    "cadence_seconds": 300,
+    "genuine_history_gate": 24,
+    "persistence_max_age_ticks": 3,
+    "era_reset_missing_tick": 4,
+    "imputation_enabled": false,
+    "old_era_scores_seed_active_support": false
+  },
+  "maximum_process_rss_bytes": 4294967296,
+  "max_grid_ticks_per_run": 2304,
+  "synthetic_fixture": {
+    "generator_id": "m5b1_generated_fit_v1",
+    "fit_grid_size": 96,
+    "arima_order": [
+      1,
+      1,
+      1
+    ],
+    "arima_known_parameters": [
+      0.4,
+      0.2,
+      1.0
+    ],
+    "arima_optimizer_allowed": false,
+    "xgboost_configuration": {
+      "max_depth": 2,
+      "n_estimators": 100,
+      "learning_rate": 0.05
+    },
+    "seed": 42,
+    "description": "Known-parameter ARIMA filtering and two throwaway XGBoost fits on deterministic synthetic history only"
+  },
+  "output_namespace": "m5b1_synthetic_backend_v1"
+}

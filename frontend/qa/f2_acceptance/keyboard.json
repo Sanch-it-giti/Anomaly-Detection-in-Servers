@@ -1,0 +1,14 @@
+{
+  "skip": "main-content",
+  "menuPrevious": "DAF-R /RESEARCH OBSERVATORY",
+  "menuEscape": {
+    "focus": "Open navigation",
+    "hidden": "hidden"
+  },
+  "table": {
+    "outline": "solid",
+    "scrollLeft": 40,
+    "scrollWidth": 727,
+    "width": 322
+  }
+}

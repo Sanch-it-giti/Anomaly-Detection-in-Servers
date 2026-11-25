@@ -1,0 +1,42 @@
+{
+  "status": "M8A_COMPLETE_NO_GO_FOR_INDEPENDENT_M8B",
+  "historical_hashes_verified": 981,
+  "selected_historical_checkpoint_bundles": 6,
+  "selected_historical_checkpoint_files_verified": 27,
+  "fresh_regression": {
+    "discovered": 409,
+    "passed": 304,
+    "skipped_fit_dependent": 105,
+    "failures": 0,
+    "errors": 0,
+    "fitting_attempts": 0,
+    "previous_full_409_pass_record_preserved": true
+  },
+  "fresh_saved_synthetic_ledger_audits_passed": 4,
+  "local_markdown_links_verified": 102,
+  "source_catalog_and_figure_hashes_verified": true,
+  "proposal_preserves_frozen_algorithms": true,
+  "proposal_requires_training_boundary_approval": true,
+  "metadata_only_confirmation_findings": {
+    "verified_full_v2": 0,
+    "necessary_gate_failures": 2,
+    "incomplete": 7
+  },
+  "new_alibaba_observations_read": false,
+  "new_confirmation_masks_read": false,
+  "keys_opened": false,
+  "calibration_final_confirmation_execution": false,
+  "models_fitted_or_refitted": false,
+  "historical_execution_locks_byte_identical": true,
+  "confirmation_execution_allowed": false,
+  "m8b_execution_allowed": false,
+  "new_deck_plots_or_frontend_created": false,
+  "limitations": [
+    "105 fitting-dependent tests skipped under explicit M8A no-fit restriction",
+    "Report remains a draft with student/guide/institution placeholders",
+    "No independently qualified confirmation results",
+    "Generic refit-versus-historical864 compatibility adoption unresolved before any training/evaluation"
+  ],
+  "existing_directory_retry_rejected": true,
+  "report_files_unchanged_after_retry": 14
+}

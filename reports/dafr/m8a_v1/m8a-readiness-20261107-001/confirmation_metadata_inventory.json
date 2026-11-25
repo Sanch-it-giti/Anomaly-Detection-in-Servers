@@ -1,0 +1,164 @@
+{
+  "full_v2_qualified_count": 0,
+  "known_failures": [
+    "m_1878",
+    "m_3836"
+  ],
+  "incomplete_evidence_count": 7,
+  "source_sha256": "7ce16c28bbb99d24b0138defb70915c8574cbba0ec144d03d58ad33bdc4f1998",
+  "candidates": [
+    {
+      "machine_id": "m_295",
+      "nomination": "primary",
+      "observed_bins": 891,
+      "unobserved_bins": 261,
+      "observed_coverage": 0.7734375,
+      "status": "INCOMPLETE_V2_EVIDENCE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_66",
+      "nomination": "primary",
+      "observed_bins": 926,
+      "unobserved_bins": 226,
+      "observed_coverage": 0.8038194444444444,
+      "status": "INCOMPLETE_V2_EVIDENCE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_1878",
+      "nomination": "primary",
+      "observed_bins": 815,
+      "unobserved_bins": 337,
+      "observed_coverage": 0.7074652777777778,
+      "status": "KNOWN_NECESSARY_V2_GATE_FAILURE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_197",
+      "nomination": "primary",
+      "observed_bins": 919,
+      "unobserved_bins": 233,
+      "observed_coverage": 0.7977430555555556,
+      "status": "INCOMPLETE_V2_EVIDENCE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_3836",
+      "nomination": "primary",
+      "observed_bins": 812,
+      "unobserved_bins": 340,
+      "observed_coverage": 0.7048611111111112,
+      "status": "KNOWN_NECESSARY_V2_GATE_FAILURE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_1022",
+      "nomination": "primary",
+      "observed_bins": 935,
+      "unobserved_bins": 217,
+      "observed_coverage": 0.8116319444444444,
+      "status": "INCOMPLETE_V2_EVIDENCE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_1194",
+      "nomination": "reserve",
+      "observed_bins": 912,
+      "unobserved_bins": 240,
+      "observed_coverage": 0.7916666666666666,
+      "status": "INCOMPLETE_V2_EVIDENCE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_1059",
+      "nomination": "reserve",
+      "observed_bins": 915,
+      "unobserved_bins": 237,
+      "observed_coverage": 0.7942708333333334,
+      "status": "INCOMPLETE_V2_EVIDENCE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    },
+    {
+      "machine_id": "m_2502",
+      "nomination": "reserve",
+      "observed_bins": 872,
+      "unobserved_bins": 280,
+      "observed_coverage": 0.7569444444444444,
+      "status": "INCOMPLETE_V2_EVIDENCE",
+      "full_v2_qualified": false,
+      "longest_genuine_run": null,
+      "learned_origin_fraction": null,
+      "h1_potential_pairs": null,
+      "h12_potential_pairs": null,
+      "evidence": "Existing M2B aggregates reproduced in M2C; no new prefix observation/mask inspected"
+    }
+  ],
+  "nomination_order": {
+    "development_primary": [
+      "m_505",
+      "m_1426",
+      "m_3028"
+    ],
+    "development_reserve": [
+      "m_3276",
+      "m_1029",
+      "m_2104"
+    ],
+    "confirmation_primary": [
+      "m_295",
+      "m_66",
+      "m_1878",
+      "m_197",
+      "m_3836",
+      "m_1022"
+    ],
+    "confirmation_reserve": [
+      "m_1194",
+      "m_1059",
+      "m_2502"
+    ],
+    "reserve_selection": "Only eligible same-role reserves in original order; none promoted in M2C"
+  },
+  "confirmation_execution_allowed": false
+}

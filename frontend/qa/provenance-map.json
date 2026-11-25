@@ -1,0 +1,486 @@
+{
+  "snapshot_signature": "7e37904261b97b0a92c0b3c0211aa05b383a428473830c9f9d5827da12748d71",
+  "metric_groups": [
+    {
+      "display": "Overview ARIMA h1 MAE / common target count",
+      "source": "macro",
+      "selector": {
+        "horizon": 1,
+        "scope": "expert_matched",
+        "policy": "arima"
+      },
+      "columns": [
+        "mae",
+        "total_common_targets"
+      ],
+      "scope": "retrospective",
+      "original_path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/macro_comparisons.csv",
+      "source_sha256": "507161c2afce32ea3d595a290f9247c0e43470291c8c8a0e74d656a84ed8e223"
+    },
+    {
+      "display": "Overview adaptive h12 \u0394MAE",
+      "source": "macro",
+      "selector": {
+        "horizon": 12,
+        "scope": "expert_matched"
+      },
+      "columns": [
+        "mae"
+      ],
+      "derivation": "adaptive.mae - arima.mae; full precision before4-decimal formatting",
+      "scope": "retrospective",
+      "original_path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/macro_comparisons.csv",
+      "source_sha256": "507161c2afce32ea3d595a290f9247c0e43470291c8c8a0e74d656a84ed8e223"
+    },
+    {
+      "display": "Macro forecast chart/table",
+      "source": "macro",
+      "selectors": [
+        "horizon",
+        "scope",
+        "policy"
+      ],
+      "columns": [
+        "mae",
+        "rmse",
+        "total_common_targets"
+      ],
+      "scope": "retrospective",
+      "original_path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/macro_comparisons.csv",
+      "source_sha256": "507161c2afce32ea3d595a290f9247c0e43470291c8c8a0e74d656a84ed8e223"
+    },
+    {
+      "display": "Machine forecast chart/table",
+      "source": "machines",
+      "selectors": [
+        "machine",
+        "horizon",
+        "scope",
+        "policy"
+      ],
+      "columns": [
+        "mae",
+        "rmse",
+        "count"
+      ],
+      "scope": "retrospective",
+      "original_path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/comparisons.csv",
+      "source_sha256": "5c02ab99e3123a3d5df7446d3379bd0fa2402643d7ac0f49d7b11ee665280ced"
+    },
+    {
+      "display": "Switch list/count",
+      "source": "switches",
+      "selectors": [
+        "horizon"
+      ],
+      "columns": [
+        "origin_index",
+        "machine",
+        "before",
+        "incumbent",
+        "matched_pairs",
+        "dwell_elapsed_ticks"
+      ],
+      "derivation": "count actual selected rows; none inferred",
+      "scope": "retrospective",
+      "original_path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/switch_events.csv",
+      "source_sha256": "990cab2f7e3b4fa73f0c0147d486be3c92c7f44c3e9de6c49d2aea5e757b113d"
+    },
+    {
+      "display": "Frozen selector rules",
+      "source": "selector-rules",
+      "json_path": "selector",
+      "scope": "synthetic",
+      "original_path": "configs/dafr_m5a_synthetic_v1.json",
+      "source_sha256": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca"
+    },
+    {
+      "display": "Synthetic drift counts and retained misses",
+      "source": "drift",
+      "selectors": [
+        "horizon",
+        "fixture"
+      ],
+      "columns": [
+        "alarm_count",
+        "warning_entries",
+        "first_detection_delay_ticks",
+        "fixture_change_not_alarmed",
+        "final_recent_support"
+      ],
+      "scope": "synthetic",
+      "original_path": "reports/dafr/m6a_v1/m6a-synthetic-20261107-001/detection_summary.csv",
+      "source_sha256": "2aaec04dd9c550d9f6235ae64f9ad4845b8b8eca5f2ea2dbf7862f72f59be14b"
+    },
+    {
+      "display": "Frozen detector rules",
+      "source": "detector-rules",
+      "json_path": "detector",
+      "scope": "synthetic",
+      "original_path": "configs/dafr_m6a_synthetic_v1.json",
+      "source_sha256": "543d1d11c18d806a320d1718a7594ab0878d278963e12774e59c0c96416006c0"
+    },
+    {
+      "display": "M7A coverage/width/availability",
+      "source": "intervals-a",
+      "selectors": [
+        "fixture",
+        "horizon",
+        "policy",
+        "nominal_percent"
+      ],
+      "columns": [
+        "covered",
+        "genuine_available_intervals",
+        "genuine_matured_centers",
+        "empirical_coverage_available_only",
+        "availability_among_genuine_matured",
+        "issued_centers",
+        "attempts",
+        "mean_issued_width",
+        "mean_interval_score",
+        "missing_targets",
+        "pending"
+      ],
+      "derivation": "coverage=covered/genuine_available; forecast availability=issued_centers/attempts; null stays unavailable",
+      "scope": "synthetic",
+      "original_path": "reports/dafr/m7a_v1/m7a-synthetic-20261107-001/coverage_width_availability.csv",
+      "source_sha256": "5b239745537f475bc106e94ce3c41d09fa8815582529596edf4893468b20b1ff"
+    },
+    {
+      "display": "M7B coverage/width/availability",
+      "source": "intervals-b",
+      "selectors": [
+        "fixture",
+        "horizon",
+        "policy",
+        "nominal_percent"
+      ],
+      "columns": [
+        "covered",
+        "genuine_available_intervals",
+        "genuine_matured_centers",
+        "empirical_coverage_available_only",
+        "availability_among_genuine_matured",
+        "issued_centers",
+        "attempts",
+        "mean_issued_width",
+        "mean_interval_score",
+        "missing_targets",
+        "pending"
+      ],
+      "derivation": "same denominators asM7A; runs never pooled",
+      "scope": "synthetic",
+      "original_path": "reports/dafr/m7b_v1/m7b-synthetic-backend-20261107-001/coverage_width_availability.csv",
+      "source_sha256": "70641727f500737a1cf50b8e873829b0e8a3934a8913911541c01d759839921e"
+    },
+    {
+      "display": "Nominal/support/expiry convention",
+      "source": "interval-rules",
+      "columns": [
+        "nominal_percent",
+        "minimum_support",
+        "capacity",
+        "recency_grid_ticks",
+        "clipping"
+      ],
+      "scope": "synthetic",
+      "original_path": "configs/dafr_m7a_synthetic_v1.json",
+      "source_sha256": "5c67a1d60b321c502ea762aaa7f04d4c9b33ec68159a3ee5108cc88a6fbfdc73"
+    },
+    {
+      "display": "Qualification count, failures/incomplete and table",
+      "source": "qualification",
+      "json_path": "candidates; full_v2_qualified_count",
+      "derivation": "row counts by recorded status; coverage=observed_bins/1152; no new mask checks",
+      "scope": "readiness",
+      "original_path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/confirmation_metadata_inventory.json",
+      "source_sha256": "fde049dc3f270ed4a171a313c38f71473605d665d0518313d2fbf30d4ed84dde"
+    },
+    {
+      "display": "Historical verification milestone m6a-verification",
+      "source": "m6a-verification",
+      "json_path": "total_tests or tests_passed or passed; skipped if explicitly present",
+      "derivation": "missing skip field is Not recorded, not an invented zero",
+      "scope": "synthetic",
+      "original_path": "reports/dafr/m6a_v1/m6a-synthetic-20261107-001/final_verification.json",
+      "source_sha256": "3cbad72adfcde791ca54e6122f39b6ebce9f5f5213a5a61a01312d645901ef55"
+    },
+    {
+      "display": "Historical verification milestone m6b-verification",
+      "source": "m6b-verification",
+      "json_path": "total_tests or tests_passed or passed; skipped if explicitly present",
+      "derivation": "missing skip field is Not recorded, not an invented zero",
+      "scope": "synthetic",
+      "original_path": "reports/dafr/m6b_v1/m6b-synthetic-backend-20261107-001/preservation_and_verification.json",
+      "source_sha256": "ae4b697a678fb01ad2849365deb6f94e35ecdd3f15fcb2df4fc007e297fdb82f"
+    },
+    {
+      "display": "Historical verification milestone m7a-verification",
+      "source": "m7a-verification",
+      "json_path": "total_tests or tests_passed or passed; skipped if explicitly present",
+      "derivation": "missing skip field is Not recorded, not an invented zero",
+      "scope": "synthetic",
+      "original_path": "reports/dafr/m7a_v1/m7a-synthetic-20261107-001/final_verification.json",
+      "source_sha256": "75eaece295e8589865ddcba2fd19439e3a5de65e11d4a51ff836985eeaa2c5d3"
+    },
+    {
+      "display": "Historical verification milestone m7b-verification",
+      "source": "m7b-verification",
+      "json_path": "total_tests or tests_passed or passed; skipped if explicitly present",
+      "derivation": "missing skip field is Not recorded, not an invented zero",
+      "scope": "synthetic",
+      "original_path": "reports/dafr/m7b_v1/m7b-synthetic-backend-20261107-001/final_verification.json",
+      "source_sha256": "7d79ce62699fdb07291467f6a7b00c208f4d744923631fcb1a078c0425891f66"
+    },
+    {
+      "display": "Historical verification milestone m8a-verification",
+      "source": "m8a-verification",
+      "json_path": "total_tests or tests_passed or passed; skipped if explicitly present",
+      "derivation": "missing skip field is Not recorded, not an invented zero",
+      "scope": "readiness",
+      "original_path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/regression_verification.json",
+      "source_sha256": "5f730d97938954b40b80bbc22f60fadd9fe575f6aa3e9259993fc5ed5353da5d"
+    }
+  ],
+  "full_allowlist": [
+    {
+      "id": "macro",
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/macro_comparisons.csv",
+      "scope": "retrospective",
+      "sha256": "507161c2afce32ea3d595a290f9247c0e43470291c8c8a0e74d656a84ed8e223",
+      "status": "available"
+    },
+    {
+      "id": "machines",
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/comparisons.csv",
+      "scope": "retrospective",
+      "sha256": "5c02ab99e3123a3d5df7446d3379bd0fa2402643d7ac0f49d7b11ee665280ced",
+      "status": "available"
+    },
+    {
+      "id": "switches",
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/switch_events.csv",
+      "scope": "retrospective",
+      "sha256": "990cab2f7e3b4fa73f0c0147d486be3c92c7f44c3e9de6c49d2aea5e757b113d",
+      "status": "available"
+    },
+    {
+      "id": "support",
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/support_summary.csv",
+      "scope": "retrospective",
+      "sha256": "27a61c4ed5ecd160b27ad26ce8f640eb2a08e7755bbc74687867269ce61ceafe",
+      "status": "available"
+    },
+    {
+      "id": "adaptive-report",
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/completion_report.md",
+      "scope": "retrospective",
+      "sha256": "e7b62dc28870815000f6fdfea12c772bf96c7a6619624803ff0af0f1b0143fdf",
+      "status": "available"
+    },
+    {
+      "id": "fixed-macro",
+      "path": "reports/dafr/m4a_v1/m4a-development-20261031-001/macro_metrics.csv",
+      "scope": "development",
+      "sha256": "b6c7b9fc0f8693d368d8242f612cfbe28f84dd4765a3a88e765965c3304ea65f",
+      "status": "available"
+    },
+    {
+      "id": "fixed-report",
+      "path": "reports/dafr/m4a_v1/m4a-development-20261031-001/comparison.md",
+      "scope": "development",
+      "sha256": "95bf3b45e60b2b461dfdd311606ced331fff10956439aba7a2bddc7bc92be630",
+      "status": "available"
+    },
+    {
+      "id": "drift",
+      "path": "reports/dafr/m6a_v1/m6a-synthetic-20261107-001/detection_summary.csv",
+      "scope": "synthetic",
+      "sha256": "2aaec04dd9c550d9f6235ae64f9ad4845b8b8eca5f2ea2dbf7862f72f59be14b",
+      "status": "available"
+    },
+    {
+      "id": "drift-report",
+      "path": "reports/dafr/m6a_v1/m6a-synthetic-20261107-001/completion_report.md",
+      "scope": "synthetic",
+      "sha256": "b82013e8cc080fe024cbc82ba0cbbac17946bdaa44623c0a959286579f2ce85c",
+      "status": "available"
+    },
+    {
+      "id": "drift-backend-report",
+      "path": "reports/dafr/m6b_v1/m6b-synthetic-backend-20261107-001/completion_report.md",
+      "scope": "synthetic",
+      "sha256": "9080e26270c1633b78d20ea19b838742fa4dcb3ca6cb52cbff8c02f9fd55b601",
+      "status": "available"
+    },
+    {
+      "id": "intervals-a",
+      "path": "reports/dafr/m7a_v1/m7a-synthetic-20261107-001/coverage_width_availability.csv",
+      "scope": "synthetic",
+      "sha256": "5b239745537f475bc106e94ce3c41d09fa8815582529596edf4893468b20b1ff",
+      "status": "available"
+    },
+    {
+      "id": "interval-report-a",
+      "path": "reports/dafr/m7a_v1/m7a-synthetic-20261107-001/coverage_width_availability.md",
+      "scope": "synthetic",
+      "sha256": "fb70319ef8ff99833a702229fc7aeea4bdcd9a0e18684b4ae15f9f8ac0a2cc91",
+      "status": "available"
+    },
+    {
+      "id": "intervals-b",
+      "path": "reports/dafr/m7b_v1/m7b-synthetic-backend-20261107-001/coverage_width_availability.csv",
+      "scope": "synthetic",
+      "sha256": "70641727f500737a1cf50b8e873829b0e8a3934a8913911541c01d759839921e",
+      "status": "available"
+    },
+    {
+      "id": "interval-common-b",
+      "path": "reports/dafr/m7b_v1/m7b-synthetic-backend-20261107-001/common_target_comparisons.csv",
+      "scope": "synthetic",
+      "sha256": "be123f27b3c45553d438893cd447e8e3124c54d69cc950cda4e896abc74b1985",
+      "status": "available"
+    },
+    {
+      "id": "interval-report-b",
+      "path": "reports/dafr/m7b_v1/m7b-synthetic-backend-20261107-001/coverage_width_availability.md",
+      "scope": "synthetic",
+      "sha256": "bdc225ae323315db492adc35da34b04253bc054715eb3b0f11267bc01f5d0d7a",
+      "status": "available"
+    },
+    {
+      "id": "m6a-verification",
+      "path": "reports/dafr/m6a_v1/m6a-synthetic-20261107-001/final_verification.json",
+      "scope": "synthetic",
+      "sha256": "3cbad72adfcde791ca54e6122f39b6ebce9f5f5213a5a61a01312d645901ef55",
+      "status": "available"
+    },
+    {
+      "id": "m6b-verification",
+      "path": "reports/dafr/m6b_v1/m6b-synthetic-backend-20261107-001/preservation_and_verification.json",
+      "scope": "synthetic",
+      "sha256": "ae4b697a678fb01ad2849365deb6f94e35ecdd3f15fcb2df4fc007e297fdb82f",
+      "status": "available"
+    },
+    {
+      "id": "m7a-verification",
+      "path": "reports/dafr/m7a_v1/m7a-synthetic-20261107-001/final_verification.json",
+      "scope": "synthetic",
+      "sha256": "75eaece295e8589865ddcba2fd19439e3a5de65e11d4a51ff836985eeaa2c5d3",
+      "status": "available"
+    },
+    {
+      "id": "m7b-verification",
+      "path": "reports/dafr/m7b_v1/m7b-synthetic-backend-20261107-001/final_verification.json",
+      "scope": "synthetic",
+      "sha256": "7d79ce62699fdb07291467f6a7b00c208f4d744923631fcb1a078c0425891f66",
+      "status": "available"
+    },
+    {
+      "id": "m8a-verification",
+      "path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/regression_verification.json",
+      "scope": "readiness",
+      "sha256": "5f730d97938954b40b80bbc22f60fadd9fe575f6aa3e9259993fc5ed5353da5d",
+      "status": "available"
+    },
+    {
+      "id": "qualification",
+      "path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/confirmation_metadata_inventory.json",
+      "scope": "readiness",
+      "sha256": "fde049dc3f270ed4a171a313c38f71473605d665d0518313d2fbf30d4ed84dde",
+      "status": "available"
+    },
+    {
+      "id": "research",
+      "path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/research_report_draft.md",
+      "scope": "readiness",
+      "sha256": "b2e191b3cc33f8166c0f59d28f06ed9a4cee65e04354bd74559629c64e3e777a",
+      "status": "available"
+    },
+    {
+      "id": "status",
+      "path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/project_status_matrix.md",
+      "scope": "readiness",
+      "sha256": "4dad66624b937ab82bb97b6905bcd1155127beeeaf589d09b235444efaa318be",
+      "status": "available"
+    },
+    {
+      "id": "demo",
+      "path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/reproducibility_demo_guide.md",
+      "scope": "readiness",
+      "sha256": "6e19abc8a4d4f92fefd575ee0418559004a8b5eea6b254acab4b9aa77738d05a",
+      "status": "available"
+    },
+    {
+      "id": "readiness",
+      "path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/readiness_report.md",
+      "scope": "readiness",
+      "sha256": "d5556781819d3ca6d98c43c9ea0429ed615517cd7ea6bf394e31a4ae77e5d466",
+      "status": "available"
+    },
+    {
+      "id": "figure-inventory",
+      "path": "reports/dafr/m8a_v1/m8a-readiness-20261107-001/figure_inventory.json",
+      "scope": "readiness",
+      "sha256": "38a34388d4eb7cb5d4d169add0a47cd08507ba434e20537413a4dc85be901a4c",
+      "status": "available"
+    },
+    {
+      "id": "selector-rules",
+      "path": "configs/dafr_m5a_synthetic_v1.json",
+      "scope": "synthetic",
+      "sha256": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+      "status": "available"
+    },
+    {
+      "id": "detector-rules",
+      "path": "configs/dafr_m6a_synthetic_v1.json",
+      "scope": "synthetic",
+      "sha256": "543d1d11c18d806a320d1718a7594ab0878d278963e12774e59c0c96416006c0",
+      "status": "available"
+    },
+    {
+      "id": "interval-rules",
+      "path": "configs/dafr_m7a_synthetic_v1.json",
+      "scope": "synthetic",
+      "sha256": "5c67a1d60b321c502ea762aaa7f04d4c9b33ec68159a3ee5108cc88a6fbfdc73",
+      "status": "available"
+    },
+    {
+      "id": "fig-fixed",
+      "path": "reports/dafr/m4a_v1/m4a-development-20261031-001/matched_macro_mae.png",
+      "scope": "development",
+      "sha256": "2542f0ce48944d17a3fee77a3e9f3fc83bf7e403f8853b1d4e3542050677563f",
+      "status": "available"
+    },
+    {
+      "id": "fig-expert",
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/expert_matched.png",
+      "scope": "retrospective",
+      "sha256": "36c938751551318cfc87d889fe1080668c7e43fe258be25d7c45a3a8427b71bc",
+      "status": "available"
+    },
+    {
+      "id": "fig-complete",
+      "path": "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/complete_policy_matched.png",
+      "scope": "retrospective",
+      "sha256": "6af12a191bc3080d3be8c53d007425c423e00c7d9bca86b8f56d85fe6a533fb1",
+      "status": "available"
+    },
+    {
+      "id": "fig-nab",
+      "path": "reports/figures/01_ec2_cpu_5f5533_time_series.png",
+      "scope": "historical",
+      "sha256": "a610e45d1225cbfee233af7e55476e979c9f8c87fc8ef432f996088b01cb5978",
+      "status": "available"
+    },
+    {
+      "id": "fig-missing",
+      "path": "reports/figures/01_ec2_cpu_5f5533_missing_data_summary.png",
+      "scope": "historical",
+      "sha256": "ad08d8fa566c5c44f3a2f6b79cefe89a640e8b8a77cdaa4ee6ca1bb17f236db6",
+      "status": "available"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "frontend/qa/f2_acceptance/responsive.json": "5bbd50c801eb2cfe6cfbdb740fb8ce6d1a7be95aa2d7083336356269cfb21862",
+  "frontend/qa/f2_acceptance/lint.log": "d04222355fda9822b34e9f330ff2a277e91e74329148a97fd04be1ea4d95cebd",
+  "frontend/qa/f2_acceptance/coverage-keyboard-highlight.jpg": "ff3d58307aa531ab2cbd7eb4da647cd4f3c67b5a0daeca2f77574407e0cee2f1",
+  "frontend/qa/f2_acceptance/overview-desktop-top.jpg": "97f4725b2279087a3e90ad89fbb0e2ade44c51ccddbd37af244edd4b072031b8",
+  "frontend/qa/f2_acceptance/typecheck.log": "48ebfa3b68c492651fe02c17431160a37bd1d9f753d4a1a75147de8ca8d3b75c",
+  "frontend/qa/f2_acceptance/adaptation-desktop-top.jpg": "ecddceb089aa14991929e34fc05fc75cb5c9476c1252dc1bfe5ee5f46b691f4c",
+  "frontend/qa/f2_acceptance/keyboard.json": "62447d19250129e46de1651f9ca4d38644af8abd76fa0962dbd5ed01f7c0e52c",
+  "frontend/qa/f2_acceptance/reliability-desktop-top.jpg": "79640c1e86255dfd5f07e4397fb527857ace4d3ed87450376ee893a5fad3fbbf",
+  "frontend/qa/f2_acceptance/tests.log": "ab79a9638119d44b332be2eee7d8c23a4b23728efc53e6ca9040e7699b3c8c86",
+  "frontend/qa/f2_acceptance/forecasts-desktop-top.jpg": "7f9307fd992eb1493943dac14989cb4d29ef390edbbc29f4d6d922eb4606bfb8",
+  "frontend/qa/f2_acceptance/ACCEPTANCE.md": "31dc14fdd7091bc092e704631e8a91bd9a0362a23a28e3a96cbb552b74c5a8f4",
+  "frontend/qa/f2_acceptance/build.log": "3011f5bd71c482d8e6ce4363a7ec770826bc6aef5b8917f37c01705acdbb2089",
+  "frontend/qa/f2_acceptance/integrity.json": "6f6a01e6b8663b7eda584d945b6d32905d5dee33d040e76094dc825f1f0cc6d1",
+  "frontend/src/App.tsx": "9d68db316f0697ec7d9538af6b6f07b24b98d4ee5a744b180da0ec24a43f8a98"
+}

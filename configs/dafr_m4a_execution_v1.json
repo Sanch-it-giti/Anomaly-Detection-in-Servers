@@ -1,0 +1,193 @@
+{
+  "schema_version": "dafr_m4a_execution_v1",
+  "scope": "FORWARD_FIXED_MODEL_DEVELOPMENT_ONLY",
+  "m4a_execution_allowed": true,
+  "m3_training_allowed": false,
+  "training_authorized": false,
+  "refitting_allowed": false,
+  "confirmation_execution_allowed": false,
+  "allowed_machine_ids": [
+    "m_505",
+    "m_1426",
+    "m_3028"
+  ],
+  "new_observations": [
+    1152,
+    1612
+  ],
+  "historical_state_reconstruction": [
+    0,
+    1152
+  ],
+  "original_fit": [
+    0,
+    864
+  ],
+  "horizons": [
+    1,
+    12
+  ],
+  "selected_configurations": {
+    "arima": {
+      "candidate_index": 2,
+      "order": [
+        1,
+        1,
+        1
+      ]
+    },
+    "xgboost": {
+      "candidate_index": 0,
+      "max_depth": 2,
+      "n_estimators": 100,
+      "learning_rate": 0.05
+    }
+  },
+  "selection_receipt": {
+    "path": "reports/dafr/m3b2_v1/m3b2-development-20261030-001/selection.json",
+    "sha256": "6b71b48f02eb8252eeb24aa8e7fcf724bd74dd9ef569f7300346f79135fd1127",
+    "selection_cutoff_index": 1151
+  },
+  "models": {
+    "m_505": {
+      "arima": {
+        "directory": "models/dafr/m3b2_development_v1/m3b2-development-20261030-001/m_505/arima_c3",
+        "metadata_sha256": "e33be1c7d68f270fbc190218572dede7ee7f755a93c8e046ceea89c3fa42977a",
+        "reconstructed_end_1151_state_sha256": "c63ff9aeb725ef8ad9d423a7a1103b4f0204fe90405293bf3c5fa944f5b8842d",
+        "artifact_sha256": {
+          "features.json": "d77536641e2d83ce293eb39a61c5612047a2f67f9231ddf9d37d5dd1c72deff8",
+          "metadata.json": "e33be1c7d68f270fbc190218572dede7ee7f755a93c8e046ceea89c3fa42977a",
+          "params.json": "3e25f16873defc61fe8bdb3afbb1267070d998aff4007c4b460615c3d61b6804",
+          "scaler.json": "17286478c4c04c054d74f09ad8b24c863980a22002c24a0eddd6c17b166d5c71"
+        }
+      },
+      "xgboost": {
+        "directory": "models/dafr/m3b2_development_v1/m3b2-development-20261030-001/m_505/xgboost_c1",
+        "metadata_sha256": "a7d0058d1a3956d5dd474bf6e0aca6f08216e32de0c1b257f43e3001e70eb85a",
+        "reconstructed_end_1151_state_sha256": "f29b8766c3649f304a952857e9eb20f0f32c1b4ec99cefcb041dac1d632a1b7a",
+        "artifact_sha256": {
+          "model_h12.json": "0f3f5749974d67fd670003b48e68e053ea2ccfd698b1fbf3b90f02eabdb2ccb5",
+          "features.json": "d77536641e2d83ce293eb39a61c5612047a2f67f9231ddf9d37d5dd1c72deff8",
+          "model_h1.json": "9b6278891656694acfc46c13d7ddd9b2b900458dc23c10e396b4da174c836dc7",
+          "metadata.json": "a7d0058d1a3956d5dd474bf6e0aca6f08216e32de0c1b257f43e3001e70eb85a",
+          "scaler.json": "17286478c4c04c054d74f09ad8b24c863980a22002c24a0eddd6c17b166d5c71"
+        }
+      }
+    },
+    "m_1426": {
+      "arima": {
+        "directory": "models/dafr/m3b2_development_v1/m3b2-development-20261030-001/m_1426/arima_c3",
+        "metadata_sha256": "d7d1f15523e3c981d1fb92daaadd2e1b3df801a0093e68c532cef8cc161b4b71",
+        "reconstructed_end_1151_state_sha256": "d01b07763a508a96324c21d411539e2dc434e978b540f0c2683faede8060824f",
+        "artifact_sha256": {
+          "features.json": "d77536641e2d83ce293eb39a61c5612047a2f67f9231ddf9d37d5dd1c72deff8",
+          "metadata.json": "d7d1f15523e3c981d1fb92daaadd2e1b3df801a0093e68c532cef8cc161b4b71",
+          "params.json": "50d40f5a2faad610d0ff11fc6d05955f6ac1f7f98865f4bf902c070b5250e630",
+          "scaler.json": "17286478c4c04c054d74f09ad8b24c863980a22002c24a0eddd6c17b166d5c71"
+        }
+      },
+      "xgboost": {
+        "directory": "models/dafr/m3b2_development_v1/m3b2-development-20261030-001/m_1426/xgboost_c1",
+        "metadata_sha256": "50557d35496461d8961853ea9fc575aae2d78d7de79992684407665ccdcb9abd",
+        "reconstructed_end_1151_state_sha256": "66f0e8a65ad6f963d9fc0537dd08d51b117487ec33dde4bc9e8cd812fecc4d8e",
+        "artifact_sha256": {
+          "model_h12.json": "994d71afc083f113776f347cf82f13792db58065196cbacc282dbd9f6688313c",
+          "features.json": "d77536641e2d83ce293eb39a61c5612047a2f67f9231ddf9d37d5dd1c72deff8",
+          "model_h1.json": "385ec58c5cd95c622a3b8b28db27b70172dd1f2d6b7f736ccf512df1f0e4e1f6",
+          "metadata.json": "50557d35496461d8961853ea9fc575aae2d78d7de79992684407665ccdcb9abd",
+          "scaler.json": "17286478c4c04c054d74f09ad8b24c863980a22002c24a0eddd6c17b166d5c71"
+        }
+      }
+    },
+    "m_3028": {
+      "arima": {
+        "directory": "models/dafr/m3b2_development_v1/m3b2-development-20261030-001/m_3028/arima_c3",
+        "metadata_sha256": "bd9f3200f05fc8d5d14449fe33967d38ed5967ff5abb786db5269ad8ee294274",
+        "reconstructed_end_1151_state_sha256": "6e6a91ca5e5d033d166854d506a996a4a9f61659ee4577baed5ea511d7e60781",
+        "artifact_sha256": {
+          "features.json": "d77536641e2d83ce293eb39a61c5612047a2f67f9231ddf9d37d5dd1c72deff8",
+          "metadata.json": "bd9f3200f05fc8d5d14449fe33967d38ed5967ff5abb786db5269ad8ee294274",
+          "params.json": "cffd3efac7781f8a4fb6f8ec4addb1c2b44d1e15494c631cbe3b06d4d2c71a40",
+          "scaler.json": "17286478c4c04c054d74f09ad8b24c863980a22002c24a0eddd6c17b166d5c71"
+        }
+      },
+      "xgboost": {
+        "directory": "models/dafr/m3b2_development_v1/m3b2-development-20261030-001/m_3028/xgboost_c1",
+        "metadata_sha256": "8a03188ed88fb8abbca68fe052ee2c8c69b9697107497e133e42077b83b89698",
+        "reconstructed_end_1151_state_sha256": "e17d03a4d81131a1851d8a63a3048edc4f612a74b847d959e202344600f558e6",
+        "artifact_sha256": {
+          "model_h12.json": "478f04cb36a83df28a746b06b8a8f76ad403c5fb1a246adcd5f7071d10778917",
+          "features.json": "d77536641e2d83ce293eb39a61c5612047a2f67f9231ddf9d37d5dd1c72deff8",
+          "model_h1.json": "1f9a8e212da1c9de699b0f4bddef5b55c163a5434b7ebaa05c6492270c460ead",
+          "metadata.json": "8a03188ed88fb8abbca68fe052ee2c8c69b9697107497e133e42077b83b89698",
+          "scaler.json": "17286478c4c04c054d74f09ad8b24c863980a22002c24a0eddd6c17b166d5c71"
+        }
+      }
+    }
+  },
+  "sources": {
+    "m_505": {
+      "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/development_suffix/m_505.five_minute.csv",
+      "expected_container_bytes": 63939,
+      "recorded_m2b_container_sha256": "ad5aca02c1527b60715208d1ce789965faf6e3a1cc1ae12102ee80e79a4994f0",
+      "historical_prefix": {
+        "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_505.csv",
+        "sha256": "f322fef767e9449ddbf104b77fafda6bde379bea09c3e2eb5fb95a78739f4dde"
+      }
+    },
+    "m_1426": {
+      "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/development_suffix/m_1426.five_minute.csv",
+      "expected_container_bytes": 63677,
+      "recorded_m2b_container_sha256": "a6771504920ae30fedf2d231bca6fe6980dcc8a0da11437b790296312d86aba6",
+      "historical_prefix": {
+        "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_1426.csv",
+        "sha256": "ad599b2f8eb485fae1cceb1609bb86379506048413b4b785820169fc13a7ef12"
+      }
+    },
+    "m_3028": {
+      "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/development_suffix/m_3028.five_minute.csv",
+      "expected_container_bytes": 63887,
+      "recorded_m2b_container_sha256": "220e339dcf89643cf2ed4e248e5af6cda6250084e66e6936efe181ed0768bd83",
+      "historical_prefix": {
+        "path": "data/processed/dafr/m2b_v1/qualification_20261030_001/five_minute_prefix/m_3028.csv",
+        "sha256": "08e18e5a3247e7baf95f1b109c0be25dd6bd1aba81ef94bf0fc2be16f66b97ab"
+      }
+    }
+  },
+  "scope_reader": {
+    "read_ahead_allowed": false,
+    "read_size_bytes": 1,
+    "rows_to_extract": 460,
+    "forbidden_index_start": 1612,
+    "full_container_rehash_allowed": false,
+    "container_integrity": "Historical full export hash retained as provenance; only scoped segment is freshly hashed"
+  },
+  "gate_genuine_bins": 24,
+  "persistence_max_age_ticks": 3,
+  "era_reset_missing_tick": 4,
+  "maximum_process_rss_bytes": 4294967296,
+  "numeric_threads": 1,
+  "temporal_loss": {
+    "rolling_grid_ticks": 48,
+    "min_common_genuine_scores": 12,
+    "fixed_thirds": [
+      [
+        1152,
+        1305
+      ],
+      [
+        1305,
+        1458
+      ],
+      [
+        1458,
+        1612
+      ]
+    ],
+    "use": "Exploratory descriptive analysis only; no selector tuning or drift validation"
+  },
+  "output_namespace": "m4a_development_v1",
+  "future_work_authorized": false,
+  "bootstrap_scoring": "No forecasts/scores during state reconstruction; M3B-2 pending forecasts are never reopened"
+}
+

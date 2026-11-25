@@ -1,0 +1,58 @@
+[
+  {
+    "heading": "Research overview",
+    "page": "#overview",
+    "scrollWidth": 1440,
+    "tooltips": 0,
+    "width": 1440
+  },
+  {
+    "heading": "Forecast comparisons",
+    "page": "#forecasts",
+    "scrollWidth": 1440,
+    "tooltips": 0,
+    "width": 1440
+  },
+  {
+    "heading": "Adaptation & drift",
+    "page": "#adaptation",
+    "scrollWidth": 1440,
+    "tooltips": 0,
+    "width": 1440
+  },
+  {
+    "heading": "Reliability & evidence",
+    "page": "#reliability",
+    "scrollWidth": 1440,
+    "tooltips": 0,
+    "width": 1440
+  },
+  {
+    "heading": "Research overview",
+    "page": "#overview",
+    "scrollWidth": 390,
+    "tooltips": 0,
+    "width": 390
+  },
+  {
+    "heading": "Forecast comparisons",
+    "page": "#forecasts",
+    "scrollWidth": 390,
+    "tooltips": 0,
+    "width": 390
+  },
+  {
+    "heading": "Adaptation & drift",
+    "page": "#adaptation",
+    "scrollWidth": 390,
+    "tooltips": 0,
+    "width": 390
+  },
+  {
+    "heading": "Reliability & evidence",
+    "page": "#reliability",
+    "scrollWidth": 390,
+    "tooltips": 0,
+    "width": 390
+  }
+]

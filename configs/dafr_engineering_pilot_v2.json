@@ -1,0 +1,128 @@
+{
+  "schema_version": "dafr_engineering_pilot_v2",
+  "status": "FROZEN_ENGINEERING_PILOT_NOT_RESEARCH_APPROVAL",
+  "milestone": "M2D",
+  "created_on": "2026-10-30",
+  "confirmation_execution_allowed": false,
+  "m3_training_allowed": false,
+  "engine": {
+    "protocol_id": "dafr_engineering_pilot_v2",
+    "cadence_seconds": 300,
+    "horizons": [
+      1,
+      12
+    ],
+    "genuine_history_slots": 24,
+    "fallback_max_age_ticks": 3,
+    "era_reset_missing_tick": 4,
+    "support_max_scores": 288,
+    "support_min_scores": 100,
+    "support_recency_ticks": 288,
+    "max_grid_ticks": 2304,
+    "max_policies": 8,
+    "option": "B",
+    "option_c_enabled": false,
+    "confirmation_execution_allowed": false,
+    "m3_training_allowed": false,
+    "parameters_fixed": true,
+    "drift": "disabled_m2d",
+    "selection": "fixed_policy_no_switching",
+    "intervals": "not_implemented",
+    "data_scope": "synthetic_only"
+  },
+  "freeze_scope": "Option B engineering behavior for synthetic stub/persistence tests only; not a DAF-R research configuration or dataset qualification",
+  "option_c": {
+    "enabled": false,
+    "reason": "Future separately approved causal-imputation ablation"
+  },
+  "prefix_eligibility": {
+    "status": "FROZEN_DEVELOPMENT_INFORMED_ENGINEERING_SCREENS_NOT_VALIDATED_OPTIMAL",
+    "original_m2b_result": "zero qualified under strict v1; unchanged",
+    "approved_machine_ids": [],
+    "expected_prefix_grid_positions": 1152,
+    "min_genuine_bins": 500,
+    "min_observed_coverage": 0.75,
+    "min_longest_genuine_run_bins": 48,
+    "min_learned_origin_fraction": 0.4,
+    "min_potential_genuine_target_pairs_each_horizon": 400,
+    "horizons": [
+      1,
+      12
+    ],
+    "learned_gate_genuine_bins": 24,
+    "use_future_target_mask_at_issuance": false,
+    "nomination_roles_and_order": "Original M2/M2B roles/reserve order preserved; no promotions",
+    "automatic_qualification": false,
+    "bin_quality_rules": "Unchanged M2B per-bin validity; partial failed bins remain missing"
+  },
+  "event_order": [
+    "Reveal genuine or explicit missing tick on the original grid",
+    "Resolve previously issued predictions targeting exactly this timestamp",
+    "On fourth consecutive missing tick, reset era/support exactly once; add genuine matured same-era policy errors and expire old support",
+    "Snapshot causal state and issue fixed-policy decisions for h=1 and h=12"
+  ],
+  "era_semantics": {
+    "initial_era": 0,
+    "reset_at_missing_streak": 4,
+    "once_per_gap": true,
+    "leading_long_gap_resets": true,
+    "current_era_retained_on_genuine_recovery": true,
+    "original_predictions_and_outcomes_preserved": true,
+    "old_era_forecast_scored_if_exact_target_genuine": true,
+    "old_era_scores_seed_new_support": false,
+    "parameters_or_genuine_history_discarded_on_reset": false,
+    "active_loss_calibration_support_cleared": true,
+    "detector_reset": "No detector exists; reset event is future provenance only"
+  },
+  "support_semantics": {
+    "key": [
+      "policy_id",
+      "policy_version",
+      "horizon",
+      "current_era"
+    ],
+    "source": "actual issued fixed policy center; own fallback errors remain attributed to the requesting policy",
+    "include_persistence_baseline_in_other_policy_buffer": false,
+    "recency": "At origin tick i retain exact target ticks j with i-287<=j<=i",
+    "maximum_scores": 288,
+    "minimum_scores": 100,
+    "ready_means": "Count threshold reached only; intervals and adaptive selection still disabled",
+    "bounds_always_null": true,
+    "interval_status": "not_implemented",
+    "missing_target_creates_error_or_interval_outcome": false,
+    "abstention_enters_pending_or_support": false,
+    "model_source_switch_from_fallback_to_stub_resets_policy_buffer": false
+  },
+  "arrival_semantics": {
+    "available_at": "grid label/right edge",
+    "additional_delivery_delay_seconds": 0,
+    "late_or_repeated_events": "rejected; no retroactive feedback or revision",
+    "missing_reason_required": true
+  },
+  "pilot_resource_guards": {
+    "max_ticks": 2304,
+    "max_policies": 8,
+    "history_slots": 24,
+    "support_scores_per_policy_horizon": 288,
+    "pending_targets": "only issued predictions; resolved by exact timestamp",
+    "audit_ledger": "bounded by pilot cap; in-memory, with sequential JSONL output; not a production-scale ledger"
+  },
+  "future_output_namespace": "data/processed/dafr/missing_data_v2/<unique_run_id>/",
+  "no_overwrite": true,
+  "unresolved_research_decisions": [
+    "Expert training/validation adapters, fitting windows and scaler provenance",
+    "Drift detector normalization, thresholds, watch/cooldown and genuine-update warm-up",
+    "Adaptive selector loss weighting, support thresholds, hysteresis and dwell",
+    "Real interval construction, version-change calibration and reliability gating",
+    "Confirmation-prefix structural qualification and reserve replacements",
+    "Final research settings freeze and explicit confirmation execution authorization"
+  ],
+  "source_documents": [
+    "reports/dafr/m2c_missing_data_feasibility.md",
+    "reports/dafr/m2c_protocol_options.md",
+    "configs/dafr_missing_data_protocol_v2_draft.json",
+    "reports/phase3_dafr_research_design.md",
+    "reports/phase3_dafr_implementation_roadmap.md"
+  ]
+}
+

@@ -1,0 +1,146 @@
+{
+  "scope": "existing reports and configuration only",
+  "sources": {
+    "reports/phase3_dafr_research_design.md": {
+      "sha256": "9a02a67ba2bd7aa7382e31764a2b2e21e9d8aa080f1254fae319829952707b77",
+      "bytes": 32571,
+      "lines": 201
+    },
+    "reports/phase3_dafr_implementation_roadmap.md": {
+      "sha256": "a597d0c611509678f651440daefca294a09391186e86ac16b014e67ab12b3b13",
+      "bytes": 13737,
+      "lines": 117
+    },
+    "reports/dafr/m2b_qualification_report_v1.md": {
+      "sha256": "90a4655961f2446d9258f676ebe0dec94d621adda1c93d4f776cf5d6de5ed8cd",
+      "bytes": 12750,
+      "lines": 130
+    },
+    "reports/dafr/m2c_missing_data_feasibility.md": {
+      "sha256": "9c26633d2161755f7fed371e342d79b2bf8a345e7502e70e3fd833579c6b90cf",
+      "bytes": 14911,
+      "lines": 120
+    },
+    "reports/dafr/m2c_protocol_options.md": {
+      "sha256": "13e377938a678d9fe53d36c9c46f7ddd8756861f85b8bb33f0359c0af8cc4588",
+      "bytes": 16681,
+      "lines": 94
+    },
+    "reports/dafr/m2d_gap_aware_simulator_v2.md": {
+      "sha256": "b9d421756182add8a46125eb6da0d48a13b06c1002da2c9743a6d92f6377dc14",
+      "bytes": 15336,
+      "lines": 156
+    },
+    "reports/dafr/m3b1_development_qualification_v1.md": {
+      "sha256": "b84d019fba4c391d04db2bc44c53a6fd38249501fb41300a470c2ef23e20caf7",
+      "bytes": 7459,
+      "lines": 66
+    },
+    "reports/dafr/m3b1_training_validation_protocol_v1.md": {
+      "sha256": "3402e0216cfa1d1c95864b1a9736b59adb7a1c6a20a5bb52aa4dad21bc4ddee9",
+      "bytes": 12762,
+      "lines": 130
+    },
+    "reports/dafr/m3b2_v1/m3b2-development-20261030-001/completion_report.md": {
+      "sha256": "76150da18bb1d40eb5e534e8396fbb5ce51711e92deeb2d416d14db1efb2e02d",
+      "bytes": 11167,
+      "lines": 115
+    },
+    "reports/dafr/m4a_v1/m4a-development-20261031-001/completion_report.md": {
+      "sha256": "c3c18bacf4f3b9cffae4988e3c88f630905505bdf23ff7cd408e3a2a453e0613",
+      "bytes": 10184,
+      "lines": 78
+    },
+    "reports/dafr/m5b2_v1/m5b2-retrospective-20261106-001/completion_report.md": {
+      "sha256": "e7b62dc28870815000f6fdfea12c772bf96c7a6619624803ff0af0f1b0143fdf",
+      "bytes": 10504,
+      "lines": 91
+    },
+    "reports/dafr/m6a_v1/m6a-synthetic-20261107-001/completion_report.md": {
+      "sha256": "b82013e8cc080fe024cbc82ba0cbbac17946bdaa44623c0a959286579f2ce85c",
+      "bytes": 10442,
+      "lines": 72
+    },
+    "reports/dafr/m6b_v1/m6b-synthetic-backend-20261107-001/completion_report.md": {
+      "sha256": "9080e26270c1633b78d20ea19b838742fa4dcb3ca6cb52cbff8c02f9fd55b601",
+      "bytes": 8921,
+      "lines": 65
+    },
+    "reports/dafr/m7a_v1/m7a-synthetic-20261107-001/completion_report.md": {
+      "sha256": "8dc7f668ab265b221f6e70a26241f968ba258f5b8a0a376ab418893117f6c014",
+      "bytes": 10562,
+      "lines": 73
+    },
+    "reports/dafr/m7b_v1/m7b-synthetic-backend-20261107-001/completion_report.md": {
+      "sha256": "45cacb2b6318416c00416147a41776369baafb5aa3ce2a9ebcf640f3e4493aa3",
+      "bytes": 12108,
+      "lines": 76
+    },
+    "reports/dafr/m8_research_evaluation_submission_readiness_plan_v1.md": {
+      "sha256": "0e41473a7445bc0275be56143eeb57295a9f77620da0d28a178f3a3f4a40ae88",
+      "bytes": 10977,
+      "lines": 61
+    },
+    "reports/synopsis/literature_review.md": {
+      "sha256": "66d774854a7ec099ed1428ff4097ce4638bb8deba93eba5e3b5f0a75a16ccb0f",
+      "bytes": 9982,
+      "lines": 61
+    },
+    "reports/synopsis/dataset_selection.md": {
+      "sha256": "685c8fd70ff3d1f446194cd457b66b80cd743fee22881e68b013843698fa2bb3",
+      "bytes": 4684,
+      "lines": 44
+    },
+    "configs/dafr_engineering_pilot_v2.json": {
+      "sha256": "2a806b36226f523240e18c6c2d1edaf1d3b13c8dc116b936da3377609373815e",
+      "bytes": 5300,
+      "lines": 128
+    },
+    "configs/dafr_m3b_development_manifest_v1.json": {
+      "sha256": "8cdf9b8d74806a00dab0c2faf1923ad32436433581325f138051b781a005d2c0",
+      "bytes": 33156,
+      "lines": 776
+    },
+    "configs/dafr_m3b2_execution_v1.json": {
+      "sha256": "78878a2fabf94e4e28498991e177454418ceb4a5092b7b64d90b8cd9b34fd5fc",
+      "bytes": 1486,
+      "lines": 49
+    },
+    "configs/dafr_m4a_execution_v1.json": {
+      "sha256": "1ba67220009a2990dd96902e7c783546b947f84e2d6a0030cfe18e96fb97e73f",
+      "bytes": 8476,
+      "lines": 193
+    },
+    "configs/dafr_missing_data_protocol_v2_draft.json": {
+      "sha256": "7ce16c28bbb99d24b0138defb70915c8574cbba0ec144d03d58ad33bdc4f1998",
+      "bytes": 41671,
+      "lines": 947
+    },
+    "configs/dafr_experiment_manifest_m2b_v1.json": {
+      "sha256": "6bf5429b6ea2c1d63780ab287dc502e47bf48b0a52c840491c243d11eee69ad9",
+      "bytes": 44758,
+      "lines": 1202
+    },
+    "configs/dafr_m5a_synthetic_v1.json": {
+      "sha256": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+      "bytes": 1924,
+      "lines": 42
+    },
+    "configs/dafr_m6a_synthetic_v1.json": {
+      "sha256": "543d1d11c18d806a320d1718a7594ab0878d278963e12774e59c0c96416006c0",
+      "bytes": 1727,
+      "lines": 36
+    },
+    "configs/dafr_m7a_synthetic_v1.json": {
+      "sha256": "5c67a1d60b321c502ea762aaa7f04d4c9b33ec68159a3ee5108cc88a6fbfdc73",
+      "bytes": 2005,
+      "lines": 35
+    },
+    "configs/dafr_m7b_synthetic_backend_v1.json": {
+      "sha256": "d112c531072c3f408e0c0f808a4c95ee481310841967b26b383229bee30242ce",
+      "bytes": 2114,
+      "lines": 40
+    }
+  },
+  "new_cpu_observations_read": false
+}

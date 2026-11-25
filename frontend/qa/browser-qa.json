@@ -1,0 +1,65 @@
+{
+  "browser": "Codex in-app browser",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "horizontal_page_overflow": false
+    },
+    {
+      "width": 900,
+      "height": 1000,
+      "horizontal_page_overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "horizontal_page_overflow": false
+    }
+  ],
+  "pages_tested": [
+    "overview",
+    "forecasts",
+    "adaptation",
+    "reliability"
+  ],
+  "interactions": [
+    "h1/h12 toggle",
+    "MAE/RMSE toggle",
+    "macro andm_505 machine selector",
+    "expert andcomplete policy masks",
+    "M7A/M7B switch",
+    "insufficient-support null coverage",
+    "source dialog andEscape",
+    "mobile navigation",
+    "mobile keyboard focus wrapping",
+    "mobile Escape restores opener focus",
+    "skip link retains current page andfocuses main"
+  ],
+  "verified_dom_values": {
+    "h12_expert_macro_arima_mae": 6.797972,
+    "h12_expert_macro_adaptive_mae": 6.896834,
+    "h12_complete_macro_targets": 1340,
+    "h12_real_growing_coverage_90_percent": 68.35,
+    "h12_real_growing_available_genuine": [
+      237,
+      348
+    ],
+    "h12_mock_insufficient_coverage": "Unavailable",
+    "h12_mock_insufficient_interval_availability": [
+      0,
+      48
+    ],
+    "retrospective_h12_switches": 3
+  },
+  "mobile_drift_chart": {
+    "page_width": 390,
+    "container_width": 324,
+    "internal_scroll_width": 760
+  },
+  "captured_console_errors": 0,
+  "captured_console_warnings": 0,
+  "reduced_motion": "CSS media rule verified in source; OS preference not changed or browser-emulated",
+  "viewport_override_reset_after_qa": true,
+  "formal_wcag_or_cross_browser_certification": false
+}

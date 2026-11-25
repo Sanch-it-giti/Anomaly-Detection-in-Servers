@@ -1,0 +1,40 @@
+{
+  "schema_version": "dafr_m7b_v1",
+  "scope": "SYNTHETIC_REGISTERED_BACKENDS_ONLY",
+  "confirmation_execution_allowed": false,
+  "real_data_execution_allowed": false,
+  "replay_refitting_allowed": false,
+  "selector_changes_allowed": false,
+  "drift_changes_allowed": false,
+  "interval_retuning_allowed": false,
+  "m8_execution_allowed": false,
+  "synthetic_checkpoint_build_allowed": true,
+  "nominal_percent": [
+    90,
+    95
+  ],
+  "interval_rule": "frozen M7A complete_policy_version_horizon_era; own fallback errors; raw unclipped bounds",
+  "model_version_changes": "reject; no implicit reset/continuity",
+  "max_grid_ticks": 2304,
+  "maximum_process_rss_bytes": 4294967296,
+  "scenarios": [
+    "continuous",
+    "growing",
+    "gaps_failures",
+    "update_failure"
+  ],
+  "frozen_sha256": {
+    "configs/dafr_m7a_synthetic_v1.json": "5c67a1d60b321c502ea762aaa7f04d4c9b33ec68159a3ee5108cc88a6fbfdc73",
+    "src/dafr/interval_v1.py": "ca37d48587df5b13e3490c9ac645dd3e83456833c284863316caf02c1d9ac590",
+    "src/dafr/interval_contracts_v1.py": "ac844b8a930033ef13efb7b4fd9d97b1fc68f19bbad55f2e3eaf1a61a113224a",
+    "src/dafr/audit_m7a_v1.py": "d11de89610a3d28d4fa60d374fd0bd29f50d5a99de714535361c18de74ceb2ee",
+    "configs/dafr_m5a_synthetic_v1.json": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+    "configs/dafr_m6a_synthetic_v1.json": "543d1d11c18d806a320d1718a7594ab0878d278963e12774e59c0c96416006c0",
+    "src/dafr/drift_v1.py": "112150be46c487b31b24d663032b0032a21b94162531f8a434782770e157d953",
+    "src/dafr/adaptive_real_streaming_v1.py": "e391f2e4c169d9eeef16442faf86999a61ea23c4a7e0b711e9708fc400bcfa37",
+    "src/dafr/adaptive_real_contracts_v1.py": "528fdeb6b7f801d11b8b9863385df3911e189591275e1d7af5d97a25cad94af3",
+    "src/dafr/real_adapters_v1.py": "b3708304370085e22d1f42361e8165dbf0435c48f94a1c848beab92868f152ee",
+    "src/dafr/adaptive_checkpoint_registry_v1.py": "f63a1c002bd70ebd56be2a25abf795258d26522d2db140e8cddabda70e38f9d6",
+    "configs/dafr_m5b1_checkpoint_registry_v1.json": "b511929acc9dd133424f40609825aadf586ce20b8c94f1af979ec6dbc9e03f12"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "frontend/qa/f2/overview-desktop.jpg": "7f67cc15ddbee6dc2c629f5fa729efce244a2ad7388485c9c85f52c10d8bb1df",
+  "frontend/qa/f2/reliability-tablet.jpg": "371ef3c7eed8020b3ad75fd9bab92614551c71f76a99e42462d764d7437a9558",
+  "frontend/qa/f2/responsive.json": "64415df31e49da40ea758e88247c9cc048c696b40ccbb36560c58e9bae38e736",
+  "frontend/qa/f2/reliability-mobile.jpg": "b7a76af22c7d7326fa64522a41fcd48ce8ed1531c05023985d7de3131c43d3da",
+  "frontend/qa/f2/overview-preview.jpg": "ce7b236dd0cafdf2852a129d888ee5f2bf226fbd2e49a627cdb488a1edd55b50",
+  "frontend/qa/f2/preservation.json": "e28397a540ce65b62cf58306874907012e8f9ef189607c8fa62e2804a2886fe3",
+  "frontend/qa/f2/forecasts-desktop.jpg": "50090636bb30e964bc191f1f0b696828a959705cff1ac86842f0874827482a33",
+  "frontend/qa/f2/reliability-desktop.jpg": "8a346a31780ab8be8befb0e689b29e999e915213d89882cd81f579b3f6bfdac6",
+  "frontend/qa/f2/adaptation-tablet.jpg": "19877e11fc250e16cb4f09e3cf155f0f5d8eb07191affb91b0052b4209565990",
+  "frontend/qa/f2/adaptation-mobile.jpg": "1f9dcfc7d04e527df656c5719f7c0c0c6b2940c5426f9570fc002dc0d066102c",
+  "frontend/qa/f2/adaptation-desktop.jpg": "f1ff663a9b50d0e55c2345837ea463c3a33b9fe7e3dfe1a33ce7fe6d9d6086bb",
+  "frontend/qa/f2/overview-mobile.jpg": "3859d7e3eafdf0d655646d9f4877560005f9f8b25a7427d416d5096597b542ae",
+  "frontend/qa/f2/QA_REPORT.md": "64464239a42cff3175c2c213541ad16ec60cae415e6387834ad359d41608fd11",
+  "frontend/qa/f2/forecasts-mobile.jpg": "60c345140366be4a3eed214930beaf6ad2d6483ea93abadfacec8f4c3a60652b",
+  "frontend/qa/f2/overview-tablet.jpg": "07d48e59a8c67564336763a6d82ef9a0de66c7d2acd0d538528ff9abbc183a3e",
+  "frontend/qa/f2/forecasts-tablet.jpg": "f854b35eaa44c9d010070bc29eb880252b821b61e4316db93b58c6760f7138d1",
+  "frontend/qa/f2/source_verification.json": "43126badb8d374e2c78672082e1d5677fbdbc4f0bca53314197fa4640c78da7d",
+  "frontend/qa/f2/build.log": "d5b7a3893c9ce72bf6c025e6a43a6cced6109fc0b3bb95a8bdcca2a7b4b66bc7",
+  "frontend/src/App.tsx": "c90e35a0437a4a7b5edbd816280dbf096491a9d27b2de1e6f04f24c1a2e450bd",
+  "frontend/src/styles.css": "205292c0e2fc05d5427e8f86ba8014592398575e84e51cd26823cd44817113ed"
+}

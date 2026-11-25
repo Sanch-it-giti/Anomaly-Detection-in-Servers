@@ -1,0 +1,55 @@
+{
+  "schema_version": "dafr_m5b2_retrospective_v1",
+  "label": "RETROSPECTIVE DEVELOPMENT DIAGNOSTIC",
+  "retrospective_execution_allowed": true,
+  "confirmation_execution_allowed": false,
+  "new_observation_access_allowed": false,
+  "training_allowed": false,
+  "m6_execution_allowed": false,
+  "m7_execution_allowed": false,
+  "m8_execution_allowed": false,
+  "machines": [
+    "m_505",
+    "m_1426",
+    "m_3028"
+  ],
+  "origin_indices": [
+    1152,
+    1612
+  ],
+  "selector": {
+    "experts": [
+      "arima",
+      "xgboost"
+    ],
+    "default_expert": "arima",
+    "horizons": [
+      1,
+      12
+    ],
+    "max_matched_scores": 288,
+    "min_matched_scores": 100,
+    "recency_grid_ticks": 288,
+    "absolute_improvement_margin": 0.1,
+    "relative_improvement_margin": 0.05,
+    "minimum_dwell_grid_ticks": 24,
+    "tie_tolerance": 1e-12
+  },
+  "missingness": {
+    "cadence_seconds": 300,
+    "genuine_history_gate": 24,
+    "persistence_max_age_ticks": 3,
+    "era_reset_missing_tick": 4,
+    "imputation_enabled": false,
+    "old_era_scores_seed_active_support": false
+  },
+  "m5a_config_sha256": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+  "m4a_inventory_path": "reports/dafr/m4a_v1/m4a-development-20261031-001/final_artifact_hashes.json",
+  "m4a_inventory_sha256": "b2ec16799f63c33128ebdb56e3aec5fc9ff201df100665b99f79aeb9d07271b9",
+  "m4a_config_sha256": "1ba67220009a2990dd96902e7c783546b947f84e2d6a0030cfe18e96fb97e73f",
+  "source_directory": "data/processed/dafr/m4a_development_v1/m4a-development-20261031-001",
+  "context_priming": "Saved M4A reconstruction trailing 23 ticks only; no original CSV or model state loading; no pre-block errors/forecasts imported",
+  "logical_adaptive_design_available_after_index": 1611,
+  "maximum_process_rss_bytes": 4294967296,
+  "output_namespace": "m5b2_retrospective_v1"
+}

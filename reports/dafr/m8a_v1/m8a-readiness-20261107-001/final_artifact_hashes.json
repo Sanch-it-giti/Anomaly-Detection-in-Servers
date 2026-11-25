@@ -1,0 +1,23 @@
+{
+  "schema_version": "m8a_reporting_artifact_inventory_v1",
+  "file_count": 16,
+  "self_excluded": true,
+  "sha256": {
+    "configs/dafr_m8a_proposed_final_protocol_v1.json": "c67cc6b222585f960e34262b291462bb942e1acb0d1285121197d9090f8acc17",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/confirmation_metadata_inventory.json": "fde049dc3f270ed4a171a313c38f71473605d665d0518313d2fbf30d4ed84dde",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/confirmation_qualification_readiness.md": "f8d30f427022e706caac513a990a543649052da8092c2bc0769ab804ef3ddff2",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/environment_provenance.json": "40e4ba1afe6ea6289ef0babc80a33ac33bae282758d2b5bf285810984afd6010",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/evidence_catalog.json": "372057bc09b065253a2fa504bd708129df0b3b76270b801f6de82a343744c5cf",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/figure_inventory.json": "38a34388d4eb7cb5d4d169add0a47cd08507ba434e20537413a4dc85be901a4c",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/final_verification.json": "c187fa770e9aa609767fbe98bb035d04b83b3c47d22d284d0cf41d47710d0574",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/presentation_outline.md": "65b12dea27f2b0a485dced09c3b4fa0154fe5398e82a360c08d5889297e3b284",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/preservation_baseline.json": "6f59a4ad6c997b79d1f5ba0e898160ac4c915f060bd105888eebfd5e68bd023a",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/project_status_matrix.md": "4dad66624b937ab82bb97b6905bcd1155127beeeaf589d09b235444efaa318be",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/proposed_final_evaluation_protocol.md": "68479a2a775412f5da6c1234d09254a2b09b26f1e5240c15b60f4a25b16ef80f",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/readiness_report.md": "d5556781819d3ca6d98c43c9ea0429ed615517cd7ea6bf394e31a4ae77e5d466",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/regression_verification.json": "5f730d97938954b40b80bbc22f60fadd9fe575f6aa3e9259993fc5ed5353da5d",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/reproducibility_demo_guide.md": "6e19abc8a4d4f92fefd575ee0418559004a8b5eea6b254acab4b9aa77738d05a",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/research_report_draft.md": "b2e191b3cc33f8166c0f59d28f06ed9a4cee65e04354bd74559629c64e3e777a",
+    "reports/dafr/m8a_v1/m8a-readiness-20261107-001/saved_synthetic_audit_verification.json": "cb2cf4f6e5caf64f18b9743c8dd84405efdd823d49a107cab0f8ba1a6dd59b03"
+  }
+}

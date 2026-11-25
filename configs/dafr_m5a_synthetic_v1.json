@@ -1,0 +1,42 @@
+{
+  "schema_version": "dafr_m5a_synthetic_v1",
+  "status": "FROZEN_SYNTHETIC_ENGINEERING_CHOICES_NOT_OPTIMIZED",
+  "scope": "SYNTHETIC_ONLY",
+  "synthetic_execution_allowed": true,
+  "real_data_execution_allowed": false,
+  "confirmation_execution_allowed": false,
+  "m3_training_allowed": false,
+  "m5b_execution_allowed": false,
+  "drift_detection_allowed": false,
+  "prediction_intervals_allowed": false,
+  "selector": {
+    "experts": ["arima", "xgboost"],
+    "default_expert": "arima",
+    "horizons": [1, 12],
+    "max_matched_scores": 288,
+    "min_matched_scores": 100,
+    "recency_grid_ticks": 288,
+    "absolute_improvement_margin": 0.1,
+    "relative_improvement_margin": 0.05,
+    "minimum_dwell_grid_ticks": 24,
+    "tie_tolerance": 1e-12
+  },
+  "loss": "Unweighted mean absolute error on identical genuine shadow origin/target/context pairs in the current telemetry era",
+  "missingness": {
+    "cadence_seconds": 300,
+    "genuine_history_gate": 24,
+    "persistence_max_age_ticks": 3,
+    "era_reset_missing_tick": 4,
+    "imputation_enabled": false,
+    "old_era_scores_seed_active_support": false
+  },
+  "unavailable_incumbent": "Persistence fallback or abstention; no unsupported emergency expert switch",
+  "reset_selection": "Reset incumbent to default ARIMA and restart dwell at the era boundary; label as telemetry default reset, not loss-based switch",
+  "insufficient_support": "Hold the current incumbent; no loss-based switch",
+  "ties": "Retain incumbent within tolerance; fixed expert order is the secondary deterministic ordering",
+  "accounting": "Shadow errors, matched selector support, actual adaptive-policy errors, persistence errors and unissued attempts remain separate",
+  "max_grid_ticks_per_run": 2304,
+  "maximum_process_rss_bytes": 4294967296,
+  "output_namespace": "m5a_synthetic_v1",
+  "synthetic_scenarios": ["stable", "regime_switch", "horizon_divergence", "gaps_failures"]
+}

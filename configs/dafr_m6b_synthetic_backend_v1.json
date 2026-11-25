@@ -1,0 +1,31 @@
+{
+  "schema_version": "dafr_m6b_v1",
+  "scope": "SYNTHETIC_REGISTERED_BACKENDS_ONLY",
+  "confirmation_execution_allowed": false,
+  "real_data_execution_allowed": false,
+  "model_refitting_during_replay_allowed": false,
+  "detector_response_allowed": false,
+  "prediction_intervals_allowed": false,
+  "selector_changes_allowed": false,
+  "synthetic_checkpoint_build_allowed": true,
+  "frozen_source_sha256": {
+    "configs/dafr_m6a_synthetic_v1.json": "543d1d11c18d806a320d1718a7594ab0878d278963e12774e59c0c96416006c0",
+    "src/dafr/drift_v1.py": "112150be46c487b31b24d663032b0032a21b94162531f8a434782770e157d953",
+    "src/dafr/drift_contracts_v1.py": "a77b51c70e161d1fd2d2a957015d7650397dabad870d0e516ccf61e791b088d3",
+    "configs/dafr_m5a_synthetic_v1.json": "b54174000151ec77d3fddd09664274b300ad811278d91ad424c95804ad4695ca",
+    "configs/dafr_m5b1_integration_v1.json": "5a615efdbebd43983eb5d5cafe764263d3caaf768d597caeec76010258945519",
+    "configs/dafr_m5b1_checkpoint_registry_v1.json": "b511929acc9dd133424f40609825aadf586ce20b8c94f1af979ec6dbc9e03f12",
+    "src/dafr/adaptive_real_streaming_v1.py": "e391f2e4c169d9eeef16442faf86999a61ea23c4a7e0b711e9708fc400bcfa37",
+    "src/dafr/adaptive_checkpoint_registry_v1.py": "f63a1c002bd70ebd56be2a25abf795258d26522d2db140e8cddabda70e38f9d6",
+    "src/dafr/real_adapters_v1.py": "b3708304370085e22d1f42361e8165dbf0435c48f94a1c848beab92868f152ee"
+  },
+  "reference": "persistence/rule_v2; original backend persistence policy envelope m5b1_real_backend_v1",
+  "monitor_event_order": "backend reveal/score/reset/support/model-update/issuance barrier, then detector clock/error/events; no feedback into backend",
+  "max_grid_ticks": 2304,
+  "maximum_process_rss_bytes": 4294967296,
+  "scenarios": [
+    "sustained",
+    "gaps_failures",
+    "update_failure"
+  ]
+}

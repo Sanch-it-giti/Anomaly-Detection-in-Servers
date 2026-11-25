@@ -1,0 +1,72 @@
+{
+  "scope": "Previously generated synthetic ledgers only; no forecasts or fitted models generated",
+  "elapsed_seconds": 7.4821686659997795,
+  "audits": {
+    "continuous": {
+      "status": "passed",
+      "forecasts": 3360,
+      "intervals": 6720,
+      "source_outcomes": 3308,
+      "interval_outcomes": 6616,
+      "genuine_available_interval_scores": 4928,
+      "hashes_verified": 15,
+      "independent_quantile_support_and_outcome_replay": true,
+      "point_selector_drift_parity": true,
+      "real_provenance_verified": true,
+      "nested_95_90_pairs": 2516,
+      "pre_state_support_chronology": true,
+      "legacy_m6b_point_and_drift_payload_parity": true,
+      "drift_replayed": true
+    },
+    "growing": {
+      "status": "passed",
+      "forecasts": 2880,
+      "intervals": 5760,
+      "source_outcomes": 2828,
+      "interval_outcomes": 5656,
+      "genuine_available_interval_scores": 3968,
+      "hashes_verified": 15,
+      "independent_quantile_support_and_outcome_replay": true,
+      "point_selector_drift_parity": true,
+      "real_provenance_verified": true,
+      "nested_95_90_pairs": 2036,
+      "pre_state_support_chronology": true,
+      "legacy_m6b_point_and_drift_payload_parity": true,
+      "drift_replayed": true
+    },
+    "gaps_failures": {
+      "status": "passed",
+      "forecasts": 3600,
+      "intervals": 7200,
+      "source_outcomes": 2964,
+      "interval_outcomes": 5928,
+      "genuine_available_interval_scores": 1260,
+      "hashes_verified": 15,
+      "independent_quantile_support_and_outcome_replay": true,
+      "point_selector_drift_parity": true,
+      "real_provenance_verified": true,
+      "nested_95_90_pairs": 684,
+      "pre_state_support_chronology": true,
+      "legacy_m6b_point_and_drift_payload_parity": true,
+      "drift_replayed": true
+    },
+    "update_failure": {
+      "status": "passed",
+      "forecasts": 1440,
+      "intervals": 2880,
+      "source_outcomes": 1112,
+      "interval_outcomes": 2224,
+      "genuine_available_interval_scores": 744,
+      "hashes_verified": 15,
+      "independent_quantile_support_and_outcome_replay": true,
+      "point_selector_drift_parity": true,
+      "real_provenance_verified": true,
+      "nested_95_90_pairs": 423,
+      "pre_state_support_chronology": true,
+      "legacy_m6b_point_and_drift_payload_parity": true,
+      "drift_replayed": true
+    }
+  },
+  "model_fits": 0,
+  "new_alibaba_observations_read": false
+}

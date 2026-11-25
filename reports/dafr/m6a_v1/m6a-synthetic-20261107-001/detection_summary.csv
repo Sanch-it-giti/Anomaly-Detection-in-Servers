@@ -1,0 +1,23 @@
+label,fixture,horizon,grid_ticks,change_kind,known_fixture_change_tick,alarm_count,warning_entries,false_or_prechange_alarms,postchange_alarms,first_postchange_alarm_tick,first_detection_delay_ticks,first_detection_delay_minutes,fixture_change_not_alarmed,alarm_ticks,accepted_genuine_errors,ignored_old_era_errors,final_recent_support,final_normalization_count,final_era_monitor_clips,telemetry_resets,clipped_monitor_inputs_all_eras
+SYNTHETIC ENGINEERING VERIFICATION ONLY,stable_errors,1,280,none,,0,0,0,0,,,,False,[],279,0,279,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,stable_errors,12,280,none,,0,0,0,0,,,,False,[],268,0,268,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,sustained_error_increase,1,280,slope_increase,160,5,5,0,5,162,2,10,False,"[162, 188, 214, 240, 266]",279,0,279,32,1,0,1
+SYNTHETIC ENGINEERING VERIFICATION ONLY,sustained_error_increase,12,280,slope_increase,160,5,5,0,5,162,2,10,False,"[162, 188, 214, 240, 266]",268,0,268,32,119,0,119
+SYNTHETIC ENGINEERING VERIFICATION ONLY,isolated_outlier,1,280,none,,0,1,0,0,,,,False,[],279,0,279,32,2,0,2
+SYNTHETIC ENGINEERING VERIFICATION ONLY,isolated_outlier,12,280,none,,0,1,0,0,,,,False,[],268,0,268,32,2,0,2
+SYNTHETIC ENGINEERING VERIFICATION ONLY,gradual_change,1,280,gradual_slope_increase,160,4,4,0,4,190,30,150,False,"[190, 221, 249, 276]",279,0,279,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,gradual_change,12,280,gradual_slope_increase,160,5,5,0,5,172,12,60,False,"[172, 198, 224, 250, 276]",268,0,268,32,99,0,99
+SYNTHETIC ENGINEERING VERIFICATION ONLY,abrupt_level_change,1,280,level_step_error_transient,160,0,0,0,0,,,,True,[],279,0,279,32,1,0,1
+SYNTHETIC ENGINEERING VERIFICATION ONLY,abrupt_level_change,12,280,level_step_error_transient,160,1,1,0,1,162,2,10,False,[162],268,0,268,32,12,0,12
+SYNTHETIC ENGINEERING VERIFICATION ONLY,missing_observations,1,280,none,,0,0,0,0,,,,False,[],271,0,271,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,missing_observations,12,280,none,,0,2,0,0,,,,False,[],260,0,260,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,four_tick_resets,1,280,none,,0,0,0,0,,,,False,[],259,0,0,0,0,4,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,four_tick_resets,12,280,none,,0,0,0,0,,,,False,[],226,20,0,0,0,4,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,delayed_h12,1,40,none,,0,0,0,0,,,,False,[],39,0,39,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,delayed_h12,12,40,none,,0,0,0,0,,,,False,[],28,0,28,28,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,insufficient_support,1,50,early_slope_increase,35,0,0,0,0,,,,True,[],49,0,49,32,15,0,15
+SYNTHETIC ENGINEERING VERIFICATION ONLY,insufficient_support,12,50,early_slope_increase,35,0,0,0,0,,,,True,[],38,0,38,32,6,0,6
+SYNTHETIC ENGINEERING VERIFICATION ONLY,forecast_failure,1,280,none,,0,0,0,0,,,,False,[],276,0,276,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,forecast_failure,12,280,none,,0,0,0,0,,,,False,[],265,0,265,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,cooldown_stress,1,280,slope_increase,120,6,6,0,6,124,4,20,False,"[124, 152, 180, 208, 236, 264]",279,0,279,32,0,0,0
+SYNTHETIC ENGINEERING VERIFICATION ONLY,cooldown_stress,12,280,slope_increase,120,7,7,0,7,122,2,10,False,"[122, 148, 174, 200, 226, 252, 278]",268,0,268,32,158,0,158
